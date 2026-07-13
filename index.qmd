@@ -39,13 +39,11 @@ Based at the University of Nottingham's Rights Lab.
 :::
 
 ::: {.coming-soon-panel}
-[In Development]{.label}
+
 
 ::: {.h3}
-Research Portfolio Visualisation
-:::
 
-A dynamic network map of research themes, outputs and collaborations is being developed.
+:::
 
 [Coming soon]{.tag}
 :::

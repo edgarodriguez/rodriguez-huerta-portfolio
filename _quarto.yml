@@ -21,10 +21,12 @@ project:
 website:
   title: "Rodríguez-Huerta, Edgar"
   description: "Research portfolio — sustainability science and complexity"
+  announcement:
+    content: "**New:** We are moving all the portfolio content to a new location. still work in progress"
   site-url: "https://edgarrodriguezhuerta.github.io/rodriguez-huerta-portfolio"
   # Google Analytics — replace G-XXXXXXXXXX with your Measurement ID
   # from Google Analytics > Admin > Data Streams > Web stream details
-  google-analytics: "G-XXXXXXXXXX"
+  google-analytics: "G-WJGNN5V5GM"
   open-graph: true
   twitter-card: true
   navbar:
@@ -57,7 +59,7 @@ website:
     border: true
     left: "© 2026 Edgar Rodríguez-Huerta, PhD"
     right:
-      - text: "Built with Quarto and designed with Claude Design"
+      - text: "Built with Quarto and designed with support of Claude Design"
         href: https://quarto.org
 
 format:
