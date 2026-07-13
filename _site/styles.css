@@ -1,0 +1,1771 @@
+/* ============================================================
+   TOKENS — Editorial palette (default: Lighthouse / mp085-light)
+   ============================================================ */
+:root,
+[data-palette="editorial-light"] {
+  --ink:        oklch(14% 0.025 192);   /* near-black teal */
+  --paper:      oklch(96% 0.004 165);   /* off-white, green-tinted */
+  --rule:       oklch(83% 0.012 162);   /* light sage gray */
+  --muted:      oklch(53% 0.038 168);   /* muted sage */
+  --subtle:     oklch(92% 0.008 158);   /* pale sage */
+  --accent:     oklch(58% 0.20 10);   /* vibrant raspberry accent */
+  --icon-color: oklch(0.7088 0.1839 29.06);   /* same as accent */
+
+  /* Override Bootstrap's default #2761e3 link color with palette accent */
+  --bs-link-color:       var(--accent);
+  --bs-link-hover-color: var(--ink);
+
+  --font-serif: 'EB Garamond', Georgia, serif;
+  --font-sans:  'Space Grotesk', system-ui, sans-serif;
+  --font-mono:  'Space Mono', monospace;
+
+  --pad:        clamp(24px, 3vw, 96px);
+  --nav-h:      56px;
+  --foot-h:     34px;
+}
+
+[data-palette="editorial-dark"] {
+  --ink:        oklch(91% 0.013 80);    /* warm off-white */
+  --paper:      oklch(10% 0.003 175);   /* near-black */
+  --rule:       oklch(19% 0.003 175);   /* dark gray */
+  --muted:      oklch(50% 0.009 80);    /* warm gray */
+  --subtle:     oklch(13% 0.003 175);   /* very dark */
+  --accent:     oklch(0.9603 0.1844 113.98);   /* mint oklch(79% 0.080 175) */ 
+  --icon-color: oklch(0.9603 0.1844 113.98);   /* same as accent oklch(79% 0.080 175); */
+
+  /* Bootstrap variable overrides — without these, BS card/body
+     backgrounds stay white and make light text nearly invisible */
+  --bs-body-bg:           oklch(10% 0.003 175);
+  --bs-body-color:        oklch(91% 0.013 80);
+  --bs-card-bg:           oklch(10% 0.003 175);
+  --bs-card-border-color: oklch(19% 0.003 175);
+  --bs-border-color:      oklch(19% 0.003 175);
+  --bs-secondary-color:   oklch(50% 0.009 80);
+  --bs-emphasis-color:    oklch(91% 0.013 80);
+  --bs-link-color:        oklch(79% 0.080 175);
+  --bs-link-hover-color:  oklch(91% 0.013 80);
+  --bs-heading-color:     oklch(91% 0.013 80);
+}
+
+/* ============================================================
+   RESET / BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* Reserve space so fixed navbar + footer never overlap content */
+body {
+  padding-top: var(--nav-h) !important;
+  padding-bottom: calc(var(--foot-h) + 1px) !important;
+}
+
+button { font-family: var(--font-sans); cursor: pointer; }
+
+a { color: inherit; text-decoration: none; transition: color 0.2s, opacity 0.2s; }
+a:hover { text-decoration: none; }
+.body a, .body-sm a, p a { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.body a:hover, .body-sm a:hover, p a:hover { text-decoration-color: var(--ink); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  max-width: 85ch;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink);
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: inline-block;
+}
+
+.body {
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 640px;
+  color: var(--ink);
+}
+
+.body-sm {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  padding: 3px 8px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  background: transparent;
+}
+
+.tag:hover { border-color: var(--ink); color: var(--ink); text-decoration: none; }
+/* Tags that are links — same appearance, pointer cursor */
+a.tag { cursor: pointer; }
+a.tag:hover { border-color: var(--ink); color: var(--ink); text-decoration: none; }
+
+/* Quarto-rendered headings inherit the design's serif treatment */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--ink);
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+h1 { font-size: clamp(32px, 5vw, 60px); letter-spacing: -0.015em; line-height: 1.22; max-width: 85ch; }
+h2 { font-size: clamp(24px, 3.4vw, 36px); line-height: 1.28; }
+h3 { font-size: clamp(17px, 2vw, 22px); line-height: 1.35; }
+h4 { font-size: clamp(14px, 1.5vw, 16px); line-height: 1.45; }
+
+p, li { font-size: 15px; line-height: 1.75; }
+
+code, pre { font-family: var(--font-mono); font-size: 13px; }
+
+/* ============================================================
+   BUTTONS — match prototype exactly
+   ============================================================ */
+.btn-primary,
+.btn-outline {
+  display: inline-block;
+  padding: 11px 28px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, opacity 0.2s, border-color 0.2s;
+  border: 1px solid var(--ink);
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-primary:hover { opacity: 0.75; text-decoration: none; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+
+/* ============================================================
+   NAVBAR (Quarto's .navbar)
+   ============================================================ */
+.navbar {
+  background: var(--paper) !important;
+  border-bottom: 1px solid var(--rule);
+  min-height: var(--nav-h);
+  height: var(--nav-h);
+  padding: 0 var(--pad);
+  transition: background 0.4s, border-color 0.4s;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+}
+
+.navbar > .container,
+.navbar > .container-fluid,
+.navbar > .container-xxl,
+.navbar > .container-xl,
+.navbar > .container-lg,
+.navbar > .container-md,
+.navbar > .container-sm {
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar-brand {
+  font-family: var(--font-serif) !important;
+  font-size: 24px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.0em;
+  color: var(--ink) !important;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.navbar-brand img,
+.navbar-brand svg { height: 36px; width: auto; flex-shrink: 0; }
+
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-toggle {
+  font-family: var(--font-sans) !important;
+  font-size: 10.5px !important;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--muted) !important;
+  padding: 6px 14px !important;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .dropdown-toggle:hover { color: var(--ink) !important; }
+
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .dropdown-toggle {
+  color: var(--ink) !important;
+  border-bottom-color: var(--ink);
+  font-weight: 500;
+}
+
+.dropdown-menu {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  min-width: 200px;
+}
+
+.dropdown-item {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.15s, color 0.15s;
+}
+.dropdown-item:last-child { border-bottom: none; }
+.dropdown-item:hover, .dropdown-item.active, .dropdown-item:focus {
+  background: var(--subtle);
+  color: var(--ink);
+}
+
+.navbar-toggler { border-color: var(--rule); color: var(--muted); }
+
+/* Dark/light toggle button — matches prototype */
+.palette-toggle-wrap { display: flex; align-items: center; padding-left: 8px; }
+.palette-toggle {
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  transition: border-color 0.2s, color 0.2s;
+}
+.palette-toggle:hover { border-color: var(--ink); color: var(--ink); }
+
+/* ============================================================
+   PAGE PRIMITIVES
+   ============================================================ */
+.page-band {
+  padding: var(--pad);
+  border-bottom: none;
+}
+
+.page-band-subtle { background: var(--subtle); }
+
+.split-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.split-2 > * { padding: var(--pad); }
+.split-2 > *:first-child { border-right: 1px solid var(--rule); }
+
+.split-2-fullh {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - var(--nav-h) - var(--foot-h));
+  position: relative;
+}
+.split-2-fullh > * {
+  padding: var(--pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* Scroll-hint is position:absolute — reset the generic child rules */
+.split-2-fullh > .scroll-hint {
+  padding: 0 !important;
+  display: flex !important;
+  border-right: none !important;
+  background: none !important;
+}
+/* Left column border: works with or without a leading scroll-hint */
+.split-2-fullh > *:not(.scroll-hint):first-child,
+.split-2-fullh > .scroll-hint + * { border-right: 1px solid var(--rule); }
+.split-2-fullh > *:last-child { background: var(--subtle); }
+
+.split-bio {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+}
+.split-bio > * { padding: clamp(32px, 5vw, 80px); }
+.split-bio > *:first-child { border-right: 1px solid var(--rule); }
+
+.split-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule);
+}
+.split-3 > * {
+  padding: clamp(24px, 4vw, 48px);
+  border-right: 1px solid var(--rule);
+  transition: background 0.2s;
+}
+.split-3 > *:last-child { border-right: none; }
+.split-3 > a { display: block; text-decoration: none; color: inherit; }
+.split-3 > a:hover { background: var(--subtle); }
+
+.subtle-bg { background: var(--subtle); }
+
+.section-num {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fig-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 16px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   LISTING PAGE HEADER (label + h1 left, filters right)
+   ============================================================ */
+.listing-header {
+  padding: var(--pad);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.listing-header .h1 { max-width: none; margin-top:1rem; margin-bottom:1rem }
+/* Quarto wraps inline content in <p> — suppress margin so the gap token controls spacing */
+.listing-header > p { margin: 0; }
+
+/* Publications page header: title block on the left, three status
+   stats (.split-3-item) on the right, filter-bar stays below. */
+.pub-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--pad);
+  width: 100%;
+}
+.pub-stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 28px;
+}
+.pub-stats .split-3-item {
+  padding: 0;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: left;
+  gap: 12px;
+}
+.pub-stats .split-3-item:hover { background: transparent; }
+.pub-stats .stat-icon { line-height: 0; }
+/* Icon sized to match the cap height of the h1 "Publications" (EB Garamond cap ≈ 0.685 × font-size) */
+.pub-stats .stat-icon svg { width: 48px; height: 48px; display: block; }
+/* More specific than the accent section's `.listing-header .label` rule,
+   which would otherwise paint these labels accent too. */
+.listing-header .pub-stats .label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  line-height: 1.0;
+  color: var(--muted);
+}
+.pub-stats p { margin: 0; line-height: 1.4;margin-top:1rem }
+
+.filter-bar {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 5px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule);
+  cursor: pointer;
+  background: transparent;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1;
+}
+.filter-btn:hover:not(.is-active) { color: var(--ink); border-color: var(--ink); }
+.filter-btn.is-active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+/* Filter bar sitting at the foot of a page-band intro (blog) */
+.page-band > .filter-bar { margin-top: 16px; }
+
+/* ============================================================
+   LISTING ROWS (Publications, Conferences)
+   ============================================================ */
+.row-list {
+  padding: 0 var(--pad);
+}
+
+.row-pub {
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 20px;
+}
+.row-pub .row-year {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--muted);
+  padding-top: 4px;
+}
+.row-pub .row-title {
+  font-size: 16px;
+  font-family: var(--font-serif);
+  line-height: 1.55;
+  margin-bottom: 1px;
+  color: var(--ink);
+  font-feature-settings: "liga" 1;
+}
+.row-pub .row-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.row-pub .row-authors {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.row-conf {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  gap: 24px;
+  align-items: start;
+}
+.row-conf .row-year {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--muted);
+  padding-top: 3px;
+}
+.row-conf .row-title {
+  font-size: 16px;
+  font-family: var(--font-serif);
+  line-height: 1.55;
+  margin-bottom: 3px;
+  color: var(--ink);
+  font-feature-settings: "liga" 1;
+}
+.row-conf .row-event {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 1px;
+}
+.row-conf .row-loc {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Blog rows */
+.row-blog {
+  padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.row-blog:hover .row-title { text-decoration: underline; }
+.row-blog .row-title {
+  font-size: 16px;
+  font-family: var(--font-serif);
+  line-height: 1.38;
+  letter-spacing: -0.005em;
+  margin: 12px 0 14px;
+  color: var(--ink);
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+.row-blog .row-mins {
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+/* ============================================================
+   ICON STATS STRIP (Home about-section + About page)
+   Six content counts in a 3×2 grid: a large accent icon above a
+   one-line count + label.
+   ============================================================ */
+.stats-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  margin-top: 10px;
+}
+.stat-item {
+  background: var(--paper);
+  padding: 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+.stat-item p { margin: 0; }
+.stat-icon { line-height: 0; }
+.stat-icon svg { width: 64px; height: 64px; display: block; }
+.stat-icon svg * { transition: fill 0.4s, stroke 0.4s; }
+
+/* ============================================================
+   CONTACT LIST (About sidebar)
+   ============================================================ */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+/* Quarto inserts <p> wrappers around block-level <a> elements — neutralise them */
+.contact-list > p { margin: 0 !important; display: contents; }
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+.contact-item:hover { opacity: 0.7; }
+/* Quarto sometimes generates a ghost empty <a> duplicate — suppress it */
+.contact-list a:empty, .contact-list p:empty { display: none !important; }
+.contact-list p a:empty { display: none !important; }
+.contact-item .ci-icon { flex-shrink: 0; display: block; }
+.contact-item .ci-label { font-size: 13px; line-height: 1.3; color: var(--ink); }
+.contact-item .ci-sub {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   CV TIMELINE
+   ============================================================ */
+.cv-section { margin-bottom: 52px; }
+.cv-section-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--rule);
+}
+.cv-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 32px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.cv-row .cv-period {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  padding-top: 2px;
+}
+.cv-row .cv-title { font-size: 13.5px; line-height: 1.6; color: var(--ink); }
+.cv-row .cv-org { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.cv-row .cv-desc { font-size: 13.5px; color: var(--ink); margin-top: 6px; line-height: 1.6; max-width: 60ch; }
+.cv-row .cv-details { margin: 8px 0 0 0; padding-left: 18px; max-width: 64ch; }
+.cv-row .cv-details li { font-size: 13.5px; color: var(--ink); line-height: 1.6; margin-bottom: 2px; }
+.cv-row .cv-details li::marker { color: var(--muted); }
+
+.cv-subsection-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 16px 0 12px 0;
+}
+.cv-pub-list { margin: 0 0 12px 0; }
+.cv-pub-list ul { padding-left: 18px; margin: 0; }
+.cv-pub-list li {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  margin-bottom: 8px;
+  max-width: 72ch;
+}
+.cv-pub-list li::marker { color: var(--muted); }
+
+.cv-page-header .cv-position {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.cv-page-header .cv-address {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+  max-width: 60ch;
+}
+.cv-page-header .cv-contacts {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  font-family: var(--font-mono);
+}
+
+.cv-row.cv-failure { opacity: 0.75; }
+.cv-row.cv-failure .cv-title { font-style: italic; }
+
+.cv-page-header {
+  padding: var(--pad);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--subtle);
+}
+
+/* ============================================================
+   QUARTO MAIN CONTENT — neutralise default container
+   ============================================================ */
+main.content,
+main.column-page,
+#quarto-document-content,
+.page-columns,
+.column-page {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+body > main.content,
+main.content,
+main.column-page { padding: 0 !important; margin: 0 !important; }
+
+/* Quarto cosmo theme container constraint override */
+.quarto-container.page-columns.page-layout-full main.column-page {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Quarto puts an empty title block when title:"" — kill it */
+main.content > header.quarto-title-block,
+main.content > .quarto-title-block:empty,
+.quarto-title-block.default {
+  display: none !important;
+}
+
+/* When a page DOES use Quarto's title (e.g. detail pages), style it */
+.detail-page main.content {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  padding: var(--pad) !important;
+}
+
+/* Justify body text on all detail pages (blog posts, project pages, etc.) */
+.detail-page main.content p {
+  text-align: justify;
+  hyphens: auto;
+}
+
+.detail-page main.content .quarto-title-block {
+  display: block !important;
+  padding: 0 0 24px 0;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+
+.detail-page main.content .quarto-title-block .title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 32px;
+}
+.back-link:hover { color: var(--ink); text-decoration: none; }
+
+/* ============================================================
+   FOOTER — exact prototype (34px fixed-style strip)
+   ============================================================ */
+.nav-footer,
+.page-footer,
+footer.nav-footer,
+footer.page-footer {
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  padding: 0 var(--pad);
+  height: var(--foot-h);
+  min-height: var(--foot-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 999 !important;
+}
+
+.nav-footer .nav-footer-left,
+.nav-footer .nav-footer-right,
+.nav-footer .nav-footer-center,
+.page-footer .nav-footer-left,
+.page-footer .nav-footer-right {
+  flex: 0 1 auto;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+.nav-footer .nav-footer-right,
+.page-footer .nav-footer-right { text-align: right; }
+
+.nav-footer *, .page-footer * { font-size: 9px !important; }
+.nav-footer a, .page-footer a { color: var(--muted); text-decoration: none; }
+.nav-footer a:hover, .page-footer a:hover { color: var(--ink); }
+
+/* ============================================================
+   NAVBAR LOGO CYCLER — inline SVG injected by after-body.html.
+   One accent hexagon + 20 glyph groups; each glyph is visible
+   for one slot of the cycle (slot = 2s, cycle = 20 × 2s = 40s)
+   with a brief crossfade between them.
+   ============================================================ */
+.logo-cycler .logo-glyph {
+  opacity: 0;
+  animation: logoGlyphCycle 40s linear infinite;
+  animation-delay: calc(var(--i) * 2s);
+}
+.logo-cycler .logo-glyph * { transition: stroke 0.4s, fill 0.4s; }
+@keyframes logoGlyphCycle {
+  0%   { opacity: 0; }
+  0.5% { opacity: 1; }
+  4.5% { opacity: 1; }
+  5%   { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* ============================================================
+   PAGE ENTRANCE ANIMATION — matches handoff fadeUp exactly
+   ============================================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+main { animation: fadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* ============================================================
+   SCROLL HINT — animated line at bottom of home hero
+   ============================================================ */
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  animation: hintFade 1s ease 2s forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+@keyframes hintFade {
+  from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.scroll-hint-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.scroll-hint-line {
+  width: 1px;
+  height: 36px;
+  background: var(--muted);
+  animation: lineGrow 1.4s ease-in-out 2.5s infinite;
+}
+@keyframes lineGrow {
+  0%,100% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40%     { transform: scaleY(1); opacity: 1; }
+  80%     { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+/* ============================================================
+   GRID COLOR TRANSITION — portfolio & project card hover
+   Matches handoff: near-invisible greyscale sketch → full colour
+   ============================================================ */
+/* Light mode: very faint greyscale → vivid on hover */
+.quarto-listing-container-grid p.card-img-top img,
+.home-card-svg {
+  filter: grayscale(100%) opacity(0.22);
+  transition: filter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.quarto-listing-container-grid .g-col-1:hover p.card-img-top img,
+.home-card:hover .home-card-svg {
+  filter: grayscale(0%) opacity(1);
+}
+/* Dark mode: grey sketch needs more brightness to show on dark bg */
+[data-palette="editorial-dark"] .quarto-listing-container-grid p.card-img-top img,
+[data-palette="editorial-dark"] .home-card-svg {
+  filter: grayscale(100%) opacity(0.45) brightness(2.5);
+}
+[data-palette="editorial-dark"] .quarto-listing-container-grid .g-col-1:hover p.card-img-top img,
+[data-palette="editorial-dark"] .home-card:hover .home-card-svg {
+  filter: grayscale(0%) opacity(1) brightness(1);
+}
+.quarto-listing-container-grid .quarto-grid-item {
+  outline: 1px solid transparent;
+  outline-offset: -1px;
+  transition: background 0.35s, outline-color 0.35s;
+}
+.quarto-listing-container-grid .g-col-1:hover .quarto-grid-item {
+  outline-color: var(--accent);
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none !important; }
+  .scroll-hint { animation: none !important; opacity: 0.6 !important; }
+  .scroll-hint-line { animation: none !important; }
+  .logo-cycler .logo-glyph { animation: none !important; opacity: 0 !important; }
+  .logo-cycler .logo-glyph:first-of-type { opacity: 1 !important; }
+  .quarto-listing-container-grid p.card-img-top img { filter: none !important; transition: none !important; }
+  .quarto-listing-container-grid .g-col-1 { animation: none !important; }
+  .row-pub, .row-conf, .quarto-listing-default .quarto-post { animation: none !important; }
+  .home-card-svg, .tag, .btn-primary, .btn-outline { transition: none !important; transform: none !important; }
+}
+
+/* ============================================================
+   SVG VISUALISATION CONTAINERS
+   ============================================================ */
+.viz { width: 100%; display: block; }
+.viz line, .viz path, .viz rect, .viz circle, .viz text {
+  transition: stroke 0.4s, fill 0.4s;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .split-2, .split-2-fullh { grid-template-columns: 1fr; }
+  .split-2 > *:first-child,
+  .split-2-fullh > *:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+  .split-2-fullh { min-height: 0; }
+  .split-bio { grid-template-columns: 1fr; }
+  .split-bio > *:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+  .split-3 { grid-template-columns: 1fr; }
+  .split-3 > * { border-right: none; border-bottom: 1px solid var(--rule); }
+  .split-3 > *:last-child { border-bottom: none; }
+  .row-pub, .row-conf { grid-template-columns: 1fr; gap: 8px; }
+  .row-conf { grid-template-columns: 1fr; }
+  .cv-row { grid-template-columns: 1fr; gap: 8px; }
+  .cv-page-header { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 640px) {
+  :root { --pad: 24px; }
+  .navbar { padding: 0 16px; }
+  .nav-footer, .page-footer {
+    padding: 8px 16px;
+    flex-direction: column;
+    gap: 4px;
+    height: auto;
+    min-height: 48px;
+    align-items: flex-start;
+  }
+  .btn-row { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-outline { text-align: center; }
+  .row-blog { grid-template-columns: 1fr; gap: 12px; }
+  .row-blog .row-mins { padding-top: 0; }
+  .stats-strip { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================================
+   QUARTO AUTO-LISTING (projects + portfolio pages)
+   ============================================================ */
+
+/* Remove default padding Quarto adds around the listing container */
+.quarto-listing,
+.quarto-listing-container-grid {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* The Bootstrap CSS grid that holds the cards */
+.quarto-listing-cols-2,
+.quarto-listing-cols-4 {
+  --bs-gap: 1px !important;
+  background: var(--rule) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  gap: 1px !important;
+  row-gap: 1px !important;
+  column-gap: 1px !important;
+}
+
+/* Dark mode grid background */
+[data-palette="editorial-dark"] .quarto-listing-cols-2,
+[data-palette="editorial-dark"] .quarto-listing-cols-4 {
+  background: #2a2a2a !important;
+}
+
+/* Each listing item cell — reset all Bootstrap card chrome */
+.quarto-listing-container-grid .g-col-1 {
+  --bs-card-border-width: 0;
+  background: var(--paper) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+}
+.quarto-listing-container-grid .g-col-1:hover { background: var(--subtle) !important; }
+
+/* Quarto prints custom listing fields (status) into this table — hide it;
+   the after-body script reads it and builds the badge below. */
+.card-other-values { display: none; }
+
+/* Project status badge — top-right corner of each project card,
+   created by the after-body script from the project's status field. */
+.listing-status {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 4px 9px;
+}
+.listing-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+.listing-status[data-state="closed"]::before {
+  background: transparent;
+  border: 1px solid var(--muted);
+}
+
+/* The anchor wrapping each card */
+.quarto-listing-container-grid .g-col-1 > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* The actual Bootstrap card inside each cell */
+.quarto-listing-container-grid .quarto-grid-item {
+  --bs-card-border-width: 0;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  height: 100%;
+}
+
+/* Thumbnail image */
+.quarto-listing-container-grid .thumbnail-image,
+.quarto-listing-container-grid .card-img-top,
+.quarto-listing-container-grid p.card-img-top img {
+  width: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+}
+
+/* Image fills full card width with no padding — matches handoff */
+.quarto-listing-container-grid p.card-img-top {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  min-height: 180px;
+  overflow: hidden;
+}
+.quarto-listing-container-grid p.card-img-top img {
+  width: 100% !important;
+  height: 180px !important;
+  object-fit: cover !important;
+  max-width: 100% !important;
+}
+
+/* Card body: reorder via flex — category first, then title, then description */
+.quarto-listing-container-grid .card-body,
+.quarto-listing-container-grid .post-contents {
+  padding: 16px !important;
+  flex: 1;
+  display: flex !important;
+  flex-direction: column !important;
+  border-top: 1px solid var(--rule) !important;
+  background: var(--paper) !important;
+}
+.quarto-listing-container-grid .listing-categories { order: 1; }
+.quarto-listing-container-grid .listing-title      { order: 2; }
+.quarto-listing-container-grid .listing-description { order: 3; }
+
+/* Category row — plain mono label above title, no border box */
+.quarto-listing-container-grid .listing-categories {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin: 0 0 8px !important;
+}
+
+.quarto-listing-container-grid .listing-category {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  border: none !important;
+  color: var(--muted) !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  cursor: pointer;
+}
+.quarto-listing-container-grid .listing-category + .listing-category::before {
+  content: "·";
+  margin-right: 8px;
+  color: var(--rule);
+}
+
+/* Listing title — 18px serif */
+.quarto-listing-container-grid .listing-title {
+  font-family: var(--font-serif) !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  color: var(--ink) !important;
+  margin: 0 0 8px !important;
+}
+
+/* Listing description — mono uppercase, matches handoff */
+.quarto-listing-container-grid .listing-description,
+.quarto-listing-container-grid .listing-description > p {
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0 em !important;
+
+  color: var(--muted) !important;
+  margin: 0 !important;
+  text-align: justify !important;
+  hyphens: auto !important;
+}
+
+/* Card footer: date */
+.quarto-listing-container-grid .card-footer {
+  background: transparent !important;
+  border-top: 1px solid var(--rule) !important;
+  padding: 10px clamp(18px, 2.5vw, 30px) !important;
+}
+
+.quarto-listing-container-grid .listing-date {
+  font-family: var(--font-mono) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+}
+
+/* Responsive: portfolio 4-col → 2-col at 1100px */
+@media (max-width: 1100px) {
+  #listing-viz-listing.quarto-listing-cols-4 { --bs-columns: 2 !important; }
+}
+
+/* Responsive: both grids → 1-col at 640px */
+@media (max-width: 640px) {
+  #listing-projects-listing.quarto-listing-cols-2,
+  #listing-viz-listing.quarto-listing-cols-4 { --bs-columns: 1 !important; }
+}
+
+/* ============================================================
+   QUARTO FENCED-DIV CONTENT — paragraph wrapper neutralisation
+   Quarto wraps lone-paragraph content in <p>; these rules
+   prevent that from adding unwanted spacing inside structural divs.
+   ============================================================ */
+.cv-period > p,
+.cv-title > p,
+.cv-org > p,
+.cv-section-label > p,
+.h3 > p,
+.row-year > p,
+.row-title > p,
+.row-event > p,
+.row-loc > p,
+.row-meta > p,
+.section-num > p,
+.fig-caption > p,
+.stats-num > p,
+.position-block > p {
+  margin: 0 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+}
+
+.h1 > p {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+  margin: 0 !important;
+}
+
+/* Label used as a block-level section header */
+.page-band > .label,
+.cv-page-header .label,
+.listing-header .label,
+.split-bio .label,
+.split-bio > * > .label { display: block; margin-bottom: 16px; }
+
+/* Stats strip label — count + label on one line, same size */
+.stats-strip .label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+}
+.stat-count { margin-right: 2px; }
+
+/* CV body padding (replaces <div style="padding: var(--pad);">) */
+.cv-body { padding: var(--pad); }
+
+/* Methods box in About — replaces inline style="padding:28px;border:..." */
+.methods-box {
+  padding: 28px;
+  border: 1px solid var(--rule);
+  margin-bottom: 36px;
+}
+.methods-box .label { margin-bottom: 14px; }
+
+/* Contact email in About */
+.contact-email {
+  display: block;
+  font-size: 13px;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+/* Position block in About sidebar */
+.position-block {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.profile-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  margin-bottom: 32px;
+}
+
+/* split-bio body paragraphs: serif size + spacing */
+.split-bio > *:first-child > p {
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 640px;
+  margin-bottom: 22px;
+  text-align: justify;
+  hyphens: auto;
+}
+.split-bio > *:first-child > p:last-of-type { margin-bottom: 36px; }
+
+/* split-2-fullh body paragraph — targets the text column (child after .scroll-hint) */
+.split-2-fullh > .scroll-hint + * > p {
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 40px;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* split-3 card-link overlay pattern (pure-markdown cards) */
+.split-3-item { position: relative; }
+.split-3-item .h3 a { color: inherit; text-decoration: none; }
+.split-3-item .h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.split-3-item:hover { background: var(--subtle); }
+
+/* Conference tag — now inside a :::{}  div (third grid column) */
+.row-conf > div:last-child { align-self: start; }
+.row-conf > div:last-child > p { margin: 0; }
+.row-conf > div:last-child .tag { white-space: nowrap; }
+
+/* ============================================================
+   BLOG AUTO-LISTING (type: default)
+   ============================================================ */
+.quarto-listing-container-default { padding: 0 var(--pad) !important; margin: 0 !important; max-width: none; }
+
+.quarto-listing-default .list { padding: 0 !important; margin: 0 !important; }
+
+.quarto-listing-default .quarto-post {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.quarto-listing-default .quarto-post:first-of-type { border-top: 1px solid var(--rule); }
+.quarto-listing-default .quarto-post:hover { background: var(--subtle); }
+
+/* Blog thumbnail — right-side image, 96px wide, editorial crop */
+.quarto-listing-default .quarto-post .thumbnail {
+  display: block;
+  width: 96px;
+  flex-shrink: 0;
+}
+.quarto-listing-default .quarto-post .thumbnail img,
+.quarto-listing-default .quarto-post .thumbnail .thumbnail-image {
+  width: 96px !important;
+  height: 64px !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+  display: block !important;
+  border: 1px solid var(--rule);
+  filter: grayscale(0.25);
+  transition: filter 0.3s;
+}
+.quarto-listing-default .quarto-post:hover .thumbnail img,
+.quarto-listing-default .quarto-post:hover .thumbnail .thumbnail-image {
+  filter: grayscale(0);
+}
+
+.quarto-listing-default .quarto-post .metadata {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.quarto-listing-default .quarto-post .listing-date {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  margin-bottom: 10px !important;
+}
+
+.quarto-listing-default .quarto-post .listing-title,
+.quarto-listing-default .quarto-post .listing-title a {
+  font-family: var(--font-sans) !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  color: var(--ink) !important;
+  margin-bottom: 0 !important;
+}
+/* Ensure dark-mode blog titles don't fall back to Bootstrap's #343a40 */
+[data-palette="editorial-dark"] .quarto-listing-default .quarto-post .listing-title,
+[data-palette="editorial-dark"] .quarto-listing-default .quarto-post .listing-title a {
+  color: var(--ink) !important;
+}
+.quarto-listing-default .quarto-post:hover .listing-title { text-decoration: underline; }
+
+.quarto-listing-default .quarto-post .listing-description {
+  display: none;
+}
+
+.quarto-listing-default .quarto-post .listing-categories {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+  margin-top: 10px !important;
+}
+.quarto-listing-default .quarto-post .listing-category {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  border: 1px solid var(--muted) !important;
+  color: var(--muted) !important;
+  padding: 2px 7px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.quarto-listing-default .quarto-post .listing-reading-time {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  color: var(--muted) !important;
+  white-space: nowrap;
+  padding-top: 4px;
+}
+
+/* ============================================================
+   HOME PAGE — long-scroll section layout
+   ============================================================ */
+
+/* Suppress p-wrapper vertical space that Quarto injects inside .page-band */
+.page-band > p { margin: 0; }
+
+.home-section {
+  padding: clamp(24px, 8vw, 120px) 0;
+  border-top: 1px solid var(--rule);
+}
+.home-section.subtle-bg { background: var(--subtle); }
+
+/* Coming-soon placeholder panel (right column of split-2-fullh) */
+.coming-soon-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: var(--pad);
+  gap: 20px;
+}
+.coming-soon-panel .label { color: var(--muted); }
+.coming-soon-panel .h3 { max-width: 320px; }
+
+.home-section-footer {
+  padding: clamp(24px, 4vw, 48px) var(--pad) 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 3-column card grid for featured items */
+.home-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  margin-top: 8px;
+}
+
+.home-card {
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s;
+}
+.home-card:hover { background: var(--subtle); }
+
+.home-card-img {
+  min-height: 180px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule);
+}
+.home-card-svg {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.home-card-body {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.home-card-cats {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.home-card-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink);
+  margin: 0 0 8px;
+}
+.home-card-desc {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.7;
+  flex: 1;
+  text-align: justify;
+  hyphens: auto;
+}
+.home-card-meta {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  margin-top: 14px;
+}
+.btn-sm {
+  font-size: 10px !important;
+  padding: 6px 14px !important;
+  margin-top: 10px;
+  align-self: flex-start;
+}
+
+/* Cards are now rendered as <div> blocks — no <p> wrapper needed.
+   Keep the rule as a safety net in case Quarto ever re-introduces wrapping. */
+.home-card-cats > p,
+.home-card-title > p,
+.home-card-desc > p,
+.home-card-meta > p { margin: 0 !important; font-size: inherit !important;
+  font-family: inherit !important; letter-spacing: inherit !important;
+  text-transform: inherit !important; color: inherit !important; }
+
+@media (max-width: 900px) {
+  .home-cards { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .home-cards { grid-template-columns: 1fr; }
+}
+
+/* ============================================================
+   MICRO-INTERACTIONS
+   ============================================================ */
+
+/* Home card viz: scale on hover, kept within overflow:hidden container */
+.home-card-svg {
+  transition: filter   0.55s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.home-card:hover .home-card-svg { transform: scale(1.04); }
+
+/* Button press */
+.btn-primary:active,
+.btn-outline:active {
+  transform: translateY(1px);
+  transition-duration: 0.06s;
+}
+
+/* Tag: subtle upward nudge on hover */
+a.tag,
+button.tag {
+  transition: border-color 0.2s, color 0.2s, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+a.tag:hover,
+button.tag:hover { transform: translateY(-1px); }
+
+/* ============================================================
+   STAGGERED ENTRANCE ANIMATIONS
+   delay is set per-element via JS (--stagger-delay custom prop).
+   The fallback values fire when JS hasn't run yet.
+   ============================================================ */
+@keyframes itemReveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Grid listing cards (projects, portfolio) */
+.quarto-listing-container-grid .g-col-1 {
+  animation: itemReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 350ms) both;
+}
+
+/* Publication and conference rows */
+.row-pub,
+.row-conf {
+  animation: itemReveal 0.42s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 250ms) both;
+}
+
+/* Blog listing rows */
+.quarto-listing-default .quarto-post {
+  animation: itemReveal 0.42s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 250ms) both;
+}
+
+/* ============================================================
+   ACCENT SIGNAL OVERRIDES
+   Accent signals active in BOTH light and dark palettes — each
+   palette supplies its own --accent token.
+   ============================================================ */
+.navbar-nav .nav-link.active,
+.navbar-nav .show > .dropdown-toggle {
+  border-bottom-color: var(--accent);
+}
+.filter-btn.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.stats-strip .stat-count,
+.pub-stats .stat-count { color: var(--accent); }
+.cv-section-label { color: var(--accent); }
+.back-link:hover { color: var(--accent); }
+.page-band .label,
+.listing-header .label,
+.cv-page-header .label { color: var(--accent); }
+.section-num .label:last-child { color: var(--accent); }
+.row-pub:hover .row-title { color: var(--accent); }
+
+/* ============================================================
+   CV — HTML-ONLY VISIBILITY
+   cv-address and cv-contacts are used in Typst/PDF but are
+   redundant in HTML where the About page carries contact info.
+   quarto-alternate-formats is auto-generated by Quarto for
+   pages with multiple output formats — suppress in HTML.
+   ============================================================ */
+.cv-page-header .cv-address,
+.cv-page-header .cv-contacts { display: none; }
+.cv-page-header p:has(.cv-address),
+.cv-page-header p:has(.cv-contacts) { margin: 0; }
+.quarto-alternate-formats { display: none !important; }
+
+/* ============================================================
+   CALLOUTS — minimal editorial style
+   Strips Bootstrap color boxes; uses left border + subtle bg.
+   ============================================================ */
+.callout {
+  border: none !important;
+  border-left: 2px solid var(--rule) !important;
+  border-radius: 0 !important;
+  background: var(--subtle) !important;
+  padding: 12px 16px !important;
+  margin: 24px 0 !important;
+  box-shadow: none !important;
+}
+.callout-note  { border-left-color: var(--muted)  !important; }
+.callout-tip   { border-left-color: var(--accent) !important; }
+.callout-warning  { border-left-color: oklch(72% 0.13 65)  !important; }
+.callout-caution  { border-left-color: oklch(68% 0.14 40)  !important; }
+.callout-important { border-left-color: var(--ink)  !important; }
+
+.callout-header,
+.callout .callout-header {
+  background: transparent !important;
+  border-bottom: none !important;
+  padding: 0 0 6px !important;
+}
+.callout-title-container {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  font-weight: 400 !important;
+}
+.callout-icon-container { display: none !important; }
+.callout-body-container,
+.callout-body { padding: 0 !important; }
+.callout-body p:last-child { margin-bottom: 0 !important; }
+
+[data-palette="editorial-dark"] .callout {
+  background: var(--subtle) !important;
+}
+
+/* ============================================================
+   SIDEBAR / TOC — replace Bootstrap #2761e3 blue with palette
+   ============================================================ */
+/* In-page TOC (right sidebar on blog/project detail pages) */
+#TOC a,
+.sidebar nav a,
+.sidebar-navigation a {
+  color: var(--muted) !important;
+  text-decoration: none !important;
+}
+#TOC a:hover,
+.sidebar nav a:hover,
+.sidebar-navigation a:hover,
+#TOC a.active,
+.sidebar nav a.active,
+.sidebar-navigation .active a {
+  color: var(--accent) !important;
+}
+[data-palette="editorial-dark"] #TOC a:hover,
+[data-palette="editorial-dark"] .sidebar nav a:hover,
+[data-palette="editorial-dark"] #TOC a.active {
+  color: var(--accent) !important;
+}
+
+/* ============================================================
+   PAGINATION — replace Bootstrap's --bs-primary blue with palette
+   Applies to the portfolio / blog listing page-number controls.
+   Active page uses --accent (coral in light, mint in dark).
+   ============================================================ */
+.pagination .page-link {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  background: transparent !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 0 !important;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+.pagination .page-link:hover,
+.pagination .page-link:focus {
+  color: var(--ink) !important;
+  background: var(--subtle) !important;
+  border-color: var(--muted) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.pagination .page-item.active .page-link {
+  color: var(--paper) !important;
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.pagination .page-item.disabled .page-link {
+  color: var(--rule) !important;
+  background: transparent !important;
+  border-color: var(--rule) !important;
+  pointer-events: none;
+}
+

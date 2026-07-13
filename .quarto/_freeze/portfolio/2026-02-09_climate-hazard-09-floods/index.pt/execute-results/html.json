@@ -1,0 +1,15 @@
+{
+  "hash": "dd244c24d576f9d5709508884ca0b1a7",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Saúde dos trabalhadores em um contexto de mudanças climáticas: Eventos climáticos extremos (Inundações)\"\ndescription: Série de nove infográficos que descrevem os principais riscos para a saúde dos trabalhadores relacionados às mudanças climáticas e ao meio ambiente [Organização Internacional do Trabalho (OIT) 2024](https://www.ilo.org/publications/ensuring-safety-and-health-work-changing-climate)\n\ndate: 2026-02-09\ndate-modified: 2026-02-09\ndraft: true\ndraft-mode: visible \nimage: img/floods_logo_02.png\nexecute:\n  echo: false\ncategories:\n  - Climate change\n  - Workers Health\n  - Tableau\nlang: pt\nformat: \n  html:\n    page-layout: full\n#    code-tools: true\nembed-resources: true\nlightbox: true\ntoc: false\nauthor:\n  - name: Edgar Rodriguez-Huerta\n    url: https://www.nottingham.ac.uk/research/beacons-of-excellence/rights-lab/our-team/edgar-rodríguez-huerta/index.aspx\n    affiliation: University of Nottingham, Rights Lab\n    affiliation-url: https://www.nottingham.ac.uk/research/beacons-of-excellence/rights-lab/index.aspx\n    orcid: 0000-0002-6887-0040\n\n---\n\n\n\n::: {.callout-note}\n\n\n:::\n\n### Estimativa da pontuação de inundação\n\nInundações avaliadas por meio de precipitação intensa, exposição acumulada a inundações e índice de risco de inundação/alagamento [^1], [^2]\n\n---\n\n\n![](img/09_viz_floods.png){width=100% height=100%}\n\n\n\n\n### Download {.appendix}\n\n\n{{< downloadthis img/viz_floods.pdf dname=clidewo_climate_hazard_floods label=\"Download the pdf\" icon=file-earmark-pdf type=Warning >}}\n\n\n---\n\n\n[^1]: AdaptaBrasil [https://sistema.adaptabrasil.mcti.gov.br](https://sistema.adaptabrasil.mcti.gov.br) \n\n[^2]: Climate–Conflict–Vulnerability Index (CCVI). *Climate data (2024-Q4)*. [https://climatevulnerabilityindex.org](https://climatevulnerabilityindex.org)\n\n\n#### Share it on social media:\n\n```{=html}\n<!-- AddToAny BEGIN -->\n<div class=\"a2a_kit a2a_kit_size_32 a2a_default_style\" data-a2a-icon-color=\"#FFDC02,black\">\n\n<a class=\"a2a_button_email a2a_counter\"></a>\n<a class=\"a2a_button_copy_link a2a_counter\"></a>\n<a class=\"a2a_button_linkedin a2a_counter\"></a>\n<a class=\"a2a_button_facebook a2a_counter\"></a>\n<a class=\"a2a_button_bluesky a2a_counter\"></a>\n<a class=\"a2a_button_x a2a_counter\"></a>\n<a class=\"a2a_button_threads a2a_counter\"></a>\n<a class=\"a2a_button_mastodon a2a_counter\"></a>\n<a class=\"a2a_button_whatsapp a2a_counter\"></a>\n<a class=\"a2a_dd a2a_counter\" href=\"https://www.addtoany.com/share\"></a>\n</div>\n<script async src=\"https://static.addtoany.com/menu/page.js\"></script>\n<!-- AddToAny END -->\n```\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

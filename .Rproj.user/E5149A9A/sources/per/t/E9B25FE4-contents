@@ -1,0 +1,77 @@
+---
+title: ""
+page-layout: full
+toc: false
+anchor-sections: false
+---
+
+::: {.split-2-fullh}
+
+::: {}
+[Researcher — Socio-ecological Systems]{.label}
+
+I study how climate change makes people more vulnerable to modern slavery — tracing the hidden human costs inside everyday supply chains, from solar panels to food to bricks.
+
+::: {.tag-row}
+[SoLCA]{.tag}
+[Complex Networks]{.tag}
+[Climate Modelling]{.tag}
+[Societal Metabolism]{.tag}
+[Supply Chain Analysis]{.tag}
+:::
+
+::: {.btn-row}
+[Research →](projects.html){.btn-primary}
+[Data Visualisation](portfolio.html){.btn-outline}
+:::
+:::
+
+::: {}
+[Fig. 01 — Global Supply Chain Network]{.label}
+
+{{< include _includes/viz/network.html >}}
+
+[Trade and labour risk flows across 15 key nodes in the photovoltaic supply chain. Node size ∝ trade volume.]{.fig-caption}
+:::
+
+:::
+
+::: {.split-3}
+
+::: {.split-3-item}
+::: {.section-num}
+[Latest Publication]{.label} [01]{.label}
+:::
+
+::: {.h3}
+[Quantifying modern slavery risk in photovoltaic supply chains](publications.html)
+:::
+
+[Nature Sustainability · 2024]{.body-sm}
+:::
+
+::: {.split-3-item}
+::: {.section-num}
+[Active Research]{.label} [02]{.label}
+:::
+
+::: {.h3}
+[Climate-driven vulnerability & forced labour in food systems](projects.html)
+:::
+
+[Working Paper · 2025]{.body-sm}
+:::
+
+::: {.split-3-item}
+::: {.section-num}
+[Data Visualisation]{.label} [03]{.label}
+:::
+
+::: {.h3}
+[Trade network analysis: brick kilns across South Asia](portfolio.html)
+:::
+
+[Complex Networks · D3.js]{.body-sm}
+:::
+
+:::
