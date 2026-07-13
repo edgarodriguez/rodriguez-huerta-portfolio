@@ -1,0 +1,69 @@
+---
+draft: false
+title: "Granted water volume — Mexico (REPDA 2017)"
+description: "National distribution of water concessions from Mexico's Public Registry of Water Rights (REPDA), 2017. Shows allocated volumes by state, usage type, and source (surface water vs groundwater)."
+date: 2019-09-01
+date-modified: 2019-09-01
+categories: [Visualisation, Interactive, Tableau, Water, Mexico]
+image: ../../assets/images/img-heatmap.svg
+format:
+  html:
+    page-layout: full
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Interactive · Water Concessions · Mexico · REPDA 2017
+:::
+
+Mexico allocates water rights through the REPDA (Registro Público de Derechos de Agua), the national registry that records who holds concessions, for how much volume, from which source, and for which purpose. The 2017 data covers the full national registry — agriculture, industry, public supply, and other uses — split between surface water and groundwater sources.
+
+This dashboard was built to understand how total allocated volume compares to natural availability at state and basin level, and to put the Yucatán Peninsula's water situation in national context. The peninsula's dependence on a single karst aquifer makes its water rights picture quite different from states with river systems: virtually all concessions draw from groundwater, and the aquifer has no buffer.
+
+## How to read it
+
+Filters allow exploration by state, usage type, and water source. Volume figures are in cubic metres per year. Agricultural use dominates nationally; in Yucatán, it competes with the tourism sector's rapidly growing demand.
+
+## Data
+
+REPDA (Registro Público de Derechos de Agua), Comisión Nacional del Agua (CONAGUA), 2017 release.
+
+::: {.column-screen}
+
+```{=html}
+<div class="tableauPlaceholder" id="viz2002" style="position: relative">
+  <noscript>
+    <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/VolumenaguaconcesionadaenMexicoREPDA2017/REPDA">
+      <img alt="REPDA" src="https://public.tableau.com/static/images/Vo/VolumenaguaconcesionadaenMexicoREPDA2017/REPDA/1_rss.png" style="border: none">
+    </a>
+  </noscript>
+  <object class="tableauViz" style="display:none;">
+    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F">
+    <param name="embed_code_version" value="3">
+    <param name="site_root" value="">
+    <param name="name" value="VolumenaguaconcesionadaenMexicoREPDA2017/REPDA">
+    <param name="tabs" value="no">
+    <param name="toolbar" value="yes">
+    <param name="static_image" value="https://public.tableau.com/static/images/Vo/VolumenaguaconcesionadaenMexicoREPDA2017/REPDA/1.png">
+    <param name="animate_transition" value="yes">
+    <param name="display_static_image" value="yes">
+    <param name="display_spinner" value="yes">
+    <param name="display_overlay" value="yes">
+    <param name="display_count" value="yes">
+    <param name="language" value="en-GB">
+  </object>
+</div>
+<script type="text/javascript">
+  var divElement = document.getElementById('viz2002');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if (divElement.offsetWidth > 800) { vizElement.style.width = '100%'; vizElement.style.height = '827px'; }
+  else if (divElement.offsetWidth > 500) { vizElement.style.width = '100%'; vizElement.style.height = '827px'; }
+  else { vizElement.style.width = '100%'; vizElement.style.height = '727px'; }
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+```
+
+:::

@@ -1,0 +1,47 @@
+---
+draft: false
+title: "Brick Kilns - Agriculture connecttion"
+description: "Applying societal metabolism and social sustainability frameworks to map bonded and forced labour conditions across South Asian brick kiln sectors."
+date: 2026-01-01
+categories: [Forced Labour, South Asia, Societal Metabolism, Field Research]
+image: ../assets/images/img-heatmap.svg
+status: active
+highlight: true
+pub-journal: "Sustainable Development"
+doi: "10.1002/sd.3272"
+---
+
+[← Back to Projects](../projects.html){.back-link}
+
+::: {.label}
+Active · tags1
+:::
+
+## Overview
+
+Brick kilns across South Asia employ an estimated 10–15 million workers, the majority under conditions that meet international definitions of bonded or forced labour. Seasonal production cycles, advance debt payments to migrant workers, and isolated rural worksites create structural conditions for labour exploitation that persist across India, Bangladesh, Nepal, and Pakistan despite extensive legal prohibitions.
+
+This project applies a societal metabolism approach alongside social sustainability frameworks to analyse how bonded labour conditions are embedded in and reproduced by the material and economic flows of brick production. By quantifying labour inputs alongside material and energy flows, we examine how production scale, seasonal demand, and supply-chain structure interact with worker vulnerability.
+
+The project also produced an open educational resource, developed with the University of Nottingham, examining environmental and social impacts in the brick kiln sector.
+
+"Follow the labour"
+
+---
+
+## Methods
+
+
+---
+
+## Open Educational Resource
+
+An interactive learning module — developed with the University of Nottingham — explores the environmental and social impacts of brick production in South Asia, including the role of bonded labour in kiln operations. The module is freely accessible through the University of Nottingham's Xerte platform.
+
+- [Open Learning Resource — Nottingham](https://xerte.nottingham.ac.uk/play_51145)
+
+---
+
+## Publication
+
+Boyd, D., Jackson, B., Decker Sparks, J., Giles M. F, Girindran, R., Gosiling, S., Trodd, Z. Ni Bhriain, L., **Rodríguez-Huerta, E.** "The future of decent work: Forecasting heat stress and the intersection of sustainable development challenges in India's brick kilns" *Sustainable Development* (Wiley). [doi:10.1002/sd.3272](https://doi.org/10.1002/sd.3272)

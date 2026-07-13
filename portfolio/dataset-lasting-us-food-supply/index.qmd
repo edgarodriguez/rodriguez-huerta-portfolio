@@ -1,0 +1,41 @@
+---
+draft: false
+title: "Forced labour risk in the US food supply — replication data"
+description: "Supply shares, risk scores, and data quality assessment underlying Blackstone et al. (2023, Nature Food). Covers US land-based food commodities by ingredient origin country and supply chain stage."
+date: 2023-07-05
+date-modified: 2024-07-31
+categories: [Dataset, Modern Slavery, Food Systems, USA, LASTING]
+image: ../../assets/images/img-scatter.svg
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Dataset · US Food Supply · Harvard Dataverse · LASTING Project
+:::
+
+This is the replication dataset for Blackstone et al. (2023), "Forced labor risk is pervasive in the US land-based food supply," published in *Nature Food*. It contains the supply chain shares, risk scores, and data quality assessments used to produce the paper's estimates.
+
+The core question the paper addresses is straightforward: if you trace every ingredient in a US food item back to where it was grown or raised, how much forced labour risk accumulates along the way? The data here supports that calculation for a wide range of land-based food commodities.
+
+## What the dataset contains
+
+Supply data comes from the Food and Agriculture Organisation (FAO), adjusted to represent each supplier country's share at upstream levels of the supply chain. Risk scores are derived from multiple qualitative-to-quantitative conversion methods documented in the paper's methods section. Each record also carries a data quality assessment score so users can see how much confidence the estimates warrant.
+
+## Variables
+
+| Variable | Description |
+|----------|-------------|
+| Supply shares | Share of ingredient sourced from each country, by supply chain level |
+| Risk scores | Forced labour risk per commodity × origin country combination |
+| QA scores | Data quality assessment, 0--100 scale |
+
+## Citation
+
+Blackstone, N.T., Rodríguez-Huerta, E., Battaglia, K., Jackson, B., Jackson, E., Benoît Norris, C., & Decker Sparks, J.L. (2023). *Forced labor risk is pervasive in the US land-based food supply.* Nature Food. <https://doi.org/10.1038/s43016-023-00794-x>
+
+## Access
+
+DOI: [10.7910/DVN/LEVNP2](https://doi.org/10.7910/DVN/LEVNP2)
+
+Part of the [LASTING project](https://sites.tufts.edu/lasting/) at Tufts University's Friedman School of Nutrition Science and Policy.

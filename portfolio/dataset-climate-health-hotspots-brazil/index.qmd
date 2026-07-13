@@ -1,0 +1,48 @@
+---
+draft: false
+title: "Climate-health hot spots in Brazilian agriculture"
+description: "Occupational health surveillance data (2003--2024) for agricultural workers in Brazil, covering work-related accidents, climate-linked hospital admissions, dengue, agrochemical poisoning, and violence. Supports the identification of climate-health risk hot spots at the municipality level."
+date: 2026-02-10
+date-modified: 2026-03-01
+categories: [Dataset, Climate Hazard, Occupational Health, Brazil, CLIDEWO]
+image: ../../assets/images/img-timeseries.svg
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Dataset · Brazil · 2003--2024 · Zenodo · CC BY-NC 4.0
+:::
+
+Climate change affects agricultural workers first through their health. This dataset assembles two decades of occupational health surveillance records to make that connection visible at the municipality level across Brazil.
+
+Two national systems contribute the data. SINAN (the notifiable diseases reporting system) provides incidence records from 2009 to 2024, covering work-related accidents, dengue cases, agrochemical poisoning, and violence among agricultural workers. SIHSUS (the national hospital admissions system) provides inpatient records from 2003 to 2024, filtered to approximately 900 ICD-10 diagnoses linked to six climate-driven occupational health pathways: excessive heat, air pollution, UV radiation, vector-borne diseases, agrochemical exposure, and waterborne diseases.
+
+The dataset is the empirical foundation for the paper "Mapping Climate-Health Hot Spots: Implications for Workers' Health and Decent Work in Brazilian Agriculture."
+
+## Coverage
+
+| Source | Years | Records type |
+|--------|-------|-------------|
+| SINAN | 2009--2024 | Notifiable disease incidence |
+| SIHSUS | 2003--2024 | Hospital admissions (~900 ICD-10 codes) |
+
+Both sources are disaggregated to municipality level using IBGE codes, so they can be combined with other municipal-level climate and socio-economic data.
+
+## File size
+
+164.6 MB (restricted access).
+
+## Access
+
+Access is restricted. Requests can be submitted through the Zenodo record with a brief description of intended use. The restriction is in place during peer review and will be lifted on publication.
+
+DOI: [10.5281/zenodo.18632647](https://doi.org/10.5281/zenodo.18632647)
+
+## License
+
+CC BY-NC 4.0 — non-commercial use with attribution.
+
+## Funding
+
+British Academy ODA Challenge-Oriented Research Grants 2024 Programme (IOCRG100945), via the UK Government's International Science Partnerships Fund.

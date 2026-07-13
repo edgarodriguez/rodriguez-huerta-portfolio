@@ -1,0 +1,42 @@
+---
+draft: true
+title: "Supply Chain Modelling Risk"
+description: "Using Data Analytics and Supply Chain Modelling to Improve Labour Governance, Climate Resilience, and Worker Welfare in India’s Brick Kilns and Global Food Supply Chains"
+date: 2026-03-05
+date-modified: 2026-05-28
+categories: [Networks, Econometrics, Supply Chains]
+image: ../assets/images/img-scatter.svg
+status: in-review
+---
+
+[← Back to Projects](../projects.html){.back-link}
+
+<div class="label" style="margin-bottom: 16px;">Networks · Under Review · Global Environmental Change</div>
+
+## Overview
+
+If you cannot see your supply chain, you cannot see who is being harmed in it. This project tests that claim empirically: does the structural complexity of a country's commodity imports — measured using network metrics — predict the extent to which forced labour in those imports goes undetected?
+
+We construct a multilayer trade network for 120 countries across 85 commodity classes and compute node-level metrics (betweenness, clustering coefficient, path length) as proxies for supply chain opacity. We then regress these metrics against modern slavery prevalence estimates adjusted for detection probability.
+
+## Methods
+
+- **Trade network**: BACI World Trade Database (2010–2022), 120 countries, 85 HS2 commodity classes.
+- **Opacity metrics**: betweenness centrality, average clustering coefficient, mean shortest path length, network density.
+- **Outcome variable**: Walk Free Foundation prevalence estimates adjusted for under-reporting using a detection model.
+- **Identification**: instrumental variable approach using colonial trade history as an instrument for current network position.
+
+## Key findings
+
+1. A one-standard-deviation increase in supply chain betweenness is associated with a 22% higher probability of forced labour going undetected.
+2. The effect is strongest for agricultural commodities, weakest for manufactured goods.
+3. International due-diligence legislation has a measurable but modest effect on reducing the opacity–concealment relationship.
+
+## Status
+
+Under review at *Global Environmental Change*. Pre-print available on request.
+
+## Links
+
+- [GitHub repository](https://github.com/edgarrodriguezhuerta)
+- Pre-print: forthcoming

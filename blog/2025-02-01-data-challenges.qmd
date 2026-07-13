@@ -1,0 +1,33 @@
+---
+title: "Data challenges in measuring hidden labour abuses in global supply chains"
+description: "Why measuring forced labour is hard, what data exists, and what the gaps tell us about who benefits from the difficulty of measurement."
+date: 2025-02-01
+categories: [Data, Methods]
+image: ../assets/images/img-heatmap.svg
+---
+
+Modern slavery is, by definition, hidden. The people perpetrating it have every incentive to keep it invisible. The people experiencing it are often unable to speak freely. And the data infrastructure we rely on — surveys, administrative records, trade statistics — was built to measure things that are meant to be counted.
+
+This creates a fundamental methodological problem: how do you measure something that actively evades measurement?
+
+## What data exists
+
+There are three broad categories of data on forced labour in supply chains.
+
+**Prevalence estimates** from organisations like Walk Free Foundation give national-level counts of people in modern slavery. These are constructed from household surveys, expert elicitation, and country-level risk modelling. They're the best we have, but they carry enormous uncertainty — confidence intervals often span an order of magnitude.
+
+**Worker surveys** — like those conducted by the ILO's BEEP programme or sector-specific audits — give richer data on specific worksites or commodity chains. But they suffer from selection effects: audits happen at sites that consent to audits, which are systematically different from the sites most likely to have problems.
+
+**Indirect indicators** — wage gaps, working hour violations, debt bondage markers — can be triangulated across multiple data sources. This is the approach my own work takes: building a composite signal from imperfect indicators rather than relying on any single measure.
+
+## The structural problem
+
+The deeper issue is that data gaps are not random. They cluster in exactly the places where exploitation is worst: informal economies, fragmented supply chains, countries with weak statistical capacity, sectors with high migrant labour concentration.
+
+This means that our estimates of forced labour are systematically biased downward in the places that matter most. The absence of data is itself a signal.
+
+## What this means for research
+
+Any quantitative study of forced labour in supply chains should be explicit about what it cannot see, not just what it can. The error bars matter as much as the point estimates.
+
+The methodological frontier is not better data collection (though that matters) — it is better models for reasoning under measurement-induced uncertainty.

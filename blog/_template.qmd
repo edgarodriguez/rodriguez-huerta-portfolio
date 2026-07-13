@@ -1,0 +1,59 @@
+---
+# ── REQUIRED ───────────────────────────────────────────────────────────────────
+draft: true                          # Set false when ready to publish
+title: "Post title"
+description: "One-sentence summary shown in the listing and used for SEO."
+date: 2026-01-01
+date-modified: 2026-01-01           # Update when post is edited
+
+# ── TAXONOMY ───────────────────────────────────────────────────────────────────
+# Match existing filter-bar categories in blog.qmd to keep filters working.
+# Active categories: Data, Field Work, Methods, Networks, SoLCA, South Asia,
+#                    Tools, Workflow, Web, meta
+categories: [Methods, Data]
+
+# ── IMAGE ──────────────────────────────────────────────────────────────────────
+# Thumbnail shown in the blog listing. Use one of the existing SVG assets,
+# or add a real image to assets/images/ and reference it here.
+# Options: img-network · img-scatter · img-timeseries · img-heatmap · img-sankey
+image: ../assets/images/img-network.svg
+---
+
+<!-- ── OPENING ─────────────────────────────────────────────────────────────────
+  One short paragraph. Hook the reader with the concrete problem or question.
+  Avoid throat-clearing; start with something specific.
+────────────────────────────────────────────────────────────────────────────── -->
+
+Opening paragraph here — one strong sentence or problem statement.
+
+<!-- ── BODY ───────────────────────────────────────────────────────────────────
+  Use ## headings for main sections. Write as you would for a colleague who
+  knows the field but hasn't seen this specific analysis.
+  Aim for 400–800 words total.
+────────────────────────────────────────────────────────────────────────────── -->
+
+## Section heading
+
+Body text...
+
+## Data and methods (if applicable)
+
+Describe data sources, tools used, and any non-obvious analytical choices.
+
+<!-- ── CALLOUT EXAMPLE ────────────────────────────────────────────────────────
+  Callouts are stripped of Bootstrap styling and use the editorial palette.
+  Types: note, tip, warning, caution, important
+────────────────────────────────────────────────────────────────────────────── -->
+
+::: {.callout-note}
+A note or aside that adds context without interrupting the main thread.
+:::
+
+<!-- ── LINKS ──────────────────────────────────────────────────────────────────
+  Close with 2–4 relevant links: related project, paper, dataset, or portfolio item.
+────────────────────────────────────────────────────────────────────────────── -->
+
+## Links
+
+- [Related project or paper](../projects/project-name.html)
+- [DOI](https://doi.org/...)

@@ -1,0 +1,51 @@
+---
+draft: true
+title: "Visualising water allocation time series in R with Plotly"
+date: 2020-09-01
+categories: [R, Visualisation, Water, Mexico]
+description: "A short tutorial on creating interactive time series charts in R Markdown using Plotly, illustrated with historical agricultural water concession data for the Yucatán Peninsula."
+image: ../assets/images/img-scatter.svg
+---
+
+This post walks through the steps for building an interactive time series chart in R using the Plotly package. The data is agricultural water concession records from CONAGUA's REPDA registry for the Yucatán Peninsula.
+
+## Setup
+
+```r
+library(plotly)
+library(dplyr)
+library(widgetframe)
+```
+
+The data download follows the same process as the [Leaflet tutorial](2020-09-01-leaflet-maps-yucatan.html): download the CONAGUA ZIP file, read the CSV files, merge on a common identifier, and filter to the three peninsula states and agricultural use designation.
+
+## Aggregation
+
+Once the data is filtered, aggregate by registration date and usage type:
+
+```r
+df_summary <- df_clean |>
+  group_by(date, uso) |>
+  summarise(volume_m3 = sum(vol_anual, na.rm = TRUE), .groups = "drop")
+```
+
+Date formatting matters here. The raw registration dates are character strings in various formats — cleaning them to a consistent `YYYY-MM-DD` structure before grouping avoids silent errors in the time axis.
+
+## Plot
+
+```r
+fig <- plot_ly(df_summary,
+  x = ~date, y = ~volume_m3,
+  color = ~uso, type = "scatter", mode = "lines+markers") |>
+  layout(
+    title = "Agricultural water concessions — Yucatán Peninsula",
+    xaxis = list(title = "Date", tickformat = "%b %Y"),
+    yaxis = list(title = "Annual volume (m³)")
+  )
+
+frameWidget(fig)
+```
+
+The chart shows the evolution of water allocations over time by usage category. Agricultural concessions grow through the 1990s and 2000s alongside the expansion of export-oriented farming. The time series provides a demand-side baseline for the groundwater recharge modelling described in the [water metabolism project](../../projects/project-water-metabolism.html).
+
+The main thing to watch for when rendering Plotly in R Markdown or Quarto is the `widgetframe::frameWidget()` wrapper — without it, interactive widgets sometimes fail to display correctly in certain output contexts.

@@ -1,0 +1,40 @@
+---
+title: ""
+page-layout: full
+toc: false
+anchor-sections: false
+execute:
+  freeze: auto
+format:
+  html: default
+  typst:
+    include-in-header: cv-template.typ
+    output-file: cv
+    keep-typ: false
+---
+
+```{r setup}
+#| include: false
+source("R/cv-helpers.R")
+cv <- load_cv()
+```
+
+```{r}
+#| echo: false
+#| results: asis
+render_header(cv$meta)
+render_body_open()
+render_dated(cv$experience,    "Experience")
+render_dated(cv$industry,      "Industry Experience")
+render_dated(cv$education,     "Education")
+render_publications(cv$publications, "Selected Publications")
+render_dated(cv$grants,        "Grants and Fellowships")
+render_dated(cv$awards,        "Awards")
+render_dated(cv$events,        "Selected Events and Collaborations")
+render_dated(cv$teaching,      "Teaching")
+render_dated(cv$training,      "Selected Extra Training")
+render_skills(cv$skills)
+render_languages(cv$languages)
+render_services(cv$services)
+render_body_close()
+```

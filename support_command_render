@@ -1,0 +1,6 @@
+To update publications or conferences: open cv_inputs.xlsx, edit the publications or events sheet, then run:
+
+quarto render publications.qmd
+quarto render conferences.qmd
+git add _freeze/publications/ _freeze/conferences/
+git push

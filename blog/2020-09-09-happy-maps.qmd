@@ -1,0 +1,20 @@
+---
+draft: true
+title: "Happy maps: routing beyond efficiency"
+date: 2020-09-09
+date-modified: 2026-06-30
+categories: [Data Science, Urban Analytics, GIS, Wellbeing]
+description: "What would navigation look like if it optimised for pleasantness rather than speed? A reflection on Daniele Quercia's work on happy maps."
+image: ../assets/images/img-network.svg
+---
+
+
+Most navigation tools solve one problem: get from A to B in the least time. That is a reasonable thing to optimise for when you are late. It is not the only thing worth optimising for.
+
+Daniele Quercia's project on "happy maps" asks a different question: what if the route algorithm tried to find the most pleasant journey instead of the shortest one? Using data mining and participatory geographic information systems (PGIS), the project identifies points of interest, parks, and other features that people actually respond positively to — and routes around them.
+
+The result is navigation that takes you somewhere in a way that leaves you feeling differently when you arrive. The route might be slightly longer. It might pass through a neighbourhood you would not otherwise see. It treats walking in a city as something more than a logistics problem.
+
+What makes this technically interesting is the data structure. Pleasantness is not a property of a point on a map; it is something people attribute to spaces through experience and movement. Extracting that from survey data, photos, and place interactions requires methods from spatial analysis that go beyond shortest-path algorithms. The PGIS component matters: the data has to come from people who actually use these spaces.
+
+The broader point applies outside urban navigation. When you build a model that optimises for one variable — efficiency, cost, speed — you get solutions that are good on that variable and often unexamined on everything else. Adding a different objective function changes what you find, and sometimes what you find is better.

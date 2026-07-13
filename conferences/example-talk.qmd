@@ -1,0 +1,31 @@
+---
+title: "Climate vulnerability as a driver of forced-labour risk"
+description: "Invited talk presenting cross-sectional evidence linking climate exposure to modern slavery prevalence in food-system supply chains."
+date: 2026-02-18
+categories: [invited-talk, climate, modern-slavery]
+venue: "International Conference on Sustainability Science"
+location: "Berlin, Germany"
+slides: "#"
+---
+
+[← Back to Conferences](../conferences.html){.back-link}
+
+<div class="label" style="margin-bottom: 16px;">Invited Talk · ICSS 2026 · Berlin</div>
+
+## Abstract
+
+I presented evidence from a cross-sectional analysis of 60 producing economies showing that climate-vulnerability indices are strongly correlated with downstream forced-labour risk in food-system supply chains, even after controlling for governance quality and HDI. The talk argued for treating climate adaptation and labour-rights protection as a single design problem.
+
+## Details
+
+| | |
+|---|---|
+| **Venue** | International Conference on Sustainability Science (ICSS 2026) |
+| **Location** | Berlin, Germany |
+| **Date** | 18 February 2026 |
+| **Format** | 30-min invited talk + 15-min Q&A |
+
+## Materials
+
+- [Slides (PDF)](#)
+- [Recorded talk](#) (if available)

@@ -1,0 +1,69 @@
+---
+draft: false
+title: "Land use and vegetation change — Yucatán Peninsula"
+description: "Six decades of land use and vegetation change in the Yucatán Peninsula using INEGI's official mapping series (Series I to VI). Shows the pace and geography of deforestation, agricultural expansion, and urban growth."
+date: 2020-03-01
+date-modified: 2020-03-01
+categories: [Visualisation, Interactive, Tableau, Land Use, Mexico, Water]
+image: ../../assets/images/img-timeseries.svg
+format:
+  html:
+    page-layout: full
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Interactive · Land Use Change · Yucatán Peninsula · INEGI Series I–VI
+:::
+
+Mexico's National Institute of Statistics and Geography (INEGI) has mapped national land use and vegetation cover six times since the 1970s — each survey classified at a consistent scale, making longitudinal comparison possible. This dashboard works through all six series for the Yucatán Peninsula, showing where forest cover has been lost, where agricultural land has expanded, and where urban and tourism development has converted coastal and inland ecosystems.
+
+The peninsula sits atop a karst aquifer with no surface rivers. What happens on the land surface — what is grown, what is cleared, what is sealed with concrete — directly affects how much rainwater infiltrates to recharge the groundwater. That relationship is what makes land use change relevant to the water metabolism modelling in the [Yucatán water project](../../projects/project-water-metabolism.html).
+
+## How to read it
+
+Each survey period covers a different reference year. Use the filter controls to compare individual series or step through them in sequence. The colour scheme follows the INEGI classification: primary forest, secondary vegetation, agricultural land, urban, and other.
+
+## Data
+
+INEGI, Land Use and Vegetation Series I through VI. Published by Mexico's National Institute of Statistics and Geography.
+
+::: {.column-screen}
+
+```{=html}
+<div class="tableauPlaceholder" id="viz2001" style="position: relative">
+  <noscript>
+    <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/CambiodeusodesueloyvegetacinINEGISerieIaVIPeninusuladeYucatn/USV">
+      <img alt="USV" src="https://public.tableau.com/static/images/Ca/CambiodeusodesueloyvegetacinINEGISerieIaVIPeninusuladeYucatn/USV/1_rss.png" style="border: none">
+    </a>
+  </noscript>
+  <object class="tableauViz" style="display:none;">
+    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F">
+    <param name="embed_code_version" value="3">
+    <param name="site_root" value="">
+    <param name="name" value="CambiodeusodesueloyvegetacinINEGISerieIaVIPeninusuladeYucatn/USV">
+    <param name="tabs" value="no">
+    <param name="toolbar" value="yes">
+    <param name="static_image" value="https://public.tableau.com/static/images/Ca/CambiodeusodesueloyvegetacinINEGISerieIaVIPeninusuladeYucatn/USV/1.png">
+    <param name="animate_transition" value="yes">
+    <param name="display_static_image" value="yes">
+    <param name="display_spinner" value="yes">
+    <param name="display_overlay" value="yes">
+    <param name="display_count" value="yes">
+    <param name="language" value="en-GB">
+  </object>
+</div>
+<script type="text/javascript">
+  var divElement = document.getElementById('viz2001');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if (divElement.offsetWidth > 800) { vizElement.style.width = '100%'; vizElement.style.height = '827px'; }
+  else if (divElement.offsetWidth > 500) { vizElement.style.width = '100%'; vizElement.style.height = '827px'; }
+  else { vizElement.style.width = '100%'; vizElement.style.height = '727px'; }
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+```
+
+:::

@@ -1,0 +1,58 @@
+---
+draft: true
+title: "Mapping water concessions in the Yucatán Peninsula with R and Leaflet"
+date: 2020-09-01
+date-modified: 2020-09-01
+categories: [R, GIS, Visualisation, Water, Mexico]
+description: "A short tutorial on creating interactive maps in R Markdown using the Leaflet package, illustrated with water allocation data from CONAGUA's REPDA registry."
+image: ""
+---
+
+This is a walkthrough for creating interactive maps in R using the Leaflet package. The example data is water concession records from CONAGUA's REPDA registry for the three states of the Yucatán Peninsula (Campeche, Quintana Roo, Yucatán) as of September 2020.
+
+One disclaimer before starting: some coordinates in the data fall in the ocean. The REPDA data has known quality issues with certain entries. The analysis below does not validate coordinates — it visualises what CONAGUA has registered.
+
+## Setup and data download
+
+```r
+library(leaflet)
+library(widgetframe)
+library(htmlwidgets)
+library(htmltools)
+library(dplyr)
+```
+
+The concession data is available as a ZIP file from CONAGUA's open data portal. Once downloaded, it contains two CSV files: underground concessions and general concession data. The key cleaning steps are extracting latitude and longitude from degree/minute/second format and filtering to the three peninsula states.
+
+```r
+# Filter to Yucatán Peninsula states
+peninsula <- c("Campeche", "Quintana Roo", "Yucatán")
+data_clean <- raw_data |>
+  filter(estado %in% peninsula) |>
+  mutate(
+    lat = dms_to_decimal(lat_deg, lat_min, lat_sec),
+    lon = dms_to_decimal(lon_deg, lon_min, lon_sec)
+  )
+```
+
+## Map generation
+
+The map uses clustered markers to show allocation counts by region, with individual circles sized proportionally to annual volume (in cubic metres). A colour palette distinguishes nine usage categories (agricultural, industrial, public supply, etc.).
+
+```r
+pal <- colorFactor(palette = rainbow(9), domain = data_clean$uso)
+
+leaflet(data_clean) |>
+  addTiles() |>
+  addCircleMarkers(
+    lng = ~lon, lat = ~lat,
+    radius = ~log(volumen_anual + 1),
+    color = ~pal(uso),
+    popup = ~paste0("<b>", uso, "</b><br>", volumen_anual, " m³/year")
+  ) |>
+  addLegend(pal = pal, values = ~uso, title = "Usage type")
+```
+
+The result is a map showing the distribution of water concessions across the peninsula. Agricultural use dominates in the interior; coastal zones show a mix of tourism-related and public supply concessions. The clustering reveals concentration around the main urban centres and along the major agricultural corridors.
+
+The water concession data for the Yucatán Peninsula feeds into the broader MuSIASEM demand modelling described in the [water metabolism project](../../projects/project-water-metabolism.html).

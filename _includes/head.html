@@ -1,0 +1,11 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<script>
+  // Apply default editorial palette; persists user toggle in localStorage.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('edgar-palette'); } catch (e) {}
+    document.documentElement.setAttribute('data-palette', saved || 'editorial-light');
+  })();
+</script>

@@ -1,0 +1,69 @@
+---
+draft: true
+title: "Soil moisture storage capacity — Yucatán Peninsula"
+description: "Spatial distribution of soil moisture storage capacity across the Yucatán Peninsula, derived from soil texture data and land use/land cover classification. A key biophysical input to the regional water balance model."
+date: 2019-08-01
+date-modified: 2019-08-01
+categories: [Visualisation, Interactive, Tableau, Hydrology, Mexico]
+image: ../../assets/images/img-heatmap.svg
+format:
+  html:
+    page-layout: full
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Interactive · Soil Water Capacity · Land Use · Yucatán Peninsula
+:::
+
+Before water falls to the ground and either evaporates, runs off, or infiltrates to the aquifer, it passes through the soil. How much the soil can hold — its storage capacity — depends on texture (sand vs clay vs loam) and what sits on top of it. A bare agricultural field and a secondary forest on the same soil type will have different effective storage capacity because different vegetation changes how water moves through the system.
+
+This dashboard maps soil moisture storage capacity across the peninsula by combining soil texture data with INEGI's land use and vegetation classification. The resulting surface is one of the key spatial inputs to the water balance model: it determines how much rainfall the soil absorbs before recharge or runoff begins, and how that varies across the peninsula's different agricultural and ecological zones.
+
+## How to read it
+
+Values represent millimetres of water that the top soil layer can hold under field conditions. Areas with higher clay content and intact vegetation show higher capacity. Coastal zones and areas with thin soils over the limestone karst show lower values — the water moves quickly to the aquifer with limited buffering.
+
+## Data
+
+Soil texture: INEGI / FAO classification. Land use/vegetation: INEGI Series V. Combined at 1 km resolution for the three states of the Yucatán Peninsula.
+
+::: {.column-screen}
+
+```{=html}
+<div class="tableauPlaceholder" id="viz2004" style="position: relative">
+  <noscript>
+    <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/Soil-moisturestoragecapacityYucatanPeninsula/Soil-LULC-STC">
+      <img alt="Soil-LULC-STC" src="https://public.tableau.com/static/images/So/Soil-moisturestoragecapacityYucatanPeninsula/Soil-LULC-STC/1_rss.png" style="border: none">
+    </a>
+  </noscript>
+  <object class="tableauViz" style="display:none;">
+    <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F">
+    <param name="embed_code_version" value="3">
+    <param name="site_root" value="">
+    <param name="name" value="Soil-moisturestoragecapacityYucatanPeninsula/Soil-LULC-STC">
+    <param name="tabs" value="no">
+    <param name="toolbar" value="yes">
+    <param name="static_image" value="https://public.tableau.com/static/images/So/Soil-moisturestoragecapacityYucatanPeninsula/Soil-LULC-STC/1.png">
+    <param name="animate_transition" value="yes">
+    <param name="display_static_image" value="yes">
+    <param name="display_spinner" value="yes">
+    <param name="display_overlay" value="yes">
+    <param name="display_count" value="yes">
+    <param name="language" value="en-GB">
+  </object>
+</div>
+<script type="text/javascript">
+  var divElement = document.getElementById('viz2004');
+  var vizElement = divElement.getElementsByTagName('object')[0];
+  if (divElement.offsetWidth > 800) { vizElement.style.width = '100%'; vizElement.style.height = '827px'; }
+  else if (divElement.offsetWidth > 500) { vizElement.style.width = '100%'; vizElement.style.height = '827px'; }
+  else { vizElement.style.width = '100%'; vizElement.style.height = '727px'; }
+  var scriptElement = document.createElement('script');
+  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+  vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
+```
+
+:::

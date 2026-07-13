@@ -1,0 +1,20 @@
+---
+title: ""
+page-layout: full
+toc: false
+anchor-sections: false
+execute:
+  freeze: auto
+---
+
+```{r setup}
+#| include: false
+source("R/cv-helpers.R")
+cv <- load_cv()
+```
+
+```{r}
+#| echo: false
+#| results: asis
+render_conferences_page(cv$events)
+```

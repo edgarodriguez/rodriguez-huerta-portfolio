@@ -1,0 +1,36 @@
+---
+title: ""
+page-layout: full
+toc: false
+anchor-sections: false
+listing:
+  id: projects-listing
+  contents: projects
+  type: grid
+  grid-columns: 2
+  sort: "date desc"
+  fields: [image, categories, title, description, status]
+  image-height: 220px
+  filter-ui: false
+  categories: false
+---
+
+::: {.listing-header}
+::: {}
+[03 — Projects]{.label}
+
+::: {.h1}
+The human cost of global value chains
+:::
+:::
+::: {.filter-bar data-filter-group="true" data-filter-target="#listing-projects-listing"}
+<button type="button" class="filter-btn is-active" data-filter="All">All</button>
+<button type="button" class="filter-btn" data-filter="Supply Chains">Supply Chains</button>
+<button type="button" class="filter-btn" data-filter="Climate Modelling">Climate Modelling</button>
+<button type="button" class="filter-btn" data-filter="Field Research">Field Research</button>
+:::
+:::
+
+::: {#projects-listing}
+:::
+

@@ -1,0 +1,34 @@
+---
+draft: false
+title: "Forced labour risk in the US food supply"
+description: "Interactive Tableau visualisations expanding on Blackstone et al. (2023, Nature Food). Explore forced labour risk by commodity, country of origin, and supply chain stage."
+date: 2023-07-01
+categories: [Interactive, Visualisation, Tableau, Modern Slavery, Food Systems, USA]
+image: ../../assets/images/img-heatmap.svg
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Interactive · Forced Labour Risk · US Food Supply · Tableau
+:::
+
+In 2023, Blackstone et al. published a paper in *Nature Food* showing that forced labour risk is present across a wide range of commodities in the US land-based food supply -- not just in the sectors most people would guess. These visualisations were built to let readers dig into those findings by commodity, sourcing country, and supply chain stage, rather than stopping at the summary numbers in the paper.
+
+The work is part of the [LASTING](https://sites.tufts.edu/lasting/) project at Tufts University on sustainability transitions in global food systems.
+
+## What you can explore
+
+The interactive dashboards let you filter and compare forced labour risk scores across food categories (grains, fruit, vegetables, meat, dairy), break them down by the countries where ingredients are sourced, and see where in the supply chain -- farm, processing, wholesale -- risk is concentrated.
+
+Risk scores reflect estimated prevalence of forced labour conditions in the supply chains behind US food consumption. A higher score means the data points to greater probability of forced labour somewhere upstream, not that violations are confirmed at a specific site.
+
+## Data and paper
+
+Full data and replication files are on the [LASTING Dataverse](https://dataverse.harvard.edu). The underlying paper is:
+
+Blackstone, N.T., Battaglia K., Rodríguez-Huerta, E., Bell, B., Decker Sparks J., Cash S., Conrad Z., Nikkhah A., Jackson B., Matteson J., Gao S., Fuller K., Zhang F.F., Webb P. (2024). *Diets cannot be sustainable without ensuring the well-being of communities, workers, and animals in food value chains.* Nature Food.
+
+## Explore
+
+[Interactive visualisations](https://sites.tufts.edu/lasting/data/)

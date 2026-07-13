@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(quarto preview *)",
+      "Bash(pkill -f \"quarto preview\")",
+      "Bash(curl -s http://localhost:4848/projects.html)",
+      "Bash(curl -s http://localhost:4848/styles.css)",
+      "Bash(xargs -I{} basename {} .qmd)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(python3 -c ' *)",
+      "Bash(R --version)",
+      "Bash(Rscript -e 'cat\\(installed.packages\\(\\)[,1][installed.packages\\(\\)[,1] %in% c\\(\"readxl\",\"openxlsx\",\"writexl\",\"knitr\"\\)], sep=\" \"\\)')",
+      "Bash(Rscript R/init-cv-template.R)",
+      "Bash(Rscript -e ' *)",
+      "Bash(pdftotext _site/cv.pdf -)",
+      "Bash(grep -nE \"^[A-Z][A-Z ]+$\")",
+      "Bash(grep -E \"^\\(Experience|Industry Experience|Education|Selected Publications|Grants|Awards|Selected Events|Teaching|Selected Extra Training|Skills|Languages|Academic Service\\)$\")",
+      "WebFetch(domain:www.nottingham.ac.uk)",
+      "WebFetch(domain:www.nature.com)",
+      "WebFetch(domain:onlinelibrary.wiley.com)",
+      "WebFetch(domain:xerte.nottingham.ac.uk)",
+      "WebFetch(domain:www.clidewo.com)",
+      "WebFetch(domain:upcommons.upc.edu)",
+      "WebFetch(domain:www.sciencedirect.com)",
+      "WebFetch(domain:www.tandfonline.com)",
+      "WebFetch(domain:idp.nature.com)"
+    ]
+  }
+}

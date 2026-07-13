@@ -1,0 +1,48 @@
+---
+draft: false
+title: "Climate and decent work risk — Brazilian municipalities"
+description: "Integrated risk scores across Brazil's 5,570 municipalities combining 23 climate hazard indicators and 35 decent work indicators at 0.05-degree spatial resolution. Follows the IPCC Risk = Hazard x Exposure x Vulnerability framework."
+date: 2026-03-02
+date-modified: 2026-03-03
+highlight: true
+categories: [Dataset, Climate Hazard, Decent Work, Brazil, CLIDEWO]
+image: ../../assets/images/img-heatmap.svg
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Dataset · Brazil · 5,570 municipalities · Zenodo · CC BY-NC-SA 4.0
+:::
+
+Most climate risk datasets stop at the environment. Most labour datasets stop at the workplace. This one tries to hold both at the same time, covering all 5,570 Brazilian municipalities at 0.05-degree spatial resolution.
+
+The structure follows the IPCC risk framework: Risk = Hazard × Exposure × Vulnerability. The climate side draws on 23 indicators across nine hazard categories. The decent work side draws on 35 indicators covering ten ILO decent work elements. Both sides are normalized to a 0--100 scale using expert-weighted priors adjusted by Data Quality Assessment scores, so they can be compared and combined.
+
+## Climate hazard indicators
+
+Nine categories: heat stress, UV radiation, drought, river and coastal flooding, wildfires, air pollution, vector-borne diseases (dengue, malaria, leishmaniasis), agrochemical exposure, and WASH (water, sanitation, and hygiene) access. Primary sources include CCVI v2.0, TEMIS UV, World Bank ThinkHazard!, and AdaptaBrasil.
+
+## Decent work indicators
+
+Ten ILO decent work elements: employment opportunities, earnings adequacy, working conditions, worker rights, social protection, social dialogue, labour inspections, gender equality, informality, and child/forced labour. Drawn from PNADC (2021--2024) and related national surveys.
+
+## Coverage and linkage
+
+The dataset covers Brazil's 5,570 municipalities. Records include 7-digit IBGE codes so they can be linked to any other municipal-level dataset.
+
+Agricultural exposure is built from approximately 113 crop types (harvested area data) cross-referenced with worker demographics from the agricultural census.
+
+## Access
+
+The dataset is currently restricted pending manuscript review. Requests can be submitted via the Zenodo record. Expected public release follows journal publication.
+
+DOI: [10.5281/zenodo.18828568](https://doi.org/10.5281/zenodo.18828568)
+
+## License
+
+CC BY-NC-SA 4.0 — free to use for non-commercial research with attribution.
+
+## Funding
+
+British Academy ODA Challenge-Oriented Research Grants 2024 Programme (IOCRG100945), via the UK Government's International Science Partnerships Fund.

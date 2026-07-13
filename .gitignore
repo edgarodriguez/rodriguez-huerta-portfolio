@@ -1,0 +1,45 @@
+# Quarto build output
+/_site/
+/.quarto/
+/_freeze/
+# …but keep page freeze caches so CI can build without cv_inputs.xlsx
+!/_freeze/cv/
+!/_freeze/cv-negative/
+!/_freeze/publications/
+!/_freeze/conferences/
+
+# Quarto cache for individual pages
+*_files/
+*_cache/
+
+# CV source data — kept private, never committed
+cv_inputs.xlsx
+cv_inputs_copy.xlsx
+~$*.xlsx
+
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+
+# Secrets
+.env
+.env.local
+
+# Design handoff bundle (kept locally only)
+Personal portfolio-handoff.zip
+personal-portfolio-handoff/
+
+# Personal notes, not part of the published site
+notebook/
+
+# Claude Code local settings (per-machine, not shared)
+.claude/settings.local.json

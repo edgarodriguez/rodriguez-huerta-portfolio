@@ -1,0 +1,21 @@
+---
+draft: false
+title: "The hidden cost of renewables: forced labour in Brazil's ethanol supply chain"
+date: 2025-01-29
+date-modified: 2025-01-25
+categories: [Modern Slavery, Supply Chains, Brazil, Decent Work, Energy Transition]
+description: "Brazil's ethanol is often framed as a clean fuel success story. The working conditions behind it tell a different story."
+image: ../assets/images/img-sankey.svg
+---
+
+Brazil's sugarcane ethanol is often presented as one of the more successful examples of large-scale renewable fuel production. It has been running for decades, it has displaced a meaningful share of petrol consumption, and it has attracted genuine interest from countries looking for models of bioenergy transition. That is one version of the story.
+
+The other version is documented in the "Enslaved in Ethanol" report by Repórter Brasil. Workers in the sugarcane sector face debt bondage created by employer-imposed deductions for housing, food, and transport. They work in conditions of extreme physical exhaustion — in some documented cases, sleeping around four hours a night. Pesticide exposure happens with inadequate protection, including during aerial spraying. Many workers lack formal contracts, which means no access to social security and no recourse when something goes wrong.
+
+This matters for how we talk about the energy transition. A fuel's carbon intensity does not capture what it costs the people who produce it. If we decarbonise the energy sector while pushing the human cost of that decarbonisation onto workers who are already among the most vulnerable — informal, rural, migrant — then we have not actually solved anything. We have shifted the problem.
+
+The arguments for stronger accountability are not complicated. Labour law enforcement needs to reach agricultural workers, not just workers in formal industrial settings. Companies that buy ethanol need to know where it comes from and what conditions were involved in producing it. That requires transparency, which requires supply chain mapping, which is part of what projects like CLIDEWO are trying to build.
+
+Environmental progress and labour rights are not separate problems with separate solution sets. They are the same problem, and the response has to treat them that way.
+
+*CLIDEWO Project, University of Nottingham Rights Lab.*

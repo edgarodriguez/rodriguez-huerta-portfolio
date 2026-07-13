@@ -1,0 +1,108 @@
+---
+title: "Designed in Claude, rebuilt it in Quarto and polishing using css"
+description: "Current pipeline: prototype in AI, translate to a static publishing system, inspect the browser output obsessively, let Claude Code handle the parts you can't."
+date: 2026-05-02
+date-modified: 2026-06-30           # Update when post is edited
+categories: [Workflow, Website]
+image: ../assets/images/img-code.png
+---
+
+[← Back to Blog](../blog.html){.back-link}
+
+I needed a research portfolio updated. That's not a inspiring opening line, but it's the honest reason I started this. I had papers to show, projects to link, and a CV that hasn't been updated in months. I'd tried GitHub Pages + Quarto in the past, and it's great!,you create a couple of templates and pages, and the structure is ready to be populated—it’s pretty simple. But it only gets the job done halfway; customizing it to my liking can take a long time, and aesthetic details like transitions or animations simply aren't straightforward to implement.
+This is where Claude (Claudio para los amigos) intervienes.
+
+On the one hand, it designs an aesthetically appealing, generic model for you.
+
+## The pipeline
+
+```{mermaid}
+%%| fig-cap: "From design concept to deployed site"
+flowchart TD
+    A([Claude design\] Chat) --> B([Claude generates\nHTML prototype])
+    B --> C([Extract design tokens\nto styles.css])
+    C --> D([Build Quarto structure\n_quarto.yml + layouts])
+    D --> E([Write content\nas .qmd files])
+    E --> F([quarto render → _site/])
+    F --> G{Browser DevTools\ninspect}
+    G -->|Wrong selector\nor layout bug| H([Claude Code\nfix CSS])
+    G -->|New interaction\nor animation| I([Claude Code\nimplement JS/GSAP])
+    H --> F
+    I --> F
+    G -->|Looks right| J([git push\nGitHub Pages])
+
+    style A fill:#e0e7ff,stroke:#4f46e5
+    style J fill:#ccfbf1,stroke:#0d9488
+    style G fill:#fef3c7,stroke:#d97706
+```
+
+## Designing in Claude
+
+I didn't start by writing HTML. I described what I wanted in a Claude conversation — editorial typography, monochrome-to-color hover effects on data visualisations, the kind of layout you'd expect from a journal's digital presence rather than a startup's landing page.
+
+Claude generated a React prototype as a single HTML file. I opened it in a browser immediately. The code itself was unusable in Quarto (React doesn't fit a static publishing system), but that wasn't the point. What I had was a visual reference with actual hex values, font size decisions, and a working grid structure. When I later asked Claude Code to style the Quarto output, I could point at a file rather than describe from memory.
+
+That prototype file is still sitting in the repo. I open it alongside the live preview whenever I need to check whether something matches the intended design.
+
+## Translating to Quarto
+
+Quarto turns markdown files into static HTML. The research-workflow appeal is obvious: write content, run `quarto render`, site rebuilds. No database. No CMS. Adding a new publication means creating a `.qmd` file. Adding a new conference talk means the same.
+
+The structural translation from React prototype to Quarto took a few days. Design tokens became CSS custom properties. React components became Quarto's fenced-div syntax (`::: {.classname}`). Navigation, footer, and layouts live in `_quarto.yml`.
+
+The friction: Quarto has strong opinions about HTML output. It wraps content in `<p>` tags in unexpected places. It sits on top of Bootstrap, which has its own cascade. CSS selectors that matched perfectly in the prototype broke because Quarto's listing system generates different class names than you'd assume.
+
+I spent a lot of time reading the actual rendered HTML rather than trusting that the selector I wrote would work.
+
+## Content as files
+
+Every publication, project, conference talk, and portfolio item is a `.qmd` file with YAML frontmatter:
+
+```yaml
+---
+title: "Quantifying modern slavery risk in photovoltaic supply chains"
+date: 2024-06-15
+categories: [Supply Chains, SoLCA, Networks]
+image: ../assets/images/img-network.svg
+---
+```
+
+Quarto's listing system reads these files and generates index pages automatically. When a paper gets accepted, I create a file. I don't touch any HTML. I don't touch any CSS. The listing page updates on the next render.
+
+This is the part that makes the site worth maintaining long-term. The design work is done once. The content side is just files.
+
+## Claude Code for the complex parts
+
+Smooth page-exit animations, JavaScript that reads the current URL and decides which page comes next, CSS grid selectors that survive Quarto's Bootstrap layer — I could have figured all of this out eventually. Claude Code did it faster.
+
+The workflow for each of these: describe the specific behavior I wanted, get an implementation, render the site, check it in a browser, describe what was still wrong. The quality of the result tracked closely with how specific I was about the problem. "The transition looks fast" produced a longer duration. "The vertical movement feels mechanical and the easing cuts off abruptly at the end" produced a different timing curve and a changed easing function.
+
+What Claude Code can't do: tell you whether the output looks right. That part is still yours.
+
+## Browser DevTools for the details
+
+`quarto render`, then open `_site/index.html` in a browser. Right-click anything that looks wrong. Inspect.
+
+The computed styles panel shows exactly what CSS is applied and where it comes from. When a font rendered at the wrong size, I traced it through the cascade to find which rule was winning. When a grid card had unexpected padding, I found which Quarto class added it. When the hover animation wasn't firing, I found that the selector I'd written matched zero elements.
+
+That last one happened more than once. The Quarto listing system generates `.quarto-listing-container-grid`, `.g-col-1`, and `.quarto-grid-item` — not `.quarto-listing-grid .listing-item`, which is what I'd written by reading the documentation rather than the output. Twenty minutes with DevTools cleared up an hour of confusion.
+
+The general principle: `quarto render` shows you what the code produces. DevTools shows you what the browser sees. The gap between those two is where most bugs live.
+
+## What I'd tell myself at the start
+
+Get the prototype first. Trying to design directly in Quarto CSS is slow because the feedback loop is long and the rendered output is harder to reason about than a browser-native HTML file. Having a static reference — even a rough one — makes every subsequent conversation with Claude Code faster.
+
+Read the rendered HTML. Not the `.qmd` source, not the `styles.css` file. The actual `_site/` output. Quarto transforms things. Bootstrap overrides things. The only way to know what's actually in the page is to look.
+
+Describe behavior, not implementation. "Fade the page content before navigating" is more useful than "use GSAP with opacity 0 and y -12 over 0.24 seconds." The implementation is Claude Code's job. The behavior is yours to specify.
+
+## The result
+
+The site is easy to update and genuinely adaptable. All color tokens are CSS custom properties — switching the entire palette is a handful of hex values at the top of one file. Grid columns, type scale, spacing, and animation timing are all adjustable without touching content files.
+
+For research, the maintenance cost is low. New paper, new file. New talk, new file. The design stays stable while the content grows.
+
+The AI involvement didn't remove the need to understand what was happening. I still needed to read generated HTML, trace selectors through DevTools, understand why a CSS rule wasn't matching. What I didn't have to do was start from zero on each problem. Claude handled the implementation. I handled the verification. That division turned out to be a reasonable one.
+
+— Edgar

@@ -1,0 +1,6 @@
+page-layout: article
+toc: false
+anchor-sections: false
+format:
+  html:
+    body-classes: detail-page

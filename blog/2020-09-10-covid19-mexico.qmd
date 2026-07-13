@@ -1,0 +1,17 @@
+---
+title: "COVID-19 and mortality rates in Mexico: what the data shows"
+date: 2020-09-10
+categories: [Data Analysis, Public Health, Mexico, R]
+description: "Using national mortality data (SEED, 1998–2020) to examine whether COVID-19 deaths were being reclassified and what the excess mortality figures actually looked like."
+image: ../assets/images/img-timeseries.svg
+---
+
+During the early months of the pandemic in Mexico, there were questions about whether deaths were being reclassified under other causes to reduce the official COVID-19 count. The Epidemiological and Statistical System of Deaths (SEED) covers 1998 onwards and provides a basis for comparing 2020 mortality against historical trends. That comparison is what this analysis looked at.
+
+A few things stood out. Several states showed reporting delays through mid-2020, particularly Oaxaca, Michoacán, Guerrero, Puebla, and Jalisco. By June 2020, the national mortality rate had reached roughly 70 deaths per 100,000 inhabitants — a 30% increase above the same period in previous years.
+
+Mexico City showed the sharpest departure from historical norms. The rate nearly tripled to around 160 deaths per 100,000, and approximately one in four deaths in the city involved COVID-19. Nationally, COVID-19 accounted for about 11% of total deaths as of the end of June.
+
+The reclassification question: approximately 2,300 deaths involving COVID-related causes were recorded under different diagnoses. The category "J129 — Viral Pneumonia, Unspecified" showed around 300 additional cases compared to the same period in previous years. That is not an enormous number in absolute terms, but it points to the kind of reclassification that can understate the burden in official counts.
+
+The data does not answer whether this was intentional. Reporting systems under sudden pressure make errors that can look like suppression. What it does show is that excess mortality is a more reliable signal than confirmed case counts during a period when testing capacity is limited and reporting pipelines are strained.
