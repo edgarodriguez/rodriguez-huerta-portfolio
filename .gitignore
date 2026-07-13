@@ -9,6 +9,9 @@
 !/_freeze/cv-negative/
 !/_freeze/publications/
 !/_freeze/conferences/
+!/_freeze/about/
+!/_freeze/blog/
+!/_freeze/index/
 
 # Quarto cache for individual pages
 *_files/
