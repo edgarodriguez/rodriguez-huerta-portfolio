@@ -1,8 +1,10 @@
 # Quarto build output
 /_site/
 /.quarto/
-/_freeze/
+/_freeze/*
 # …but keep page freeze caches so CI can build without cv_inputs.xlsx
+# (must un-ignore /_freeze/* rather than /_freeze/ itself — git can't
+# re-include a path whose parent directory is excluded)
 !/_freeze/cv/
 !/_freeze/cv-negative/
 !/_freeze/publications/
