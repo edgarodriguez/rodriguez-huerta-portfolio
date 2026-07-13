@@ -1,7 +1,0 @@
-page-layout: article
-toc: true
-toc-location: right
-anchor-sections: true
-format:
-  html:
-    body-classes: detail-page

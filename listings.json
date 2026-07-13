@@ -1,0 +1,47 @@
+[
+  {
+    "listing": "/projects.html",
+    "items": [
+      "/projects/project-clidewo.html",
+      "/projects/project-brick-kilns.html",
+      "/projects/project-depth.html",
+      "/projects/project-us-food-forced-labour.html",
+      "/projects/project-solar-pv.html",
+      "/projects/project-water-metabolism.html"
+    ]
+  },
+  {
+    "listing": "/portfolio.html",
+    "items": [
+      "/portfolio/dataset-climate-decent-work-brazil/index.html",
+      "/portfolio/2026-02-20_climatehazard_decentwork/index.html",
+      "/portfolio/dataset-climate-health-hotspots-brazil/index.html",
+      "/portfolio/2026-02-06_climate-hazard-05-agrochemicals/index.html",
+      "/portfolio/code-thinkhazard-cleaning/index.html",
+      "/portfolio/2025-10-18_labour_inspections/index.html",
+      "/portfolio/artefact-clidewo-website/index.html",
+      "/portfolio/artefact-india-training/index.html",
+      "/portfolio/dataset-lasting-us-food-supply/index.html",
+      "/portfolio/viz-lasting-food-supply/index.html",
+      "/portfolio/viz-semsj-country-profile/index.html",
+      "/portfolio/viz-covid-deaths-mexico/index.html",
+      "/portfolio/viz-mobility-mexico/index.html",
+      "/portfolio/viz-land-use-yucatan/index.html",
+      "/portfolio/viz-water-balance-yucatan/index.html",
+      "/portfolio/viz-water-concessions-mexico/index.html",
+      "/portfolio/viz-evapotranspiration-yucatan/index.html",
+      "/portfolio/viz-what-crop-edible/index.html"
+    ]
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/2026-05-02-building-with-claude.html",
+      "/blog/2025-05-15-lego-storytelling.html",
+      "/blog/2025-02-01-data-challenges.html",
+      "/blog/2025-01-29-ethanol-forced-labour.html",
+      "/blog/2020-09-10-covid19-mexico.html",
+      "/blog/2020-09-10-sdg-tradeoffs.html"
+    ]
+  }
+]
