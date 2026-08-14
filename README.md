@@ -1,8 +1,9 @@
 # Rodríguez-Huerta — Research Portfolio
-
+ALL DATA IS IN PROCESS (NON-OFFICIAL)
 A static editorial portfolio for **Edgar Rodríguez-Huerta**, PhD researcher in socio-ecological systems & modern slavery.
 
 Built with [Quarto](https://quarto.org), styled with hand-written CSS, and published to GitHub Pages.
+
 
 ## Local preview
 
