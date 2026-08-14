@@ -8,6 +8,8 @@ description: "A short tutorial on creating interactive maps in R Markdown using 
 image: ""
 ---
 
+{{< adslot blog-post >}}
+
 This is a walkthrough for creating interactive maps in R using the Leaflet package. The example data is water concession records from CONAGUA's REPDA registry for the three states of the Yucatán Peninsula (Campeche, Quintana Roo, Yucatán) as of September 2020.
 
 One disclaimer before starting: some coordinates in the data fall in the ocean. The REPDA data has known quality issues with certain entries. The analysis below does not validate coordinates — it visualises what CONAGUA has registered.

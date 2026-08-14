@@ -9,6 +9,8 @@ image: ../assets/images/img-code.png
 
 [← Back to Blog](../blog.html){.back-link}
 
+{{< adslot blog-post >}}
+
 I needed a research portfolio updated. That's not a inspiring opening line, but it's the honest reason I started this. I had papers to show, projects to link, and a CV that hasn't been updated in months. I'd tried GitHub Pages + Quarto in the past, and it's great!,you create a couple of templates and pages, and the structure is ready to be populated—it’s pretty simple. But it only gets the job done halfway; customizing it to my liking can take a long time, and aesthetic details like transitions or animations simply aren't straightforward to implement.
 This is where Claude (Claudio para los amigos) intervienes.
 

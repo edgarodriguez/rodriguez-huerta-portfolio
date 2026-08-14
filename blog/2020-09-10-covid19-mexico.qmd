@@ -3,8 +3,10 @@ title: "COVID-19 and mortality rates in Mexico: what the data shows"
 date: 2020-09-10
 categories: [Data Analysis, Public Health, Mexico, R]
 description: "Using national mortality data (SEED, 1998–2020) to examine whether COVID-19 deaths were being reclassified and what the excess mortality figures actually looked like."
-image: ../assets/images/img-timeseries.svg
+image: ../assets/images/404.svg
 ---
+
+{{< adslot blog-post >}}
 
 During the early months of the pandemic in Mexico, there were questions about whether deaths were being reclassified under other causes to reduce the official COVID-19 count. The Epidemiological and Statistical System of Deaths (SEED) covers 1998 onwards and provides a basis for comparing 2020 mortality against historical trends. That comparison is what this analysis looked at.
 

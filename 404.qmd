@@ -1,0 +1,30 @@
+---
+title: ""
+page-layout: full
+toc: false
+anchor-sections: false
+sitemap: false
+search: false
+---
+
+::: {.error-page}
+
+![](assets/images/404.svg){.error-mark fig-alt="404"}
+
+[Error 404 — page not found]{.label}
+
+::: {.h1}
+This page moved, or never existed
+:::
+
+The portfolio is being reorganised, so some older links no longer resolve.
+The pages below will get you back on track.
+
+::: {.btn-row}
+[Home →](index.qmd){.btn-primary}
+[Projects](projects.qmd){.btn-outline}
+[Portfolio](portfolio.qmd){.btn-outline}
+[Blog](blog.qmd){.btn-outline}
+:::
+
+:::

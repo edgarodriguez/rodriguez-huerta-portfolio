@@ -24,6 +24,8 @@ image: ../assets/images/img-network.svg
   Avoid throat-clearing; start with something specific.
 ────────────────────────────────────────────────────────────────────────────── -->
 
+{{< adslot blog-post >}}
+
 Opening paragraph here — one strong sentence or problem statement.
 
 <!-- ── BODY ───────────────────────────────────────────────────────────────────

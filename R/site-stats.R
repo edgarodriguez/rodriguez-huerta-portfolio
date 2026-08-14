@@ -13,10 +13,12 @@ suppressPackageStartupMessages({
   if (is.null(fm)) list() else fm
 }
 
-# Content .qmd files in a folder, recursing into sub-folders, minus _metadata.yml.
+# Content .qmd files in a folder, recursing into sub-folders.
+# Anything underscore-prefixed (_template.qmd, _template/, _metadata) is
+# scaffolding: Quarto never renders it, so it must never be counted either.
 .content_files <- function(dir) {
   f <- list.files(dir, pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE)
-  f[basename(f) != "_metadata.yml"]
+  f[!grepl("/_", f)]
 }
 
 # Projects still in progress — any status other than "published".

@@ -3,8 +3,10 @@ title: "Trade-offs of the Sustainable Development Goals"
 date: 2020-09-10
 categories: [Sustainability, SDGs, Systems Thinking, Research Methods]
 description: "Achieving all 17 SDGs simultaneously without negative consequences is not straightforward. The interactions between goals matter as much as the goals themselves."
-image: ../assets/images/img-sankey.svg
+image: ../assets/images/404.svg
 ---
+
+{{< adslot blog-post >}}
 
 The 17 Sustainable Development Goals were designed to be pursued together. The ambition is right. The challenge is that pursuing one goal often creates pressure on another, and the framework does not always make those trade-offs visible.
 

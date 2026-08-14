@@ -4,8 +4,10 @@ title: "Visualising water allocation time series in R with Plotly"
 date: 2020-09-01
 categories: [R, Visualisation, Water, Mexico]
 description: "A short tutorial on creating interactive time series charts in R Markdown using Plotly, illustrated with historical agricultural water concession data for the Yucatán Peninsula."
-image: ../assets/images/img-scatter.svg
+image: ../assets/images/404.svg
 ---
+
+{{< adslot blog-post >}}
 
 This post walks through the steps for building an interactive time series chart in R using the Plotly package. The data is agricultural water concession records from CONAGUA's REPDA registry for the Yucatán Peninsula.
 

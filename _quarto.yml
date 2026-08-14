@@ -33,7 +33,10 @@ website:
   draft-mode: gone
   announcement:
     content: "**New:** I'm moving all the portfolio content to a new location. still work in progress"
-  site-url: "https://edgarrodriguezhuerta.github.io/rodriguez-huerta-portfolio"
+  # Must match the CNAME domain the site is actually served from. Quarto builds
+  # the 404 page's asset paths, canonical links and social-card URLs from this,
+  # so pointing it at the old github.io sub-path breaks all of them.
+  site-url: "https://www.rodriguez-huerta.com"
   # Google Analytics — replace G-XXXXXXXXXX with your Measurement ID
   # from Google Analytics > Admin > Data Streams > Web stream details
   google-analytics: "G-WJGNN5V5GM"

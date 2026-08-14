@@ -5,8 +5,10 @@ date: 2025-01-29
 date-modified: 2025-01-25
 categories: [Modern Slavery, Supply Chains, Brazil, Decent Work, Energy Transition]
 description: "Brazil's ethanol is often framed as a clean fuel success story. The working conditions behind it tell a different story."
-image: ../assets/images/img-sankey.svg
+image: ../assets/images/404.svg
 ---
+
+{{< adslot blog-post >}}
 
 Brazil's sugarcane ethanol is often presented as one of the more successful examples of large-scale renewable fuel production. It has been running for decades, it has displaced a meaningful share of petrol consumption, and it has attracted genuine interest from countries looking for models of bioenergy transition. That is one version of the story.
 

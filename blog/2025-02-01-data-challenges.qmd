@@ -3,8 +3,10 @@ title: "Data challenges in measuring hidden labour abuses in global supply chain
 description: "Why measuring forced labour is hard, what data exists, and what the gaps tell us about who benefits from the difficulty of measurement."
 date: 2025-02-01
 categories: [Data, Methods]
-image: ../assets/images/img-heatmap.svg
+image: ../assets/images/404.svg
 ---
+
+{{< adslot blog-post >}}
 
 Modern slavery is, by definition, hidden. The people perpetrating it have every incentive to keep it invisible. The people experiencing it are often unable to speak freely. And the data infrastructure we rely on — surveys, administrative records, trade statistics — was built to measure things that are meant to be counted.
 

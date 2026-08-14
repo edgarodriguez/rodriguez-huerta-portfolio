@@ -8,6 +8,7 @@ description: "What would navigation look like if it optimised for pleasantness r
 image: ../assets/images/img-network.svg
 ---
 
+{{< adslot blog-post >}}
 
 Most navigation tools solve one problem: get from A to B in the least time. That is a reasonable thing to optimise for when you are late. It is not the only thing worth optimising for.
 
