@@ -5,6 +5,7 @@ project:
     - ".nojekyll"
     - "assets/**"
     - "cv.pdf"
+    - "ads.txt"
   render:
     - "*.qmd"
     - "projects/*.qmd"
@@ -21,8 +22,13 @@ project:
 website:
   title: "Rodríguez-Huerta, Edgar"
   description: "Research portfolio — sustainability science and complexity"
+  # draft: true pages get no content and no links anywhere (Quarto's own
+  # default — set explicitly so it can't change on a Quarto upgrade).
+  # `quarto preview` ignores this and always shows drafts with a banner,
+  # by design, so you can review them locally before flipping draft: false.
+  draft-mode: gone
   announcement:
-    content: "**New:** We are moving all the portfolio content to a new location. still work in progress"
+    content: "**New:** I'm moving all the portfolio content to a new location. still work in progress"
   site-url: "https://edgarrodriguezhuerta.github.io/rodriguez-huerta-portfolio"
   # Google Analytics — replace G-XXXXXXXXXX with your Measurement ID
   # from Google Analytics > Admin > Data Streams > Web stream details
