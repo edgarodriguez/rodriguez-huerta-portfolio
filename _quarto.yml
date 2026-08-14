@@ -3,6 +3,10 @@ project:
   output-dir: _site
   resources:
     - ".nojekyll"
+    # Custom domain. MUST be listed here: the publish action replaces the whole
+    # gh-pages branch with _site/, so a CNAME added via the GitHub UI gets wiped
+    # on the next build and the domain 404s. Shipping it as a resource is the fix.
+    - "CNAME"
     - "assets/**"
     - "cv.pdf"
     - "ads.txt"
