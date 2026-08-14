@@ -9,8 +9,8 @@
   --muted:      oklch(53% 0.038 168);   /* muted sage */
   --subtle:     oklch(92% 0.008 158);   /* pale sage */
   --accent:     oklch(58% 0.20 10);   /* vibrant raspberry accent */
-  --icon-color: oklch(0.7088 0.1839 29.06);   /* same as accent */
-
+  --icon-color: oklch(58% 0.20 10);   /* vibrant raspberry accent */
+  --icon-color-old: oklch(0.7088 0.1839 29.06);   /* same as accent */
   /* Override Bootstrap's default #2761e3 link color with palette accent */
   --bs-link-color:       var(--accent);
   --bs-link-hover-color: var(--ink);
@@ -22,6 +22,7 @@
   --pad:        clamp(24px, 3vw, 96px);
   --nav-h:      56px;
   --foot-h:     34px;
+  --ann-h:      40px;
 }
 
 [data-palette="editorial-dark"] {
@@ -207,6 +208,46 @@ code, pre { font-family: var(--font-mono); font-size: 13px; }
   z-index: 1000 !important;
 }
 
+/* ============================================================
+   ANNOUNCEMENT BAR (website.announcement in _quarto.yml)
+   Fixed strip above the navbar. The navbar's own fixed top:0
+   would otherwise paint directly over it, so this is a separate
+   fixed layer with a higher z-index, and the navbar/body offset
+   shift down by --ann-h only while it's present in the DOM.
+   ============================================================ */
+#quarto-announcement {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1001;
+  height: var(--ann-h);
+  align-items: center;
+  margin: 0;
+  padding: 0 var(--pad);
+  background: var(--accent);
+  color: var(--paper);
+  border: none;
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  /* not !important: keeps Bootstrap's `.hidden{display:none!important}`
+     in control until quarto-nav.js decides whether to show this
+     (it stays hidden if the visitor already dismissed it) */
+  display: flex;
+}
+#quarto-announcement .quarto-announcement-content p { margin: 0; }
+#quarto-announcement .quarto-announcement-action { color: var(--paper); opacity: 0.7; }
+#quarto-announcement .quarto-announcement-action:hover { opacity: 1; }
+
+body:has(#quarto-announcement) {
+  padding-top: calc(var(--nav-h) + var(--ann-h)) !important;
+}
+body:has(#quarto-announcement) .navbar {
+  top: var(--ann-h) !important;
+}
+
 .navbar > .container,
 .navbar > .container-fluid,
 .navbar > .container-xxl,
@@ -310,6 +351,19 @@ code, pre { font-family: var(--font-mono); font-size: 13px; }
   padding: var(--pad);
   border-bottom: none;
 }
+
+/* 404 page — centred column between navbar and footer. */
+.error-page {
+  min-height: calc(100vh - var(--nav-h) - var(--foot-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: var(--pad);
+  max-width: 62ch;
+}
+.error-page .error-mark { width: 120px; height: auto; }
+.error-page p { margin: 0; }
 
 .page-band-subtle { background: var(--subtle); }
 
@@ -1280,6 +1334,25 @@ main { animation: fadeUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both; }
   margin-bottom: 36px;
 }
 .methods-box .label { margin-bottom: 14px; }
+
+/* Ad slot placeholder — {{< adslot ID >}}. Dashed + transparent on purpose:
+   a reserved-space marker reads differently from a real content box. */
+.ad-slot {
+  border: 1px dashed var(--rule);
+  background: transparent;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0;
+}
+.ad-slot-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
 
 /* Contact email in About */
 .contact-email {
