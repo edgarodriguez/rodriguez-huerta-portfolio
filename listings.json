@@ -10,6 +10,17 @@
     ]
   },
   {
+    "listing": "/blog.html",
+    "items": [
+      "/blog/2026-05-02-building-with-claude.html",
+      "/blog/2025-05-15-lego-storytelling.html",
+      "/blog/2025-02-01-data-challenges.html",
+      "/blog/2025-01-29-ethanol-forced-labour.html",
+      "/blog/2020-09-10-covid19-mexico.html",
+      "/blog/2020-09-10-sdg-tradeoffs.html"
+    ]
+  },
+  {
     "listing": "/portfolio.html",
     "items": [
       "/portfolio/dataset-climate-decent-work-brazil/index.html",
@@ -19,7 +30,7 @@
       "/portfolio/code-thinkhazard-cleaning/index.html",
       "/portfolio/2025-10-18_labour_inspections/index.html",
       "/portfolio/artefact-clidewo-website/index.html",
-      "/portfolio/artefact-india-training/index.html",
+      "/portfolio/artifact-india-training/index.html",
       "/portfolio/dataset-lasting-us-food-supply/index.html",
       "/portfolio/viz-lasting-food-supply/index.html",
       "/portfolio/viz-semsj-country-profile/index.html",
@@ -30,17 +41,6 @@
       "/portfolio/viz-water-concessions-mexico/index.html",
       "/portfolio/viz-evapotranspiration-yucatan/index.html",
       "/portfolio/viz-what-crop-edible/index.html"
-    ]
-  },
-  {
-    "listing": "/blog.html",
-    "items": [
-      "/blog/2026-05-02-building-with-claude.html",
-      "/blog/2025-05-15-lego-storytelling.html",
-      "/blog/2025-02-01-data-challenges.html",
-      "/blog/2025-01-29-ethanol-forced-labour.html",
-      "/blog/2020-09-10-covid19-mexico.html",
-      "/blog/2020-09-10-sdg-tradeoffs.html"
     ]
   }
 ]

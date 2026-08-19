@@ -84,7 +84,17 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <style>html{ scroll-behavior: smooth; }</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;family=Space+Grotesk:wght@400;500&amp;family=Space+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+
+<!-- Serif — EB Garamond (Google Fonts) -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet">
+<!-- Sans — Switzer (Fontshare). Weights 400/500 match the old Space Grotesk load. -->
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&amp;display=swap" rel="stylesheet">
+<!-- Mono — Commit Mono (Fontsource via jsDelivr). Taller x-height than Space Mono,
+     so the small mono labels read larger at the same px value. -->
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
 <script>
   // Apply default editorial palette; persists user toggle in localStorage.
   (function () {
@@ -148,6 +158,10 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
     <a class="nav-link" href="./conferences.html"> 
 <span class="menu-text">Conferences</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">CV</span>
@@ -163,10 +177,6 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -187,9 +197,7 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 
 <div class="page-band">
 <p><span class="label">02 — About</span></p>
-<div class="h1">
-<p>Bridging disciplines, seeing the system</p>
-</div>
+<h1 class="h1" id="about-me">About me</h1>
 </div>
 <div class="split-bio">
 <div>
@@ -249,7 +257,7 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <polygon points="60.00,30.00 85.98,45.00 85.98,75.00 60.00,90.00 34.02,75.00 34.02,45.00" fill="var(--accent)" stroke="var(--accent)" stroke-width="48" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill"></polygon><g transform="translate(25.714285714285715 25.714285714285715) scale(2.857142857142857)"><g fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path xmlns="http://www.w3.org/2000/svg" d="M16 12h3"></path><path xmlns="http://www.w3.org/2000/svg" d="M17.5 12a8 8 0 0 1-8 8A4.5 4.5 0 0 1 5 15.5c0-6 8-4 8-8.5a3 3 0 1 0-6 0c0 3 2.5 8.5 12 13"></path></g></g>
 </svg>
 </div>
-<p><span class="label"><span class="stat-count">4</span> Miscellaneous (gists,artefacts &amp; outtakes)</span></p>
+<p><span class="label"><span class="stat-count">4</span> Miscellaneous (gists,artifacts &amp; outtakes)</span></p>
 </div>
 </div>
 </div>
@@ -459,31 +467,189 @@ GitHub
     item.appendChild(badge);
   });
 
-  // ── PAGE EXIT (GSAP) ─────────────────────────────────────────────
-  // Fade main out before navigating; CSS fadeUp handles the entrance on load.
+  // ── MOTION HELPERS ───────────────────────────────────────────────
+  function reducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  // Fade main out, then navigate. Uses the Web Animations API — the old
+  // version called gsap, which is not loaded on this site, so the guard
+  // `typeof gsap === 'undefined'` meant this never actually ran.
+  function navigateWithFade(dest) {
+    if (reducedMotion()) { window.location.href = dest; return; }
+    var mainEl = document.querySelector('main') || document.body;
+    var done = false;
+    function go() { if (!done) { done = true; window.location.href = dest; } }
+    try {
+      mainEl.animate(
+        [{ opacity: 1, transform: 'translateY(0)' },
+         { opacity: 0, transform: 'translateY(-10px)' }],
+        { duration: 260, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+      ).onfinish = go;
+    } catch (e) { go(); }
+    setTimeout(go, 420);   // safety net if the animation never resolves
+  }
+
+  // ── PAGE EXIT ────────────────────────────────────────────────────
+  // Crossfade on internal navigation; CSS fadeUp handles the entrance.
   function initPageExit() {
-    if (typeof gsap === 'undefined') return;
     document.querySelectorAll('a[href]').forEach(function (link) {
       var href = link.getAttribute('href') || '';
-      // Skip anchors, mailto, external, and target=_blank
       if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 ||
           href.indexOf('http') === 0 || link.target === '_blank') return;
       link.addEventListener('click', function (e) {
+        // Never hijack modified clicks — cmd/ctrl/shift/middle must still
+        // open a new tab or window. The previous version swallowed these.
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
         e.preventDefault();
-        var dest = link.href; // use resolved href for relative paths
-        var mainEl = document.querySelector('main') || document.body;
-        gsap.to(mainEl, {
-          opacity: 0, y: -8, duration: 0.42, ease: 'power2.inOut',
-          onComplete: function () { window.location.href = dest; }
-        });
+        navigateWithFade(link.href);
       });
     });
   }
 
+  // ── SCROLL-TO-ADVANCE ────────────────────────────────────────────
+  // Overscroll-intent navigation. At the very bottom of the page, further
+  // scrolling accumulates against a threshold and fills a visible meter;
+  // completing it fades out and moves to the next page. Stopping drains it.
+  //
+  // Deliberately NOT a scroll-jack: normal scrolling is untouched, and this
+  // only listens once you are already at the end of the document.
+  //
+  // The reading order. Labels are the destination's canonical section
+  // number, not its position in this list — CV (06/07) is intentionally
+  // not part of the scroll path, so 05 is followed by 08.
+  var ADVANCE_SEQ = {
+    'index.html':        ['about.html',        '02 — About'],
+    'about.html':        ['projects.html',     '03 — Projects'],
+    'projects.html':     ['publications.html', '04 — Publications'],
+    'publications.html': ['portfolio.html',    '05 — Portfolio'],
+    'portfolio.html':    ['conferences.html',  '06 — Conferences'],
+    'conferences.html':  ['blog.html',         '07 — Blog']
+    // blog.html is the end of the path — no band.
+  };
+
+  // Only top-level pages advance. Detail pages live one or more folders
+  // deep (/blog/post.html, /portfolio/slug/index.html) and must not match —
+  // note that a naive filename check would treat every portfolio item's
+  // index.html as the home page.
+  function currentTopLevelPage() {
+    var path = window.location.pathname;
+    if (path.charAt(path.length - 1) === '/') path += 'index.html';
+    var parts = path.split('/').filter(Boolean);
+    return parts.length === 1 ? parts[0] : null;
+  }
+
+  function buildAdvanceBand(dest, label) {
+    var band = document.createElement('div');
+    band.className = 'advance';
+    band.setAttribute('data-advance-to', dest);
+
+    var row = document.createElement('div');
+    row.className = 'advance-row';
+    var next = document.createElement('span');
+    next.className = 'label';
+    next.textContent = 'Next';
+    var link = document.createElement('a');
+    link.className = 'advance-link';
+    link.href = dest;
+    link.textContent = label;
+    row.appendChild(next); row.appendChild(link);
+
+    var meter = document.createElement('div');
+    meter.className = 'advance-meter';
+    meter.setAttribute('aria-hidden', 'true');
+    var fill = document.createElement('div');
+    fill.className = 'advance-meter-fill';
+    meter.appendChild(fill);
+
+    var hint = document.createElement('span');
+    hint.className = 'advance-hint';
+    hint.textContent = 'Keep scrolling to continue';
+
+    band.appendChild(row); band.appendChild(meter); band.appendChild(hint);
+    (document.querySelector('main') || document.body).appendChild(band);
+    return band;
+  }
+
+  function initScrollAdvance() {
+    var page = currentTopLevelPage();
+    var entry = page && ADVANCE_SEQ[page];
+    if (!entry) return;
+
+    var dest = entry[0];
+    // Build the band even under reduced motion — it is a useful "next" link
+    // on its own. CSS hides the meter and hint in that case.
+    var band = buildAdvanceBand(dest, entry[1]);
+    if (reducedMotion()) return;
+
+    var KEY = 'advance-from';
+
+    // Back-button guard. Without this the pattern is a trap: you advance to
+    // About, press Back, the browser restores you to the bottom of Home, and
+    // it immediately advances again. Both checks below disarm that.
+    try {
+      if (sessionStorage.getItem(KEY) === window.location.pathname) {
+        sessionStorage.removeItem(KEY);
+        return;
+      }
+    } catch (e) {}
+    try {
+      var nav = performance.getEntriesByType('navigation')[0];
+      if (nav && nav.type === 'back_forward') return;
+    } catch (e) {}
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    var NEED = 420;          // px of deliberate overscroll required
+    var acc = 0, fired = false, decay = null;
+
+    function atBottom() {
+      var doc = document.documentElement;
+      return (doc.scrollHeight - window.innerHeight - window.scrollY) <= 2;
+    }
+    function setProgress(p) {
+      band.style.setProperty('--advance-progress', p);
+      band.classList.toggle('is-arming', p > 0.02);
+    }
+    function bump(delta) {
+      if (fired || delta <= 0 || !atBottom()) return;
+      acc = Math.min(NEED, acc + delta);
+      setProgress(acc / NEED);
+      if (acc >= NEED) {
+        fired = true;
+        try { sessionStorage.setItem(KEY, window.location.pathname); } catch (e) {}
+        navigateWithFade(dest);
+        return;
+      }
+      clearTimeout(decay);
+      decay = setTimeout(function () { acc = 0; setProgress(0); }, 500);
+    }
+
+    window.addEventListener('wheel', function (e) { bump(e.deltaY); }, { passive: true });
+
+    var lastY = null;
+    window.addEventListener('touchstart', function (e) {
+      lastY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+      if (lastY === null) return;
+      var y = e.touches[0].clientY;
+      bump(lastY - y);
+      lastY = y;
+    }, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (!atBottom() && acc !== 0) { acc = 0; setProgress(0); }
+    }, { passive: true });
+  }
+
+  // Order matters: the advance band is created by initScrollAdvance, and
+  // initPageExit binds its fade handler to the links that exist when it
+  // runs. Build the band first or its link navigates without the fade.
+  function initMotion() { initScrollAdvance(); initPageExit(); }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPageExit);
+    document.addEventListener('DOMContentLoaded', initMotion);
   } else {
-    initPageExit();
+    initMotion();
   }
 
   // ── STAGGER DELAYS ───────────────────────────────────────────

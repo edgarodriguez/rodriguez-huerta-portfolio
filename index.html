@@ -84,7 +84,17 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <style>html{ scroll-behavior: smooth; }</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;family=Space+Grotesk:wght@400;500&amp;family=Space+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+
+<!-- Serif — EB Garamond (Google Fonts) -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet">
+<!-- Sans — Switzer (Fontshare). Weights 400/500 match the old Space Grotesk load. -->
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&amp;display=swap" rel="stylesheet">
+<!-- Mono — Commit Mono (Fontsource via jsDelivr). Taller x-height than Space Mono,
+     so the small mono labels read larger at the same px value. -->
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
 <script>
   // Apply default editorial palette; persists user toggle in localStorage.
   (function () {
@@ -97,17 +107,9 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="– Rodríguez-Huerta, Edgar">
-<meta property="og:image" content="https://www.rodriguez-huerta.com/portfolio/2026-02-20_climatehazard_decentwork/img/cover.png">
 <meta property="og:site_name" content="Rodríguez-Huerta, Edgar">
-<meta property="og:image:alt" content="">
-<meta property="og:image:height" content="647">
-<meta property="og:image:width" content="490">
 <meta name="twitter:title" content="– Rodríguez-Huerta, Edgar">
-<meta name="twitter:image" content="https://www.rodriguez-huerta.com/portfolio/2026-02-20_climatehazard_decentwork/img/cover.png">
-<meta name="twitter:image:alt" content="">
-<meta name="twitter:image-height" content="647">
-<meta name="twitter:image-width" content="490">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -154,6 +156,10 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
     <a class="nav-link" href="./conferences.html"> 
 <span class="menu-text">Conferences</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">CV</span>
@@ -169,10 +175,6 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -200,6 +202,11 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 </div>
 <div>
 <p><span class="label">Interdisciplinarity + Data Science</span></p>
+<!-- The hero has no visible headline, so the page's h1 is hidden but
+     present for screen-reader heading nav and SEO. Do not move it above
+     the label: a heading in first position makes Pandoc drop this
+     wrapper div and the hero grid collapses. -->
+<h1 class="visually-hidden" id="edgar-rodríguez-huerta-researcher-in-social-sustainability-climate-and-supply-chains">Edgar Rodríguez-Huerta — researcher in social sustainability, climate and supply chains</h1>
 <p>Researcher and data storyteller. I work at the intersection of social sustainability, climate and supply chains, and human rights — turning complex data into visuals that start the conversation. Based at the University of Nottingham’s Rights Lab.</p>
 <div class="tag-row">
 <p><span class="tag">Sustainability</span> <span class="tag">Data Science</span> <span class="tag">Interdisciplinary studies</span> <span class="tag">Climate Change</span> <span class="tag">Industrial Ecology</span> <span class="tag">Complexity</span></p>
@@ -242,286 +249,6 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <p><a href="portfolio.html">Climate–Decent Work Risk Assessment</a></p>
 </div>
 <p><span class="body-sm">Climate Risk Assessment · 2026 [Tableau]</span></p>
-</div>
-</div>
-<!-- ── ABOUT SUMMARY ────────────────────────────── -->
-<div class="home-section">
-<div class="page-band">
-<p><span class="label">02 — About</span></p>
-<div class="h1">
-<p>Bridging disciplines, seeing the system</p>
-</div>
-</div>
-<div class="split-bio">
-<div>
-<p>Using quantitative methods, I draw on tools from engineering, ecology, and social science to follow goods and measure the hidden human cost.</p>
-<div class="tag-row">
-<p><span class="tag">Supply chain mapping</span> <span class="tag">Life Cycle Assessment</span> <span class="tag">Climate modelling</span> <span class="tag">Data visualization</span> <span class="tag">Network analysis</span></p>
-</div>
-<div class="btn-row">
-<p><a href="about.html" class="btn-outline">Read more →</a></p>
-</div>
-</div>
-<div>
-<div class="stats-strip">
-<div class="stat-item">
-<div class="stat-icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewbox="0 0 120 120">
-<polygon points="60.00,30.00 85.98,45.00 85.98,75.00 60.00,90.00 34.02,75.00 34.02,45.00" fill="var(--accent)" stroke="var(--accent)" stroke-width="48" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill"></polygon><g transform="translate(25.714285714285715 25.714285714285715) scale(2.857142857142857)"><g fill="none" stroke="var(--paper)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path xmlns="http://www.w3.org/2000/svg" d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"></path></g></g>
-</svg>
-</div>
-<p><span class="label"><span class="stat-count">5</span> Active projects</span></p>
-</div>
-<div class="stat-item">
-<div class="stat-icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewbox="0 0 120 120">
-<polygon points="60.00,30.00 85.98,45.00 85.98,75.00 60.00,90.00 34.02,75.00 34.02,45.00" fill="var(--accent)" stroke="var(--accent)" stroke-width="48" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill"></polygon><g transform="translate(25.714285714285715 25.714285714285715) scale(2.857142857142857)"><g fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path xmlns="http://www.w3.org/2000/svg" d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path xmlns="http://www.w3.org/2000/svg" d="M14 2v5a1 1 0 0 0 1 1h5"></path><path xmlns="http://www.w3.org/2000/svg" d="M10 9H8"></path><path xmlns="http://www.w3.org/2000/svg" d="M16 13H8"></path><path xmlns="http://www.w3.org/2000/svg" d="M16 17H8"></path></g></g>
-</svg>
-</div>
-<p><span class="label"><span class="stat-count">14</span> Publications</span></p>
-</div>
-<div class="stat-item">
-<div class="stat-icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewbox="0 0 120 120">
-<polygon points="60.00,30.00 85.98,45.00 85.98,75.00 60.00,90.00 34.02,75.00 34.02,45.00" fill="var(--accent)" stroke="var(--accent)" stroke-width="48" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill"></polygon><g transform="translate(25.714285714285715 25.714285714285715) scale(2.857142857142857)"><g fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse xmlns="http://www.w3.org/2000/svg" cx="12" cy="5" rx="9" ry="3"></ellipse><path xmlns="http://www.w3.org/2000/svg" d="M3 5V19A9 3 0 0 0 21 19V5"></path><path xmlns="http://www.w3.org/2000/svg" d="M3 12A9 3 0 0 0 21 12"></path></g></g>
-</svg>
-</div>
-<p><span class="label"><span class="stat-count">3</span> Datasets</span></p>
-</div>
-<div class="stat-item">
-<div class="stat-icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewbox="0 0 120 120">
-<polygon points="60.00,30.00 85.98,45.00 85.98,75.00 60.00,90.00 34.02,75.00 34.02,45.00" fill="var(--accent)" stroke="var(--accent)" stroke-width="48" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill"></polygon><g transform="translate(25.714285714285715 25.714285714285715) scale(2.857142857142857)"><g fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path xmlns="http://www.w3.org/2000/svg" d="m16 18 6-6-6-6"></path><path xmlns="http://www.w3.org/2000/svg" d="m8 6-6 6 6 6"></path></g></g>
-</svg>
-</div>
-<p><span class="label"><span class="stat-count">1</span> Codes</span></p>
-</div>
-<div class="stat-item">
-<div class="stat-icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewbox="0 0 120 120">
-<polygon points="60.00,30.00 85.98,45.00 85.98,75.00 60.00,90.00 34.02,75.00 34.02,45.00" fill="var(--accent)" stroke="var(--accent)" stroke-width="48" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill"></polygon><g transform="translate(25.714285714285715 25.714285714285715) scale(2.857142857142857)"><g fill="none" stroke="var(--paper)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path xmlns="http://www.w3.org/2000/svg" d="m13.11 7.664 1.78 2.672"></path><path xmlns="http://www.w3.org/2000/svg" d="m14.162 12.788-3.324 1.424"></path><path xmlns="http://www.w3.org/2000/svg" d="m20 4-6.06 1.515"></path><path xmlns="http://www.w3.org/2000/svg" d="M3 3v16a2 2 0 0 0 2 2h16"></path><circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="6" r="2"></circle><circle xmlns="http://www.w3.org/2000/svg" cx="16" cy="12" r="2"></circle><circle xmlns="http://www.w3.org/2000/svg" cx="9" cy="15" r="2"></circle></g></g>
-</svg>
-</div>
-<p><span class="label"><span class="stat-count">10</span> DataVizs</span></p>
-</div>
-<div class="stat-item">
-<div class="stat-icon">
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewbox="0 0 120 120">
-<polygon points="60.00,30.00 85.98,45.00 85.98,75.00 60.00,90.00 34.02,75.00 34.02,45.00" fill="var(--accent)" stroke="var(--accent)" stroke-width="48" stroke-linejoin="round" stroke-linecap="round" paint-order="stroke fill"></polygon><g transform="translate(25.714285714285715 25.714285714285715) scale(2.857142857142857)"><g fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path xmlns="http://www.w3.org/2000/svg" d="M16 12h3"></path><path xmlns="http://www.w3.org/2000/svg" d="M17.5 12a8 8 0 0 1-8 8A4.5 4.5 0 0 1 5 15.5c0-6 8-4 8-8.5a3 3 0 1 0-6 0c0 3 2.5 8.5 12 13"></path></g></g>
-</svg>
-</div>
-<p><span class="label"><span class="stat-count">4</span> Miscellaneous (gists,artefacts &amp; outtakes)</span></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- ── FEATURED PROJECTS ──────────────────────────── -->
-<div class="home-section subtle-bg">
-<div class="page-band">
-<p><span class="label">03 — Projects</span></p>
-<div class="h1">
-<p>Social sustainability, climate change and complex systems</p>
-</div>
-</div>
-<div class="home-cards">
-<div class="home-card">
-<div class="home-card-img">
-<img src="assets/images/clidewo-logo.png" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Climate change · Decent Work · Risk Assessment · Occupational Health · Agriculture · Brazil
-</div>
-<div class="home-card-title">
-CLIDEWO: Climate Change, Decent Work and Workers’ Health in Brazilian Agriculture
-</div>
-<div class="home-card-desc">
-A worker-informed, multi-layer risk assessment integrating climate models, socio-economic data, and qualitative worker voice to assess how climate hazards intersect with labour exploitation in Brazil.
-</div>
-<div class="home-card-meta">
-Active · 2026
-</div>
-<p><a href="projects/project-clidewo.html" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-<div class="home-card">
-<div class="home-card-img">
-<img src="assets/images/img-heatmap.svg" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Forced Labour · South Asia · Societal Metabolism · Field Research
-</div>
-<div class="home-card-title">
-Brick Kilns - Agriculture connecttion
-</div>
-<div class="home-card-desc">
-Applying societal metabolism and social sustainability frameworks to map bonded and forced labour conditions across South Asian brick kiln sectors.
-</div>
-<div class="home-card-meta">
-Active · 2026
-</div>
-<p><a href="projects/project-brick-kilns.html" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-<div class="home-card">
-<div class="home-card-img">
-<img src="assets/images/proj-us-food-supply.png" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-S-LCA · Food Systems · Forced Labour · Dietary Patterns
-</div>
-<div class="home-card-title">
-Forced Labour Risk in the US Food Supply
-</div>
-<div class="home-card-desc">
-Quantifying forced labour embedded in American diets — from commodity supply chains to dietary pattern recommendations — using Social LCA and the medium risk hours equivalent metric.
-</div>
-<div class="home-card-meta">
-Published · 2025
-</div>
-<p><a href="projects/project-us-food-forced-labour.html" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-</div>
-<div class="home-section-footer">
-<p><a href="projects.html" class="btn-primary">All projects →</a></p>
-</div>
-</div>
-<!-- ── FEATURED VISUALISATIONS ──────────────────────── -->
-<div class="home-section">
-<div class="page-band">
-<p><span class="label">04 — Portfolio</span></p>
-<div class="h1">
-<p>Making invisible systems visible through data</p>
-</div>
-</div>
-<div class="home-cards">
-<div class="home-card">
-<div class="home-card-img">
-<img src="assets/images/img-heatmap.svg" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Dataset · Climate Hazard · Decent Work · Brazil · CLIDEWO
-</div>
-<div class="home-card-title">
-Climate and decent work risk — Brazilian municipalities
-</div>
-<div class="home-card-desc">
-Integrated risk scores across Brazil’s 5,570 municipalities combining 23 climate hazard indicators and 35 decent work indicators at 0.05-degree spatial resolution. Follows the IPCC Risk = Hazard x Exposure x Vulnerability framework.
-</div>
-<div class="home-card-meta">
-2026
-</div>
-<p><a href="portfolio/dataset-climate-decent-work-brazil/" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-<div class="home-card">
-<div class="home-card-img">
-<img src="portfolio/2026-02-20_climatehazard_decentwork/img/cover.png" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Interactive · Climate Change · Decent Work · CLIDEWO · Tableau
-</div>
-<div class="home-card-title">
-Climate–Decent Work Risk Assessment
-</div>
-<div class="home-card-desc">
-Interactive Tableau dashboard combining IPCC-framework climate hazards with ten decent work indicators across Brazilian agricultural municipalities.
-</div>
-<div class="home-card-meta">
-2026
-</div>
-<p><a href="portfolio/2026-02-20_climatehazard_decentwork/" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-<div class="home-card">
-<div class="home-card-img">
-<img src="portfolio/2025-10-18_labour_inspections/img/CLIDEWO-constallations.svg" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Interactive · Decent Work · Labour Inspection · Tableau
-</div>
-<div class="home-card-title">
-Constellation of Inspections
-</div>
-<div class="home-card-desc">
-Each star is a labour inspection in Brazil — sized by workers rescued. A data visualisation of enforcement capacity and the scale of the task ahead.
-</div>
-<div class="home-card-meta">
-2025
-</div>
-<p><a href="portfolio/2025-10-18_labour_inspections/" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-<div class="home-card">
-<div class="home-card-img">
-<img src="assets/images/img-timeseries.svg" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Dataset · Climate Hazard · Occupational Health · Brazil · CLIDEWO
-</div>
-<div class="home-card-title">
-Climate-health hot spots in Brazilian agriculture
-</div>
-<div class="home-card-desc">
-Occupational health surveillance data (2003–2024) for agricultural workers in Brazil, covering work-related accidents, climate-linked hospital admissions, dengue, agrochemical poisoning, and violence. Supports the identification of climate-health risk hot spots at the municipality level.
-</div>
-<div class="home-card-meta">
-2026
-</div>
-<p><a href="portfolio/dataset-climate-health-hotspots-brazil/" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-<div class="home-card">
-<div class="home-card-img">
-<img src="portfolio/2026-02-06_climate-hazard-05-agrochemicals/img/agrochemicals_logo_02.png" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Infographic · Climate Change · Workers Health · CLIDEWO
-</div>
-<div class="home-card-title">
-Workers’ Health under Climate Change: Agrochemicals
-</div>
-<div class="home-card-desc">
-Infographic on agrochemical exposure risk across Brazilian agriculture — scored by pesticide application intensity and toxicity, disaggregated by municipality, population, and crop.
-</div>
-<div class="home-card-meta">
-2026
-</div>
-<p><a href="portfolio/2026-02-06_climate-hazard-05-agrochemicals/" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-<div class="home-card">
-<div class="home-card-img">
-<img src="assets/images/img-scatter.svg" class="home-card-svg" alt="">
-</div>
-<div class="home-card-body">
-<div class="home-card-cats">
-Code · R · Climate Hazard · Brazil
-</div>
-<div class="home-card-title">
-Cleaning ThinkHazard! data for Brazil
-</div>
-<div class="home-card-desc">
-R script that downloads and tidies the World Bank ThinkHazard! dataset, filtering eight natural hazard types down to Brazil-specific records for analysis.
-</div>
-<div class="home-card-meta">
-2025
-</div>
-<p><a href="portfolio/code-thinkhazard-cleaning/" class="btn-outline btn-sm">View →</a></p>
-</div>
-</div>
-</div>
-<div class="home-section-footer">
-<p><a href="portfolio.html" class="btn-primary">All visualisations →</a></p>
 </div>
 </div>
 
@@ -667,31 +394,189 @@ R script that downloads and tidies the World Bank ThinkHazard! dataset, filterin
     item.appendChild(badge);
   });
 
-  // ── PAGE EXIT (GSAP) ─────────────────────────────────────────────
-  // Fade main out before navigating; CSS fadeUp handles the entrance on load.
+  // ── MOTION HELPERS ───────────────────────────────────────────────
+  function reducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  // Fade main out, then navigate. Uses the Web Animations API — the old
+  // version called gsap, which is not loaded on this site, so the guard
+  // `typeof gsap === 'undefined'` meant this never actually ran.
+  function navigateWithFade(dest) {
+    if (reducedMotion()) { window.location.href = dest; return; }
+    var mainEl = document.querySelector('main') || document.body;
+    var done = false;
+    function go() { if (!done) { done = true; window.location.href = dest; } }
+    try {
+      mainEl.animate(
+        [{ opacity: 1, transform: 'translateY(0)' },
+         { opacity: 0, transform: 'translateY(-10px)' }],
+        { duration: 260, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+      ).onfinish = go;
+    } catch (e) { go(); }
+    setTimeout(go, 420);   // safety net if the animation never resolves
+  }
+
+  // ── PAGE EXIT ────────────────────────────────────────────────────
+  // Crossfade on internal navigation; CSS fadeUp handles the entrance.
   function initPageExit() {
-    if (typeof gsap === 'undefined') return;
     document.querySelectorAll('a[href]').forEach(function (link) {
       var href = link.getAttribute('href') || '';
-      // Skip anchors, mailto, external, and target=_blank
       if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 ||
           href.indexOf('http') === 0 || link.target === '_blank') return;
       link.addEventListener('click', function (e) {
+        // Never hijack modified clicks — cmd/ctrl/shift/middle must still
+        // open a new tab or window. The previous version swallowed these.
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
         e.preventDefault();
-        var dest = link.href; // use resolved href for relative paths
-        var mainEl = document.querySelector('main') || document.body;
-        gsap.to(mainEl, {
-          opacity: 0, y: -8, duration: 0.42, ease: 'power2.inOut',
-          onComplete: function () { window.location.href = dest; }
-        });
+        navigateWithFade(link.href);
       });
     });
   }
 
+  // ── SCROLL-TO-ADVANCE ────────────────────────────────────────────
+  // Overscroll-intent navigation. At the very bottom of the page, further
+  // scrolling accumulates against a threshold and fills a visible meter;
+  // completing it fades out and moves to the next page. Stopping drains it.
+  //
+  // Deliberately NOT a scroll-jack: normal scrolling is untouched, and this
+  // only listens once you are already at the end of the document.
+  //
+  // The reading order. Labels are the destination's canonical section
+  // number, not its position in this list — CV (06/07) is intentionally
+  // not part of the scroll path, so 05 is followed by 08.
+  var ADVANCE_SEQ = {
+    'index.html':        ['about.html',        '02 — About'],
+    'about.html':        ['projects.html',     '03 — Projects'],
+    'projects.html':     ['publications.html', '04 — Publications'],
+    'publications.html': ['portfolio.html',    '05 — Portfolio'],
+    'portfolio.html':    ['conferences.html',  '06 — Conferences'],
+    'conferences.html':  ['blog.html',         '07 — Blog']
+    // blog.html is the end of the path — no band.
+  };
+
+  // Only top-level pages advance. Detail pages live one or more folders
+  // deep (/blog/post.html, /portfolio/slug/index.html) and must not match —
+  // note that a naive filename check would treat every portfolio item's
+  // index.html as the home page.
+  function currentTopLevelPage() {
+    var path = window.location.pathname;
+    if (path.charAt(path.length - 1) === '/') path += 'index.html';
+    var parts = path.split('/').filter(Boolean);
+    return parts.length === 1 ? parts[0] : null;
+  }
+
+  function buildAdvanceBand(dest, label) {
+    var band = document.createElement('div');
+    band.className = 'advance';
+    band.setAttribute('data-advance-to', dest);
+
+    var row = document.createElement('div');
+    row.className = 'advance-row';
+    var next = document.createElement('span');
+    next.className = 'label';
+    next.textContent = 'Next';
+    var link = document.createElement('a');
+    link.className = 'advance-link';
+    link.href = dest;
+    link.textContent = label;
+    row.appendChild(next); row.appendChild(link);
+
+    var meter = document.createElement('div');
+    meter.className = 'advance-meter';
+    meter.setAttribute('aria-hidden', 'true');
+    var fill = document.createElement('div');
+    fill.className = 'advance-meter-fill';
+    meter.appendChild(fill);
+
+    var hint = document.createElement('span');
+    hint.className = 'advance-hint';
+    hint.textContent = 'Keep scrolling to continue';
+
+    band.appendChild(row); band.appendChild(meter); band.appendChild(hint);
+    (document.querySelector('main') || document.body).appendChild(band);
+    return band;
+  }
+
+  function initScrollAdvance() {
+    var page = currentTopLevelPage();
+    var entry = page && ADVANCE_SEQ[page];
+    if (!entry) return;
+
+    var dest = entry[0];
+    // Build the band even under reduced motion — it is a useful "next" link
+    // on its own. CSS hides the meter and hint in that case.
+    var band = buildAdvanceBand(dest, entry[1]);
+    if (reducedMotion()) return;
+
+    var KEY = 'advance-from';
+
+    // Back-button guard. Without this the pattern is a trap: you advance to
+    // About, press Back, the browser restores you to the bottom of Home, and
+    // it immediately advances again. Both checks below disarm that.
+    try {
+      if (sessionStorage.getItem(KEY) === window.location.pathname) {
+        sessionStorage.removeItem(KEY);
+        return;
+      }
+    } catch (e) {}
+    try {
+      var nav = performance.getEntriesByType('navigation')[0];
+      if (nav && nav.type === 'back_forward') return;
+    } catch (e) {}
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    var NEED = 420;          // px of deliberate overscroll required
+    var acc = 0, fired = false, decay = null;
+
+    function atBottom() {
+      var doc = document.documentElement;
+      return (doc.scrollHeight - window.innerHeight - window.scrollY) <= 2;
+    }
+    function setProgress(p) {
+      band.style.setProperty('--advance-progress', p);
+      band.classList.toggle('is-arming', p > 0.02);
+    }
+    function bump(delta) {
+      if (fired || delta <= 0 || !atBottom()) return;
+      acc = Math.min(NEED, acc + delta);
+      setProgress(acc / NEED);
+      if (acc >= NEED) {
+        fired = true;
+        try { sessionStorage.setItem(KEY, window.location.pathname); } catch (e) {}
+        navigateWithFade(dest);
+        return;
+      }
+      clearTimeout(decay);
+      decay = setTimeout(function () { acc = 0; setProgress(0); }, 500);
+    }
+
+    window.addEventListener('wheel', function (e) { bump(e.deltaY); }, { passive: true });
+
+    var lastY = null;
+    window.addEventListener('touchstart', function (e) {
+      lastY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+      if (lastY === null) return;
+      var y = e.touches[0].clientY;
+      bump(lastY - y);
+      lastY = y;
+    }, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (!atBottom() && acc !== 0) { acc = 0; setProgress(0); }
+    }, { passive: true });
+  }
+
+  // Order matters: the advance band is created by initScrollAdvance, and
+  // initPageExit binds its fade handler to the links that exist when it
+  // runs. Build the band first or its link navigates without the fade.
+  function initMotion() { initScrollAdvance(); initPageExit(); }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPageExit);
+    document.addEventListener('DOMContentLoaded', initMotion);
   } else {
-    initPageExit();
+    initMotion();
   }
 
   // ── STAGGER DELAYS ───────────────────────────────────────────

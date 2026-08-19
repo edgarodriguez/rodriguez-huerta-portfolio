@@ -86,7 +86,17 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <style>html{ scroll-behavior: smooth; }</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;family=Space+Grotesk:wght@400;500&amp;family=Space+Mono:wght@400&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
+
+<!-- Serif — EB Garamond (Google Fonts) -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet">
+<!-- Sans — Switzer (Fontshare). Weights 400/500 match the old Space Grotesk load. -->
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&amp;display=swap" rel="stylesheet">
+<!-- Mono — Commit Mono (Fontsource via jsDelivr). Taller x-height than Space Mono,
+     so the small mono labels read larger at the same px value. -->
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
 <script>
   // Apply default editorial palette; persists user toggle in localStorage.
   (function () {
@@ -181,6 +191,10 @@ window.Quarto = {
     <a class="nav-link" href="../conferences.html"> 
 <span class="menu-text">Conferences</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../blog.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cv" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">CV</span>
@@ -196,10 +210,6 @@ window.Quarto = {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -263,8 +273,7 @@ window.Quarto = {
 <div class="label">
 <p>Supply Chains · Published 2022 · British Academy Just Transitions Programme</p>
 </div>
-<section id="overview" class="level2">
-<h2 data-anchor-id="overview">Overview</h2>
+<h2 id="overview">Overview</h2>
 <p>Is solar energy “the energy of freedom” — or does it, in fact, put that freedom at risk for the workers who produce it? Around 40–45 % of global polysilicon is manufactured in China’s Xinjiang Uyghur Autonomous Region under what multiple governments and independent tribunals have characterised as state-sponsored forced labour. A further 15–30 % of the cobalt used in lithium-ion battery storage originates from artisanal mines in the Democratic Republic of Congo where forced and child labour are prevalent.</p>
 <p>This project — conducted for the British Academy’s <em>Just Transitions within Sectors and Industries Globally</em> programme — develops a new, scalable method for estimating forced labour risk across the photovoltaic (PV) supply chain, from raw silica extraction to consumer markets. We demonstrate how modern slavery risks can be quantified at the country-level production system, identifying where in the value chain risk accumulates and how sensitive the system is to changes in upstream conditions.</p>
 <div class="split-2">
@@ -277,12 +286,9 @@ window.Quarto = {
 </div>
 <p><strong>Funder:</strong> British Academy — <em>Just Transitions within Sectors and Industries Globally</em> <strong>Period:</strong> November 2021 – March 2022 <strong>Host institution:</strong> Rights Lab, University of Nottingham</p>
 <hr>
-</section>
-<section id="method-social-life-cycle-assessment-of-pv-supply-chains" class="level2">
-<h2 data-anchor-id="method-social-life-cycle-assessment-of-pv-supply-chains">Method: Social Life Cycle Assessment of PV supply chains</h2>
+<h2 id="method-social-life-cycle-assessment-of-pv-supply-chains">Method: Social Life Cycle Assessment of PV supply chains</h2>
 <p>This project applies a Social Life Cycle Assessment (S-LCA) framework to the global solar energy value chain — to our knowledge the first multi-country S-LCA in the renewable energy sector. Rather than measuring environmental impact per unit of product (as in conventional LCA), we measure <em>forced labour risk</em> as it cascades through the economic relationships that produce one kilowatt-hour of on-grid PV electricity.</p>
-<section id="data-integration" class="level3">
-<h3 data-anchor-id="data-integration">Data integration</h3>
+<h3 id="data-integration">Data integration</h3>
 <p>The method combines four independent datasets:</p>
 <ul>
 <li><strong>World Bank / IRENA</strong> — levelised cost of electricity (LCOE) by country and by supply-chain breakdown (PV module and inverter, balance-of-system hardware, installation, soft costs, O&amp;M). LCOE provides the functional unit for disaggregating cost — and therefore risk — across the life cycle.</li>
@@ -290,9 +296,7 @@ window.Quarto = {
 <li><strong>PSILCA database</strong> — the Product Social Impact Life Cycle Assessment database, version 3, which provides 88 social impact indicators for every country-specific sector (CSS) combination available in the EORA Multi-Regional Input–Output (MRIO) database (187 countries; 15,909 sectors). Risk scores reflect 2018 data, updated for key CSS components using 2022 US Department of Labor data.</li>
 <li><strong>Walk Free Foundation Global Slavery Index</strong> — underpins the frequency-of-forced-labour indicator.</li>
 </ul>
-</section>
-<section id="forced-labour-indicators" class="level3">
-<h3 data-anchor-id="forced-labour-indicators">Forced labour indicators</h3>
+<h3 id="forced-labour-indicators">Forced labour indicators</h3>
 <p>Three indicators score each CSS component in the value chain:</p>
 <table class="caption-top table">
 <colgroup>
@@ -328,9 +332,7 @@ window.Quarto = {
 <p>These combine into a composite <strong>Forced Labour Index (FLI)</strong>:</p>
 <p><span class="math display">\[\text{FLI}_i = 0.30 \times \text{FFL}_{\text{scaled},i} + 0.60 \times \text{GFL}_{\text{scaled},i} + 0.10 \times \text{TP}_{\text{scaled},i}\]</span></p>
 <p>GFL receives the highest weight because it is most directly linked to specific goods in the supply chain; FFL captures broader population-level risk; TP proxies institutional enforcement capacity.</p>
-</section>
-<section id="output-metrics" class="level3">
-<h3 data-anchor-id="output-metrics">Output metrics</h3>
+<h3 id="output-metrics">Output metrics</h3>
 <p>The FLI is translated into two final measures, applicable to any energy source:</p>
 <ul>
 <li><strong>FLR/kWh</strong> — forced labour risk in medium risk hour equivalents (mrh-eq) embodied in one kilowatt-hour of on-grid PV electricity, from cradle to gate.</li>
@@ -338,10 +340,7 @@ window.Quarto = {
 </ul>
 <p>Both metrics can be applied to other energy sources, opening a path towards forced labour risk integration into ESG benchmarking and energy market comparisons.</p>
 <hr>
-</section>
-</section>
-<section id="key-findings" class="level2">
-<h2 data-anchor-id="key-findings">Key findings</h2>
+<h2 id="key-findings">Key findings</h2>
 <p><strong>Country-level results (top 30 producers, 96 % of global output)</strong></p>
 <ul>
 <li>China and India show the highest FLR/kWh scores on the GFL indicator, driven by the high volume of goods produced with forced labour in their PV hardware supply chains.</li>
@@ -357,9 +356,7 @@ window.Quarto = {
 <p><strong>Sensitivity analysis — system-level significance</strong></p>
 <p>A single CSS component — <em>CN-Other electric machinery and equipment</em> (the polysilicon production sector in China) — intervenes in 95 % of national PV value chains studied. Shifting its FFL risk score from “very low” (reflecting 2018 data, before Xinjiang allegations emerged) to “very high” produces a <strong>15,385 % increase</strong> in mean FFL risk across all 30 countries (from 0.00026 to 0.04 mrh-eq/kWh). A change in one upstream node reverberates through nearly every solar energy system on the planet.</p>
 <hr>
-</section>
-<section id="policy-implications" class="level2">
-<h2 data-anchor-id="policy-implications">Policy implications</h2>
+<h2 id="policy-implications">Policy implications</h2>
 <p>The study argues that a scalable S-LCA method could:</p>
 <ol type="1">
 <li>Allow firms and investors to identify higher-risk CSS components for targeted due diligence, rather than resource-intensive audits across the entire supply chain.</li>
@@ -369,9 +366,7 @@ window.Quarto = {
 </ol>
 <p>Interactive country risk profiles for all 30 countries are available via Tableau Public.</p>
 <hr>
-</section>
-<section id="outputs" class="level2">
-<h2 data-anchor-id="outputs">Outputs</h2>
+<h2 id="outputs">Outputs</h2>
 <ul>
 <li><a href="https://doi.org/10.5871/just-transitions-s-i/J-C">Full research report — <em>The Energy of Freedom?</em></a></li>
 <li>Policy brief (condensed version)</li>
@@ -380,7 +375,6 @@ window.Quarto = {
 </ul>
 
 
-</section>
 
 </main> <!-- /main -->
 <script>
@@ -522,31 +516,189 @@ window.Quarto = {
     item.appendChild(badge);
   });
 
-  // ── PAGE EXIT (GSAP) ─────────────────────────────────────────────
-  // Fade main out before navigating; CSS fadeUp handles the entrance on load.
+  // ── MOTION HELPERS ───────────────────────────────────────────────
+  function reducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  // Fade main out, then navigate. Uses the Web Animations API — the old
+  // version called gsap, which is not loaded on this site, so the guard
+  // `typeof gsap === 'undefined'` meant this never actually ran.
+  function navigateWithFade(dest) {
+    if (reducedMotion()) { window.location.href = dest; return; }
+    var mainEl = document.querySelector('main') || document.body;
+    var done = false;
+    function go() { if (!done) { done = true; window.location.href = dest; } }
+    try {
+      mainEl.animate(
+        [{ opacity: 1, transform: 'translateY(0)' },
+         { opacity: 0, transform: 'translateY(-10px)' }],
+        { duration: 260, easing: 'cubic-bezier(0.16, 1, 0.3, 1)', fill: 'forwards' }
+      ).onfinish = go;
+    } catch (e) { go(); }
+    setTimeout(go, 420);   // safety net if the animation never resolves
+  }
+
+  // ── PAGE EXIT ────────────────────────────────────────────────────
+  // Crossfade on internal navigation; CSS fadeUp handles the entrance.
   function initPageExit() {
-    if (typeof gsap === 'undefined') return;
     document.querySelectorAll('a[href]').forEach(function (link) {
       var href = link.getAttribute('href') || '';
-      // Skip anchors, mailto, external, and target=_blank
       if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0 ||
           href.indexOf('http') === 0 || link.target === '_blank') return;
       link.addEventListener('click', function (e) {
+        // Never hijack modified clicks — cmd/ctrl/shift/middle must still
+        // open a new tab or window. The previous version swallowed these.
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
         e.preventDefault();
-        var dest = link.href; // use resolved href for relative paths
-        var mainEl = document.querySelector('main') || document.body;
-        gsap.to(mainEl, {
-          opacity: 0, y: -8, duration: 0.42, ease: 'power2.inOut',
-          onComplete: function () { window.location.href = dest; }
-        });
+        navigateWithFade(link.href);
       });
     });
   }
 
+  // ── SCROLL-TO-ADVANCE ────────────────────────────────────────────
+  // Overscroll-intent navigation. At the very bottom of the page, further
+  // scrolling accumulates against a threshold and fills a visible meter;
+  // completing it fades out and moves to the next page. Stopping drains it.
+  //
+  // Deliberately NOT a scroll-jack: normal scrolling is untouched, and this
+  // only listens once you are already at the end of the document.
+  //
+  // The reading order. Labels are the destination's canonical section
+  // number, not its position in this list — CV (06/07) is intentionally
+  // not part of the scroll path, so 05 is followed by 08.
+  var ADVANCE_SEQ = {
+    'index.html':        ['about.html',        '02 — About'],
+    'about.html':        ['projects.html',     '03 — Projects'],
+    'projects.html':     ['publications.html', '04 — Publications'],
+    'publications.html': ['portfolio.html',    '05 — Portfolio'],
+    'portfolio.html':    ['conferences.html',  '06 — Conferences'],
+    'conferences.html':  ['blog.html',         '07 — Blog']
+    // blog.html is the end of the path — no band.
+  };
+
+  // Only top-level pages advance. Detail pages live one or more folders
+  // deep (/blog/post.html, /portfolio/slug/index.html) and must not match —
+  // note that a naive filename check would treat every portfolio item's
+  // index.html as the home page.
+  function currentTopLevelPage() {
+    var path = window.location.pathname;
+    if (path.charAt(path.length - 1) === '/') path += 'index.html';
+    var parts = path.split('/').filter(Boolean);
+    return parts.length === 1 ? parts[0] : null;
+  }
+
+  function buildAdvanceBand(dest, label) {
+    var band = document.createElement('div');
+    band.className = 'advance';
+    band.setAttribute('data-advance-to', dest);
+
+    var row = document.createElement('div');
+    row.className = 'advance-row';
+    var next = document.createElement('span');
+    next.className = 'label';
+    next.textContent = 'Next';
+    var link = document.createElement('a');
+    link.className = 'advance-link';
+    link.href = dest;
+    link.textContent = label;
+    row.appendChild(next); row.appendChild(link);
+
+    var meter = document.createElement('div');
+    meter.className = 'advance-meter';
+    meter.setAttribute('aria-hidden', 'true');
+    var fill = document.createElement('div');
+    fill.className = 'advance-meter-fill';
+    meter.appendChild(fill);
+
+    var hint = document.createElement('span');
+    hint.className = 'advance-hint';
+    hint.textContent = 'Keep scrolling to continue';
+
+    band.appendChild(row); band.appendChild(meter); band.appendChild(hint);
+    (document.querySelector('main') || document.body).appendChild(band);
+    return band;
+  }
+
+  function initScrollAdvance() {
+    var page = currentTopLevelPage();
+    var entry = page && ADVANCE_SEQ[page];
+    if (!entry) return;
+
+    var dest = entry[0];
+    // Build the band even under reduced motion — it is a useful "next" link
+    // on its own. CSS hides the meter and hint in that case.
+    var band = buildAdvanceBand(dest, entry[1]);
+    if (reducedMotion()) return;
+
+    var KEY = 'advance-from';
+
+    // Back-button guard. Without this the pattern is a trap: you advance to
+    // About, press Back, the browser restores you to the bottom of Home, and
+    // it immediately advances again. Both checks below disarm that.
+    try {
+      if (sessionStorage.getItem(KEY) === window.location.pathname) {
+        sessionStorage.removeItem(KEY);
+        return;
+      }
+    } catch (e) {}
+    try {
+      var nav = performance.getEntriesByType('navigation')[0];
+      if (nav && nav.type === 'back_forward') return;
+    } catch (e) {}
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    var NEED = 420;          // px of deliberate overscroll required
+    var acc = 0, fired = false, decay = null;
+
+    function atBottom() {
+      var doc = document.documentElement;
+      return (doc.scrollHeight - window.innerHeight - window.scrollY) <= 2;
+    }
+    function setProgress(p) {
+      band.style.setProperty('--advance-progress', p);
+      band.classList.toggle('is-arming', p > 0.02);
+    }
+    function bump(delta) {
+      if (fired || delta <= 0 || !atBottom()) return;
+      acc = Math.min(NEED, acc + delta);
+      setProgress(acc / NEED);
+      if (acc >= NEED) {
+        fired = true;
+        try { sessionStorage.setItem(KEY, window.location.pathname); } catch (e) {}
+        navigateWithFade(dest);
+        return;
+      }
+      clearTimeout(decay);
+      decay = setTimeout(function () { acc = 0; setProgress(0); }, 500);
+    }
+
+    window.addEventListener('wheel', function (e) { bump(e.deltaY); }, { passive: true });
+
+    var lastY = null;
+    window.addEventListener('touchstart', function (e) {
+      lastY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+      if (lastY === null) return;
+      var y = e.touches[0].clientY;
+      bump(lastY - y);
+      lastY = y;
+    }, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (!atBottom() && acc !== 0) { acc = 0; setProgress(0); }
+    }, { passive: true });
+  }
+
+  // Order matters: the advance band is created by initScrollAdvance, and
+  // initPageExit binds its fade handler to the links that exist when it
+  // runs. Build the band first or its link navigates without the fade.
+  function initMotion() { initScrollAdvance(); initPageExit(); }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPageExit);
+    document.addEventListener('DOMContentLoaded', initMotion);
   } else {
-    initPageExit();
+    initMotion();
   }
 
   // ── STAGGER DELAYS ───────────────────────────────────────────
