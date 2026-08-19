@@ -13,9 +13,7 @@ search: false
 
 [Error 404 — page not found]{.label}
 
-::: {.h1}
-This page moved, or never existed
-:::
+# This page moved, or never existed {.h1}
 
 The portfolio is being reorganised, so some older links no longer resolve.
 The pages below will get you back on track.

@@ -23,7 +23,7 @@ The site is editorial in style — typographic, restrained, monochrome by defaul
 | Optional computation | R or Python in code cells | Only when a page needs a live chart or table. Most pages have none. |
 | Hosting | **GitHub Pages** | Free, static, fits Quarto's render-to-HTML model. |
 | CI/CD | GitHub Actions (`quarto-dev/quarto-actions/publish@v2`) | Auto-builds and publishes to `gh-pages` on every push to `main`. |
-| Fonts | Google Fonts (EB Garamond, Space Grotesk, Space Mono) | Editorial serif + utilitarian sans + technical mono. Free, web-safe. |
+| Fonts | EB Garamond (Google Fonts), Switzer (Fontshare), Commit Mono (Fontsource/jsDelivr) | Editorial serif + neo-grotesque sans + high-x-height technical mono. All free. |
 | Animation | None (deferred) | Skipped for the first cut per user direction. |
 
 **No** Next.js, **no** Supabase, **no** Vercel, **no** Stripe, **no** auth — this is a static, public, content-first site.
@@ -35,7 +35,7 @@ All pages are public. There is no authenticated area.
 ### Top-level navigation
 | Order | Label | URL | Type |
 |---|---|---|---|
-| 1 | Home | `/` | Editorial split hero + 3 featured items |
+| 1 | Home | `/` | Single full-bleed hero (network viz) + scroll-to-advance band |
 | 2 | About | `/about.html` | Research statement + bio + sidebar facts |
 | 3 | Projects | `/projects.html` | Listing → opens individual project pages |
 | 4 | Publications | `/publications.html` | Listing → opens individual publication pages |
@@ -88,7 +88,7 @@ That's it. No analytics, no comments, no payment, no auth — by design. Can be 
 ## What "done" looks like for the rebuild
 
 - [ ] All 9 navigation entries render without errors via `quarto render`.
-- [ ] Default visual matches the editorial design from `Edgar Portfolio.html` side-by-side: same typography (EB Garamond / Space Grotesk / Space Mono), same palette (`mp085-light` Lighthouse), same two-column splits with rule dividers, same `01 — Section` numerals, same button styles.
+- [ ] Default visual matches the editorial design from `Edgar Portfolio.html` side-by-side: same typography (EB Garamond / Switzer / Commit Mono), same palette (`mp085-light` Lighthouse), same two-column splits with rule dividers, same `01 — Section` numerals, same button styles.
 - [ ] CV nav item is a dropdown with two children (Curriculum Vitae / CV of Failures) that each open a working page.
 - [ ] Each listing page renders at least one seed entry, and clicking it opens a working standalone detail page with a "← back" link.
 - [ ] Site is responsive at 640px (nav stacks, splits collapse to single column).

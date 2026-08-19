@@ -32,6 +32,20 @@ out_fmt <- function() {
 
 .na_blank <- function(x) ifelse(is.na(x) | is.null(x), "", as.character(x))
 
+# Excel hands a column over as serial numbers ("45839") as soon as one cell in it
+# holds free text ("2022 - 2024"). Turn the serials into "Mon YYYY"; anything
+# else is printed exactly as it was typed in the sheet.
+# ponytail: 5-digit test covers 1927-2173, widen if the CV ever goes medieval.
+.excel_serial <- function(d) {
+  d <- trimws(.na_blank(d))
+  if (grepl("^\\d{5}$", d)) as.numeric(d) else NA_real_
+}
+.fmt_date <- function(d) {
+  s <- .excel_serial(d)
+  if (is.na(s)) trimws(.na_blank(d))
+  else format(as.Date(s, origin = "1899-12-30"), "%b %Y")
+}
+
 .split_details <- function(s) {
   s <- .na_blank(s)
   if (!nzchar(s)) return(character(0))
@@ -89,8 +103,8 @@ render_header <- function(meta_df) {
   } else {
     cat("::: {.cv-page-header}\n")
     cat("::: {}\n")
-    cat("[07 — Curriculum Vitae]{.label}\n\n")
-    cat(sprintf("::: {.h1}\n%s\n:::\n\n", full_name))
+    cat("[08 — Curriculum Vitae]{.label}\n\n")
+    cat(sprintf("# %s {.h1}\n\n", full_name))
     if (nzchar(.na_blank(m$position)))
       cat(sprintf("[%s]{.cv-position}\n\n", .na_blank(m$position)))
     if (nzchar(.na_blank(m$address)))
@@ -124,7 +138,7 @@ render_dated <- function(df, label) {
                ",)")
       else "()"
       chunks <- c(chunks, sprintf("#cv-entry(date: [%s], title: [%s], org: [%s], desc: [%s], details: %s)",
-                                  .typ_esc(.na_blank(df$date[i])),
+                                  .typ_esc(.fmt_date(df$date[i])),
                                   .typ_esc(.na_blank(df$title[i])),
                                   loc,
                                   .typ_esc(.na_blank(df$description[i])),
@@ -141,7 +155,7 @@ render_dated <- function(df, label) {
       show_loc <- as.logical(df$filter_money[i])
 
     cat("::: {.cv-row}\n")
-    cat(sprintf("::: {.cv-period}\n%s\n:::\n", .na_blank(df$date[i])))
+    cat(sprintf("::: {.cv-period}\n%s\n:::\n", .fmt_date(df$date[i])))
     cat("::: {}\n")
     cat(sprintf("::: {.cv-title}\n%s\n:::\n", .na_blank(df$title[i])))
     if (show_loc && nzchar(.na_blank(df$location[i])))
@@ -220,15 +234,21 @@ render_publications <- function(df, label = "Selected publications") {
     return(invisible())
   }
 
+  # Publication types stay SUBHEADERS above their list — they are not rail
+  # items like dates. The whole block is offset by the rail width in CSS
+  # (.cv-pub-block) so it still lines up with every other section's content
+  # column instead of starting at x=0.
   cat(sprintf("\n::: {.cv-section}\n::: {.cv-section-label}\n%s\n:::\n\n", label))
   for (t in ordered_types) {
     sub <- df[df$type == t, , drop = FALSE]
     sub_label <- PUB_TYPE_LABELS[[t]] %||% t
+    cat("::: {.cv-pub-block}\n")
     cat(sprintf("::: {.cv-subsection-label}\n%s\n:::\n\n", sub_label))
     cat("::: {.cv-pub-list}\n")
     for (i in seq_len(nrow(sub))) {
       cat(sprintf("- %s\n", .format_pub_text(sub[i, ])))
     }
+    cat(":::\n")
     cat(":::\n\n")
   }
   cat(":::\n")
@@ -344,12 +364,20 @@ render_publications_page <- function(df) {
     if (any(df$filter_key == "Other")) filter_labels <- c(filter_labels, "Other")
   }
 
-  # Header — label above the flex row; h1 (left) and stats (right) are the
-  # only two flex children so align-items: center works on equal-height items.
+  # Header — label + h1 in the left flex child, stats in the right, so
+  # align-items: center works on two equal-height items.
+  #
+  # The label MUST sit inside the same wrapper as the heading. Quarto hoists an
+  # h1 that opens its container into the (CSS-hidden) title block, and Pandoc
+  # promotes a named div that opens with a heading to a <section> with the
+  # heading's classes merged in. A preceding sibling inside the same wrapper
+  # avoids both. Same shape as projects.qmd / portfolio.qmd.
   cat("::: {.listing-header}\n")
-  cat("[04 — Publications]{.label}\n\n")
   cat("::: {.pub-header}\n")
-  cat("::: {.h1}\nPublications\n:::\n\n")
+  cat("::: {}\n")
+  cat("[04 — Publications]{.label}\n\n")
+  cat("# Publications {.h1}\n")
+  cat(":::\n\n")
   cat("::: {.pub-stats}\n")
   pub_stats <- list(
     list(icon = "book-check-6gon-120",    n = n_published,    label = "Published"),
@@ -422,44 +450,25 @@ render_publications_page <- function(df) {
 render_conferences_page <- function(df) {
   if (nrow(df) == 0) return(invisible())
 
-  # Sort by date descending (newest event first); parse "MMM YYYY" or fall back to year
-  .parse_event_date <- function(d) {
-    d <- .na_blank(d)
-    m <- regmatches(d, regexpr(
-      "\\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s+\\d{4}\\b", d, perl = TRUE))
-    if (length(m) && nzchar(m))
-      return(tryCatch(as.numeric(as.Date(paste("01", m), "%d %b %Y")),
-                      error = function(e) NA_real_))
-    yr <- regmatches(d, regexpr("\\d{4}", d))
-    if (length(yr) && nzchar(yr)) as.numeric(as.Date(paste0(yr, "-01-01")))
-    else NA_real_
+  # Newest first. Sort on the Excel serial when there is one, otherwise on the
+  # last year named in the free text (so "2022 - 2024" sorts as 2024).
+  .sort_key <- function(d) {
+    s <- .excel_serial(d)
+    # Both branches must land in the same units: R days since 1970, not Excel days.
+    if (!is.na(s)) return(as.numeric(as.Date(s, origin = "1899-12-30")))
+    yrs <- regmatches(.na_blank(d), gregexpr("(19|20)\\d{2}", .na_blank(d)))[[1]]
+    if (length(yrs)) as.numeric(as.Date(paste0(max(yrs), "-06-30"))) else NA_real_
   }
-  event_dates <- vapply(df$date, .parse_event_date, numeric(1))
-  df <- df[order(event_dates, decreasing = TRUE, na.last = TRUE), , drop = FALSE]
+  df <- df[order(vapply(df$date, .sort_key, numeric(1)),
+                 decreasing = TRUE, na.last = TRUE), , drop = FALSE]
 
   # Graceful fallback when xlsx events sheet has no type column yet
   if (!"type" %in% names(df)) df$type <- "Event"
 
-  # Extract 4-digit year for display; ignores values outside 1990–2030 (e.g. Excel serial "4605")
-  get_year <- function(d) {
-    m <- regmatches(.na_blank(d), regexpr("\\d{4}", .na_blank(d)))
-    if (length(m) && nzchar(m)) {
-      yr <- suppressWarnings(as.integer(m))
-      if (!is.na(yr) && yr >= 1990L && yr <= 2030L) return(m)
-    }
-    ""
-  }
-  df$display_year <- vapply(df$date, get_year, character(1))
+  df$display_date <- vapply(df$date, .fmt_date, character(1))
 
   # Unique types in order of first appearance (preserves xlsx ordering)
   unique_types <- unique(df$type[!is.na(df$type) & nzchar(df$type)])
-
-  # Parse city from location: take the segment after the last " — " (em-dash)
-  parse_city <- function(s) {
-    s <- .na_blank(s)
-    parts <- strsplit(s, " — |\\s—\\s| — ", perl = FALSE)[[1]]
-    if (length(parts) >= 2) trimws(tail(parts, 1)) else trimws(s)
-  }
 
   # Strip leading "Conference:", "Workshop:", etc. prefix from event title
   strip_prefix <- function(s) {
@@ -471,7 +480,7 @@ render_conferences_page <- function(df) {
   cat("::: {.listing-header}\n")
   cat("::: {}\n")
   cat("[06 — Conferences & Talks]{.label}\n\n")
-  cat("::: {.h1}\nPresenting work, building conversations\n:::\n")
+  cat("# Presenting work, building conversations {.h1}\n\n")
   cat(":::\n\n")
 
   # Filter bar
@@ -487,7 +496,7 @@ render_conferences_page <- function(df) {
   cat("::: {#conf-list .row-list}\n\n")
   for (i in seq_len(nrow(df))) {
     tp   <- .na_blank(df$type[i])
-    yr   <- df$display_year[i]
+    yr   <- df$display_date[i]
     desc <- .na_blank(df$description[i])
     raw  <- .na_blank(df$title[i])
     clean <- strip_prefix(raw)
@@ -500,7 +509,7 @@ render_conferences_page <- function(df) {
       row_title <- clean
       row_event <- ""
     }
-    city <- parse_city(.na_blank(df$location[i]))
+    loc  <- trimws(.na_blank(df$location[i]))
 
     cat(sprintf('::: {.row-conf data-filter-key="%s"}\n', tp))
     cat(sprintf("::: {.row-year}\n%s\n:::\n", yr))
@@ -508,7 +517,7 @@ render_conferences_page <- function(df) {
     cat(sprintf("::: {.row-title}\n%s\n:::\n", row_title))
     if (nzchar(row_event))
       cat(sprintf("::: {.row-event}\n%s\n:::\n", row_event))
-    cat(sprintf("::: {.row-loc}\n%s\n:::\n", city))
+    cat(sprintf("::: {.row-loc}\n%s\n:::\n", loc))
     cat(":::\n")
     cat("::: {}\n")
     if (nzchar(tp)) cat(sprintf("[%s]{.tag}\n", tp))

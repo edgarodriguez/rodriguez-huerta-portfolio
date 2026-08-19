@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 # Generates cv_inputs.xlsx at the project root, pre-seeded with real CV data
-# transcribed once from Rodriguez_Huerta_CV-quarto.pdf. Run from project root:
+# transcribed once from the old hand-made CV (removed from the repo: it printed
+# the grant amounts that filter_money now hides). Run from project root:
 #   Rscript R/init-cv-template.R
 
 suppressPackageStartupMessages(library(openxlsx))

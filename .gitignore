@@ -48,3 +48,8 @@ notebook/
 
 # Claude Code local settings (per-machine, not shared)
 .claude/settings.local.json
+
+# Old hand-made CV that predates cv_inputs.xlsx. It printed the grant amounts
+# the filter_money column now hides, so it must not come back into the repo.
+Rodriguez_Huerta_CV*.pdf
+Rodriguez_Huerta_CV*.typ

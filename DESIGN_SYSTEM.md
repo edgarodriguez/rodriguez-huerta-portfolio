@@ -97,13 +97,15 @@ If you build in a framework with its own theme variables (Bootstrap, Tailwind, s
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&family=Space+Grotesk:wght@400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
 ```
 
 ```css
 --font-serif: 'EB Garamond', Georgia, serif;     /* headlines, titles, body emphasis */
---font-sans:  'Space Grotesk', system-ui, sans-serif; /* UI, nav, running text */
---font-mono:  'Space Mono', monospace;           /* labels, metadata, tags, dates */
+--font-sans:  'Switzer', system-ui, -apple-system, sans-serif; /* UI, nav, running text */
+--font-mono:  'Commit Mono', ui-monospace, SFMono-Regular, monospace; /* labels, metadata, tags, dates */
 ```
 
 Base body: `--font-sans`, `15px`, `line-height: 1.6`, color `--ink`, bg `--paper`,

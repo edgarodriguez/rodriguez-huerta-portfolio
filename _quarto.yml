@@ -60,14 +60,15 @@ website:
         text: Portfolio
       - href: conferences.qmd
         text: Conferences
+      - href: blog.qmd
+        text: Blog        
       - text: CV
         menu:
           - href: cv.qmd
             text: Curriculum Vitae
           - href: cv-negative.qmd
             text: CV of Failures
-      - href: blog.qmd
-        text: Blog
+
   page-footer:
     border: true
     left: "© 2026 Edgar Rodríguez-Huerta, PhD"
@@ -87,3 +88,8 @@ format:
     include-in-header: _includes/head.html
     include-after-body: _includes/after-body.html
     anchor-sections: false
+    # Real headings live inside layout divs (.page-band, .listing-header,
+    # .pub-header). Quarto's default section-divs would wrap the heading and
+    # every sibling after it in a <section>, breaking the `>` child selectors
+    # those layout classes rely on. Flat headings keep the DOM predictable.
+    section-divs: false

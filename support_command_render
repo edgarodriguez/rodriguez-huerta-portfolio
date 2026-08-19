@@ -1,6 +1,104 @@
-To update publications or conferences: open cv_inputs.xlsx, edit the publications or events sheet, then run:
+# Render & publish commands
 
-quarto render publications.qmd
-quarto render conferences.qmd
-git add _freeze/publications/ _freeze/conferences/
-git push
+Run everything from the project folder:
+
+    cd ~/ERH/50-Sites/rodriguez-huerta-portfolio
+
+Preview before publishing (live reload, Ctrl+C to stop):
+
+    quarto preview
+
+Pages built from R code keep a cache in `_freeze/`. When you touch one of those
+pages you must render it AND commit its `_freeze/` folder, otherwise GitHub
+rebuilds from the old cache. Pages with code: about, publications,
+conferences, blog, cv, cv-negative. Everything else — home, projects,
+portfolio, individual entries — needs no render at all: commit the `.qmd` and
+push.
+
+
+## 1. Whole site
+
+Use after changing `styles.css`, `_quarto.yml`, `_includes/`, or anything in `R/`.
+
+    rm -rf _freeze
+    quarto render
+    git add -A
+    git commit -m "Update site"
+    git push
+
+`rm -rf _freeze` is required after editing `R/` — Quarto does not notice those
+edits on its own and will happily reuse the stale cache.
+
+
+## 2. One section
+
+### Publications / Conferences (data lives in cv_inputs.xlsx)
+
+Edit the `publications` or `events` sheet, save, close Excel, then:
+
+    quarto render publications.qmd
+    quarto render conferences.qmd
+    git add _freeze/publications/ _freeze/conferences/
+    git commit -m "Update publications and conferences"
+    git push
+
+### CV / CV of failures (same spreadsheet)
+
+    quarto render cv.qmd
+    quarto render cv-negative.qmd
+    git add _freeze/cv/ _freeze/cv-negative/ cv.pdf
+    git commit -m "Update CV"
+    git push
+
+### About
+
+    quarto render about.qmd
+    git add about.qmd _freeze/about/
+    git commit -m "Update about page"
+    git push
+
+### Home (no code, nothing to render)
+
+    git add index.qmd
+    git commit -m "Update home page"
+    git push
+
+### Projects and Portfolio entries (plain text, no code)
+
+    git add projects/ portfolio/
+    git commit -m "Update project text"
+    git push
+
+(The Conferences page is built from the spreadsheet, not from the
+`conferences/` folder — see the Publications / Conferences block above.)
+
+
+## 3. New blog post
+
+    cp blog/_template.qmd blog/2026-08-19-my-post.qmd
+
+Name the file `YYYY-MM-DD-short-title.qmd`. Open it, fill in title,
+description, date and categories, and set `draft: false` when it is ready —
+a draft never appears on the live site.
+
+    quarto preview                 # check it looks right
+    quarto render blog.qmd         # refresh the listing cache
+    git add blog/2026-08-19-my-post.qmd blog.qmd _freeze/blog/
+    git commit -m "New blog post: my post"
+    git push
+
+Same pattern for a new project, portfolio or conference entry — copy the
+`_template` in that folder — except those listings have no code, so skip the
+`quarto render` and the `_freeze/` line.
+
+
+## After pushing
+
+GitHub rebuilds and deploys in ~2 minutes. Check it went green:
+
+    open https://github.com/edgarodriguez/rodriguez-huerta-portfolio/actions
+
+Push rejected ("your current branch is behind")?
+
+    git pull --rebase --autostash origin main
+    git push

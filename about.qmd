@@ -15,9 +15,7 @@ source("R/site-stats.R")
 ::: {.page-band}
 [02 — About]{.label}
 
-::: {.h1}
-Bridging disciplines, seeing the system
-:::
+# About me {.h1}
 :::
 
 ::: {.split-bio}

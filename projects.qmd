@@ -19,9 +19,7 @@ listing:
 ::: {}
 [03 — Projects]{.label}
 
-::: {.h1}
-The human cost of global value chains
-:::
+# The human cost of global value chains {.h1}
 :::
 ::: {.filter-bar data-filter-group="true" data-filter-target="#listing-projects-listing"}
 <button type="button" class="filter-btn is-active" data-filter="All">All</button>

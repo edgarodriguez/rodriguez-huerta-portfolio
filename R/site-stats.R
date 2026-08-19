@@ -81,7 +81,7 @@ render_stats_strip <- function() {
          label = "DataVizs"),
     list(icon = "ampersand-6gon-120",
          n = count_sheet_status("others", "published"),
-         label = "Miscellaneous (gists,artefacts & outtakes)")
+         label = "Miscellaneous (gists,artifacts & outtakes)")
   )
 
   cat("::: {.stats-strip}\n")

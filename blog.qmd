@@ -17,18 +17,16 @@ listing:
 ---
 
 ::: {.page-band}
-[08 — Blog]{.label}
+[07 — Blog]{.label}
 
-::: {.h1}
-Writing on methods, systems
-:::
+# Notes on methods, systems research and bloopers {.h1}
 
 I built this space to keep my published work in one easy-to-link place — papers, talks, code, data.
 
 Also, to force myself to write more often about the messy parts of research that don’t make it into papers.
 The plan is to post short pieces — methods notes, dataset cleanups, dead-ends, and the occasional opinion — alongside the formal publications. If you’re reading this and want to talk, my email is on the About page.
 
-— Edgar
+
 
 ```{r blog-filters}
 #| echo: false
