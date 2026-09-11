@@ -24,7 +24,7 @@ The site is editorial in style — typographic, restrained, monochrome by defaul
 | Hosting | **GitHub Pages** | Free, static, fits Quarto's render-to-HTML model. |
 | CI/CD | GitHub Actions (`quarto-dev/quarto-actions/publish@v2`) | Auto-builds and publishes to `gh-pages` on every push to `main`. |
 | Fonts | EB Garamond (Google Fonts), Switzer (Fontshare), Commit Mono (Fontsource/jsDelivr) | Editorial serif + neo-grotesque sans + high-x-height technical mono. All free. |
-| Animation | None (deferred) | Skipped for the first cut per user direction. |
+| Animation | CSS + one vanilla-JS section in `_includes/after-body.html`; no libraries | Ambient ASCII field in page headers; hex listing expand on hover. |
 
 **No** Next.js, **no** Supabase, **no** Vercel, **no** Stripe, **no** auth — this is a static, public, content-first site.
 
@@ -48,6 +48,37 @@ All pages are public. There is no authenticated area.
 
 ### Listings → individual pages
 For Projects, Publications, Portfolio, Conferences, and Blog: each `.qmd` file inside the corresponding folder (`/projects/`, `/publications/`, etc.) becomes **its own standalone page** at `/<section>/<slug>.html`. The listing page (`projects.qmd`, etc.) auto-generates cards/rows that link to these standalone pages. Adding a new entry = drop a new `.qmd` into the folder.
+
+## Feature: ASCII header field + hex listings (Sept 2026)
+
+**What it does**
+- **ASCII field**: a slow, low-contrast, fluid-moving plasma of small (8px) monospace characters behind the first header of each top-level page (Home hero, About, Projects, Publications, Portfolio, Conferences, Blog, CV, CV of Failures). On Home it fills the hero's right-hand panel, which keeps its `--subtle` fill. The header band on motion.dev/examples is a reference for the look only; all colours come from the site's own tokens. Glyphs use `--rule`, barely different from the paper, and fade out under the text. Single project/post pages and the 404 page get none.
+- **Hex listings**: Projects and Portfolio show entries as a responsive honeycomb of the logo's hexagon (pointy-top, rounded corners). Hovering over a hexagon, or focusing it with the keyboard, makes it grow and reveals its title and description. Clicking opens the entry. The filter bars, including the portfolio sub-filter row, work as before.
+
+**How it's built**
+- One new section in `_includes/after-body.html` writes each plasma frame into a `data-ascii` attribute, and `styles.css` prints it with `::before`. No DOM nodes are added.
+- The honeycomb is CSS applied to Quarto's own grid-listing markup. The old rectangular card-grid rules are deleted, not overridden.
+- No changes to any `.qmd` file, `R/` script or `_quarto.yml`. No libraries, new CDN links or Quarto templates.
+- The plasma is original code, because the asciiart.eu demo's licence forbids reusing its code.
+
+**Behaviour rules**
+- Reduced motion: one still frame, and hexagons change state without transitions.
+- The plasma pauses while its header is off-screen or the tab is hidden.
+- Touch screens (no hover): hexagon titles are always shown.
+- The light/dark toggle recolours both features instantly (tokens only).
+- Design exception: this is the site's one looping animation (`.impeccable.md` principle 3 amended).
+
+**Process**
+1. Isolated previews (`_site/proto-*.html`, built from `_prototypes/`) and a feasibility report. No source files change.
+2. The user approves the previews.
+3. Apply: copy the approved candidate files over `styles.css` and `_includes/after-body.html`.
+
+**Done when**
+- [ ] Every check in `_prototypes/FEASIBILITY.md` is PASS or has an accepted fallback.
+- [ ] `quarto render` succeeds, all 9 top-level pages show the field in their first header, and there are no new console errors.
+- [ ] Projects and Portfolio show the honeycomb at 400px, 900px and 1440px. Every filter button (and portfolio sub-filter) shows the right entries, and the honeycomb reflows with no holes.
+- [ ] Hovering or keyboard-focusing a hexagon makes it grow and shows the title and description, and clicking it or pressing Enter opens the entry.
+- [ ] Reduced motion and dark mode have been checked by hand.
 
 ## Data models
 
