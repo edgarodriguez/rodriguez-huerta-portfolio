@@ -322,6 +322,129 @@
     initMotion();
   }
 
+  // ── ASCII FIELD ──────────────────────────────────────────────────
+  // Ambient plasma behind the whole Home page, and behind the first
+  // header everywhere else (listing headers, page bands, CV header). Our own version of
+  // the classic demoscene sine plasma, with a domain warp so it flows
+  // like liquid: the asciiart.eu demo it is modelled on is not licensed
+  // for reuse. Each frame is one string written to the header's
+  // data-ascii attribute and printed by `.has-ascii::before` in
+  // styles.css, so no DOM nodes are added. ~15 fps, idle off-screen, a
+  // single still frame under reduced motion.
+  var ASCII_RAMP   = ' .:-=+*\\/–·';   // low values → high values
+  var ASCII_CELL_H = 8;               // px, must match the ::before font-size / line-height
+  // Monospace advance is 0.6em (Commit Mono measured 4.8px at 8px; the
+  // ui-monospace fallbacks match). Math.ceil below adds the partial last column.
+  var ASCII_CELL_W = 8 * 0.6;
+
+  // Rows outside first…last stay empty, so a tall field costs what the screen shows.
+  function asciiFrame(cols, rows, t, first, last) {
+    var out = '', top = ASCII_RAMP.length - 1, bendY = [], x;
+    // Domain warp: bend the coordinates before sampling so the bands flow like
+    // liquid. Each bend depends on one axis only, so it is worked out once per
+    // column (here) or once per row (below), not for every character.
+    for (x = 0; x < cols; x++) bendY[x] = Math.cos(x * ASCII_CELL_W / 24 * 0.6 - t * 0.7) * 1.2;
+    for (var y = 0; y < rows; y++) {
+      if (y < first || y > last) { out += '\n'; continue; }
+      var py = y * ASCII_CELL_H / 24;   // 24px units: wave size stays put whatever the cell size
+      var bendX = Math.sin(py * 0.7 + t * 0.9) * 1.2;
+      for (x = 0; x < cols; x++) {
+        var wx = x * ASCII_CELL_W / 24 + bendX, wy = py + bendY[x];
+        var v = Math.sin(wx * 0.9 + t)
+              + Math.sin(wy * 1.1 - t * 0.8)
+              + Math.sin((wx + wy) * 0.6 + t * 0.5)
+              + Math.sin(Math.sqrt(wx * wx + wy * wy) * 0.8 - t * 1.2);   // -4 … 4
+        out += ASCII_RAMP.charAt(Math.round((v + 4) / 8 * top));
+      }
+      out += '\n';
+    }
+    return out;
+  }
+
+  function initAsciiField() {
+    // Home (the page with the hero) gets the whole page, margins included.
+    var el = document.querySelector('.split-2-fullh')
+      ? document.getElementById('quarto-content')
+      : document.querySelector('.listing-header, .page-band, .cv-page-header');
+    if (!el || !window.ResizeObserver) return;
+    el.classList.add('has-ascii');
+
+    var cols = 0, rows = 0, t = 0, last = 0, visible = true;
+    // all = every row (first paint, resizes, reduced motion); otherwise only the
+    // rows on screen, plus a margin so fast scrolling doesn't reveal blank rows.
+    function draw(all) {
+      var above = all ? 0 : -el.getBoundingClientRect().top;
+      var first = all ? 0 : Math.floor(above / ASCII_CELL_H) - 4;
+      var lastRow = all ? rows : Math.ceil((above + window.innerHeight) / ASCII_CELL_H) + 4;
+      el.setAttribute('data-ascii', asciiFrame(cols, rows, t, first, lastRow));
+    }
+
+    // Fires once on observe, so it also paints the first (or only) frame.
+    new ResizeObserver(function () {
+      cols = Math.ceil(el.clientWidth / ASCII_CELL_W);
+      rows = Math.ceil(el.clientHeight / ASCII_CELL_H);
+      draw(true);
+    }).observe(el);
+    if (reducedMotion()) return;
+
+    new IntersectionObserver(function (entries) {
+      visible = entries[entries.length - 1].isIntersecting;
+    }).observe(el);
+
+    requestAnimationFrame(function tick(now) {
+      requestAnimationFrame(tick);
+      if (!visible || now - last < 66) return;   // ~15 fps; rAF already sleeps in hidden tabs
+      last = now;
+      t = now * 0.0006;
+      draw(false);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAsciiField);
+  } else {
+    initAsciiField();
+  }
+
+  // ── HEX ROWS ─────────────────────────────────────────────────────
+  // Grid listings (projects, portfolio) are a honeycomb: every second row
+  // of hexagon tiles starts half a tile in (.hex-shift in styles.css).
+  // CSS can't know where rows wrap once the filter bar hides tiles, so
+  // this walks the visible tiles top to bottom and marks the first tile
+  // of each odd row. Reading offsetTop after each mark lets later rows
+  // re-wrap. Re-runs when tiles are shown/hidden or the width changes.
+  function hexRows(list) {
+    var row = -1, top = null;
+    list.querySelectorAll('.g-col-1').forEach(function (t) { t.classList.remove('hex-shift'); });
+    list.querySelectorAll('.g-col-1').forEach(function (t) {
+      if (t.style.display === 'none' || t.offsetTop === top) return;
+      row++;
+      if (row % 2) t.classList.add('hex-shift');
+      top = t.offsetTop;
+    });
+  }
+
+  function initHexRows() {
+    document.querySelectorAll('.quarto-listing-container-grid .list').forEach(function (list) {
+      var width = 0;
+      // Fires once on observe, so it also lays out the first time.
+      new ResizeObserver(function () {
+        if (list.clientWidth === width) return;
+        width = list.clientWidth;
+        hexRows(list);
+      }).observe(list);
+      // The filter bar hides tiles by setting style.display.
+      new MutationObserver(function () { hexRows(list); })
+        .observe(list, { subtree: true, attributes: true, attributeFilter: ['style'] });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHexRows);
+  } else {
+    initHexRows();
+  }
+
   // ── STAGGER DELAYS ───────────────────────────────────────────
   // Sets --stagger-delay on each item so CSS animation-delay is
   // per-element without repeating nth-child rules in CSS.

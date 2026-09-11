@@ -23,8 +23,8 @@ The site is editorial in style — typographic, restrained, monochrome by defaul
 | Optional computation | R or Python in code cells | Only when a page needs a live chart or table. Most pages have none. |
 | Hosting | **GitHub Pages** | Free, static, fits Quarto's render-to-HTML model. |
 | CI/CD | GitHub Actions (`quarto-dev/quarto-actions/publish@v2`) | Auto-builds and publishes to `gh-pages` on every push to `main`. |
-| Fonts | EB Garamond (Google Fonts), Switzer (Fontshare), Commit Mono (Fontsource/jsDelivr) | Editorial serif + neo-grotesque sans + high-x-height technical mono. All free. |
-| Animation | CSS + one vanilla-JS section in `_includes/after-body.html`; no libraries | Ambient ASCII field in page headers; hex listing expand on hover. |
+| Fonts | Averia Serif Libre + DM Sans (Google Fonts, one request), Commit Mono (Fontsource/jsDelivr) | Serif + sans + high-x-height technical mono. All free; Switzer was dropped because Fontshare stalled for 30 s+ in Sept 2026. |
+| Animation | CSS + two vanilla-JS sections in `_includes/after-body.html`; no libraries | Ambient ASCII field (whole page on Home, first header elsewhere); honeycomb row offsets and expand-on-hover for hex listings. |
 
 **No** Next.js, **no** Supabase, **no** Vercel, **no** Stripe, **no** auth — this is a static, public, content-first site.
 
@@ -52,33 +52,42 @@ For Projects, Publications, Portfolio, Conferences, and Blog: each `.qmd` file i
 ## Feature: ASCII header field + hex listings (Sept 2026)
 
 **What it does**
-- **ASCII field**: a slow, low-contrast, fluid-moving plasma of small (8px) monospace characters behind the first header of each top-level page (Home hero, About, Projects, Publications, Portfolio, Conferences, Blog, CV, CV of Failures). On Home it fills the hero's right-hand panel, which keeps its `--subtle` fill. The header band on motion.dev/examples is a reference for the look only; all colours come from the site's own tokens. Glyphs use `--rule`, barely different from the paper, and fade out under the text. Single project/post pages and the 404 page get none.
-- **Hex listings**: Projects and Portfolio show entries as a responsive honeycomb of the logo's hexagon (pointy-top, rounded corners). Hovering over a hexagon, or focusing it with the keyboard, makes it grow and reveals its title and description. Clicking opens the entry. The filter bars, including the portfolio sub-filter row, work as before.
+- **ASCII field**: a slow, low-contrast, fluid-moving plasma of small (8px) monospace characters.
+  - On Home it covers the whole page, margins included (`--rule` + 5% `--ink`), and the Coming-soon panel is translucent so it shows through.
+  - On the other top-level pages it sits behind the first header (`--rule` + 12% `--ink`), fading out under the text.
+  - Single project/post pages and the 404 page get none. The motion.dev/examples header is a reference for the look only; all colours come from the site's tokens.
+- **Hex listings**: Projects (3 columns) and Portfolio (4 columns) show entries as a full-width, responsive honeycomb of the logo's hexagon (pointy-top, rounded corners).
+  - At rest a tile is a faint greyscale thumbnail; in dark mode the tile is `--muted` grey.
+  - Hovering or keyboard-focusing a tile makes it grow 15%, turns the figure full colour and shows the title and description on a frosted-glass band across the full tile width.
+  - Clicking opens the entry. The filter bars, including the portfolio sub-filter row, work as before.
+- **Fonts**: Averia Serif Libre (serif; the navbar name uses its 300 weight) and DM Sans (sans) from Google Fonts replace EB Garamond and Switzer (Fontshare).
 
 **How it's built**
-- One new section in `_includes/after-body.html` writes each plasma frame into a `data-ascii` attribute, and `styles.css` prints it with `::before`. No DOM nodes are added.
-- The honeycomb is CSS applied to Quarto's own grid-listing markup. The old rectangular card-grid rules are deleted, not overridden.
-- No changes to any `.qmd` file, `R/` script or `_quarto.yml`. No libraries, new CDN links or Quarto templates.
+- `_includes/after-body.html` gets two new sections:
+  - ASCII FIELD writes each plasma frame (on-screen rows only) into a `data-ascii` attribute, and `styles.css` prints it with `::before`, so no DOM nodes are added.
+  - HEX ROWS marks the first tile of every second row (`.hex-shift`), because CSS can't know where rows wrap once the filter hides tiles.
+- The honeycomb is otherwise CSS on Quarto's own grid-listing markup. The old rectangular card-grid rules are deleted, not overridden.
+- Fonts load in `_includes/head.html`. No libraries, no Quarto templates, and no changes to `R/` or `_quarto.yml`.
 - The plasma is original code, because the asciiart.eu demo's licence forbids reusing its code.
 
 **Behaviour rules**
 - Reduced motion: one still frame, and hexagons change state without transitions.
-- The plasma pauses while its header is off-screen or the tab is hidden.
+- The plasma pauses while its host is off-screen or the tab is hidden.
 - Touch screens (no hover): hexagon titles are always shown.
 - The light/dark toggle recolours both features instantly (tokens only).
-- Design exception: this is the site's one looping animation (`.impeccable.md` principle 3 amended).
+- Design exceptions (`.impeccable.md` amended): the site's one looping animation, and the frosted hover band.
 
 **Process**
-1. Isolated previews (`_site/proto-*.html`, built from `_prototypes/`) and a feasibility report. No source files change.
+1. Isolated previews (`_site/proto-*.html`, built from `_prototypes/`) and a feasibility report (`_prototypes/FEASIBILITY.md`). No source files change.
 2. The user approves the previews.
-3. Apply: copy the approved candidate files over `styles.css` and `_includes/after-body.html`.
+3. Apply: copy the approved candidates over `styles.css`, `_includes/after-body.html` and `_includes/head.html`.
 
 **Done when**
-- [ ] Every check in `_prototypes/FEASIBILITY.md` is PASS or has an accepted fallback.
-- [ ] `quarto render` succeeds, all 9 top-level pages show the field in their first header, and there are no new console errors.
-- [ ] Projects and Portfolio show the honeycomb at 400px, 900px and 1440px. Every filter button (and portfolio sub-filter) shows the right entries, and the honeycomb reflows with no holes.
-- [ ] Hovering or keyboard-focusing a hexagon makes it grow and shows the title and description, and clicking it or pressing Enter opens the entry.
-- [ ] Reduced motion and dark mode have been checked by hand.
+- [x] Every check in `_prototypes/FEASIBILITY.md` is PASS or has an accepted fallback.
+- [x] `quarto render` succeeds, all 9 top-level pages show the field, and there are no new console errors.
+- [x] Projects and Portfolio show the honeycomb at 400px, 900px and 1440px. Every filter button (and portfolio sub-filter) shows the right entries, and the honeycomb reflows with no holes.
+- [x] Hovering or keyboard-focusing a hexagon makes it grow and shows the title and description, and clicking it or pressing Enter opens the entry.
+- [ ] Reduced motion and dark mode have been checked (automated in Chrome; Safari and Firefox by hand).
 
 ## Data models
 
