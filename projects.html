@@ -117,9 +117,11 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
 
-<!-- Serif — Averia Serif Libre, sans — DM Sans: both from Google Fonts in one request.
-     (Switzer came from Fontshare, whose CSS API stalled for 30 s+ in Sept 2026.) -->
-<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,400&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Serif — EB Garamond, sans — DM Sans: both from Google Fonts in one request.
+     (Switzer came from Fontshare, whose CSS API stalled for 30 s+ in Sept 2026.)
+     Keep this list in sync with --font-serif in styles.css: a family named
+     there but missing here silently falls through to the next one in the stack. -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
 <!-- Mono — Commit Mono (Fontsource via jsDelivr). Taller x-height than Space Mono,
      so the small mono labels read larger at the same px value. -->
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
@@ -281,6 +283,12 @@ window.Quarto = {
 <button type="button" class="filter-btn is-active" data-filter="All">
 All
 </button>
+<button type="button" class="filter-btn" data-filter="Agriculture">
+Agriculture
+</button>
+<button type="button" class="filter-btn" data-filter="Brazil">
+Brazil
+</button>
 <button type="button" class="filter-btn" data-filter="Brick kilns">
 Brick kilns
 </button>
@@ -305,14 +313,8 @@ Food Systems
 <button type="button" class="filter-btn" data-filter="Forced Labour">
 Forced Labour
 </button>
-<button type="button" class="filter-btn" data-filter="Human Trafficking">
-Human Trafficking
-</button>
 <button type="button" class="filter-btn" data-filter="Mexico">
 Mexico
-</button>
-<button type="button" class="filter-btn" data-filter="Migration">
-Migration
 </button>
 <button type="button" class="filter-btn" data-filter="Modern Slavery">
 Modern Slavery
@@ -338,11 +340,14 @@ Supply Chains
 <button type="button" class="filter-btn" data-filter="Water">
 Water
 </button>
+<button type="button" class="filter-btn" data-filter="Workers Health">
+Workers Health
+</button>
 </div>
 </div>
 <div id="listing-projects-listing" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-categories="Q2xpbWF0ZSUyMENoYW5nZSUyQ0RlY2VudCUyMFdvcmslMkNSaXNrJTIwQXNzZXNzbWVudCUyQ1dvcmtlcnMlMjBIZWFsdGglMkNBZ3JpY3VsdHVyZSUyQ0JyYXppbA==" data-listing-date-sort="1772236800000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="1772496000000" data-listing-reading-time-sort="2" data-listing-word-count-sort="329">
+<div class="g-col-1" data-index="0" data-categories="Q2xpbWF0ZSUyMENoYW5nZSUyQ0RlY2VudCUyMFdvcmslMkNSaXNrJTIwQXNzZXNzbWVudCUyQ1dvcmtlcnMlMjBIZWFsdGglMkNBZ3JpY3VsdHVyZSUyQ0JyYXppbA==" data-listing-date-sort="1772236800000" data-listing-file-modified-sort="1789730654252" data-listing-date-modified-sort="1772496000000" data-listing-reading-time-sort="2" data-listing-word-count-sort="329">
 <a href="./projects/project-clidewo.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -385,7 +390,7 @@ published
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Q2xpbWF0ZSUyMENoYW5nZSUyQ0RlY2VudCUyMFdvcmslMkNCcmljayUyMGtpbG5z" data-listing-date-sort="1767225600000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="236">
+<div class="g-col-1" data-index="1" data-categories="Q2xpbWF0ZSUyMENoYW5nZSUyQ0RlY2VudCUyMFdvcmslMkNCcmljayUyMGtpbG5z" data-listing-date-sort="1767225600000" data-listing-file-modified-sort="1789730654252" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="236">
 <a href="./projects/project-brick-kilns.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -422,46 +427,7 @@ published
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="SHVtYW4lMjBUcmFmZmlja2luZyUyQ1Jpc2slMjBBc3Nlc3NtZW50JTJDTW9kZXJuJTIwU2xhdmVyeSUyQ01pZ3JhdGlvbg==" data-listing-date-sort="1767225600000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="1767225600000" data-listing-reading-time-sort="2" data-listing-word-count-sort="228">
-<a href="./projects/project-depth.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./assets/images/img-depth-logo.png" class="thumbnail-image card-img" style="height: 220px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Disaggregated Estimates of the Prevalence of Trafficking in Humans (DEPTH)
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW4lMjBUcmFmZmlja2luZw=='); return false;">Human Trafficking</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmlzayUyMEFzc2Vzc21lbnQ='); return false;">Risk Assessment</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TW9kZXJuJTIwU2xhdmVyeQ=='); return false;">Modern Slavery</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWlncmF0aW9u'); return false;">Migration</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>One-sentence summary shown in the listing grid and SEO.</p>
-</div>
-<table class="card-other-values">
-
-<tbody><tr>
-<td>
-status
-</td>
-<td class="status">
-active
-</td>
-</tr>
-
-</tbody></table>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="Uy1MQ0ElMkNGb29kJTIwU3lzdGVtcyUyQ0ZvcmNlZCUyMExhYm91ciUyQ0RpZXRhcnklMjBQYXR0ZXJucw==" data-listing-date-sort="1759881600000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="823">
+<div class="g-col-1" data-index="2" data-categories="Uy1MQ0ElMkNGb29kJTIwU3lzdGVtcyUyQ0ZvcmNlZCUyMExhYm91ciUyQ0RpZXRhcnklMjBQYXR0ZXJucw==" data-listing-date-sort="1759881600000" data-listing-file-modified-sort="1789730654252" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="823">
 <a href="./projects/project-us-food-forced-labour.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -500,7 +466,7 @@ published
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="Uy1MQ0ElMkNTdXBwbHklMjBDaGFpbnMlMkNGb3JjZWQlMjBMYWJvdXIlMkNFbmVyZ3k=" data-listing-date-sort="1656633600000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1003">
+<div class="g-col-1" data-index="3" data-categories="Uy1MQ0ElMkNTdXBwbHklMjBDaGFpbnMlMkNGb3JjZWQlMjBMYWJvdXIlMkNFbmVyZ3k=" data-listing-date-sort="1656633600000" data-listing-file-modified-sort="1789730654252" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1003">
 <a href="./projects/project-solar-pv.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -539,7 +505,7 @@ published
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="UmlzayUyMEFzc2Vzc21lbnQlMkNGb29kJTIwU3lzdGVtcw==" data-listing-date-sort="1571529600000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="1571529600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="168">
+<div class="g-col-1" data-index="4" data-categories="UmlzayUyMEFzc2Vzc21lbnQlMkNGb29kJTIwU3lzdGVtcw==" data-listing-date-sort="1571529600000" data-listing-file-modified-sort="1789730654252" data-listing-date-modified-sort="1571529600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="168">
 <a href="./projects/project-sainsbury.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -574,7 +540,7 @@ published
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="Q2xpbWF0ZSUyMENoYW5nZSUyQ01vZGVybiUyMFNsYXZlcnklMkNTdXBwbHklMjBDaGFpbg==" data-listing-date-sort="1571529600000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="1571529600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="168">
+<div class="g-col-1" data-index="5" data-categories="Q2xpbWF0ZSUyMENoYW5nZSUyQ01vZGVybiUyMFNsYXZlcnklMkNTdXBwbHklMjBDaGFpbg==" data-listing-date-sort="1571529600000" data-listing-file-modified-sort="1789730654252" data-listing-date-modified-sort="1571529600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="168">
 <a href="./projects/project-sei-supply-chain.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -611,7 +577,7 @@ published
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="U29jaWV0YWwlMjBNZXRhYm9saXNtJTJDV2F0ZXIlMkNNdVNJQVNFTSUyQ0NsaW1hdGUlMkNNZXhpY28=" data-listing-date-sort="1571529600000" data-listing-file-modified-sort="1789729448484" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="678">
+<div class="g-col-1" data-index="6" data-categories="U29jaWV0YWwlMjBNZXRhYm9saXNtJTJDV2F0ZXIlMkNNdVNJQVNFTSUyQ0NsaW1hdGUlMkNNZXhpY28=" data-listing-date-sort="1571529600000" data-listing-file-modified-sort="1789730654252" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="678">
 <a href="./projects/project-water-metabolism.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">

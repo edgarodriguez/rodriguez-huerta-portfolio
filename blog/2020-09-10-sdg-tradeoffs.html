@@ -89,9 +89,11 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
 
-<!-- Serif — Averia Serif Libre, sans — DM Sans: both from Google Fonts in one request.
-     (Switzer came from Fontshare, whose CSS API stalled for 30 s+ in Sept 2026.) -->
-<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,400&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Serif — EB Garamond, sans — DM Sans: both from Google Fonts in one request.
+     (Switzer came from Fontshare, whose CSS API stalled for 30 s+ in Sept 2026.)
+     Keep this list in sync with --font-serif in styles.css: a family named
+     there but missing here silently falls through to the next one in the stack. -->
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
 <!-- Mono — Commit Mono (Fontsource via jsDelivr). Taller x-height than Space Mono,
      so the small mono labels read larger at the same px value. -->
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
