@@ -4,11 +4,11 @@ title: "Social-ecological metabolism and just transition — country profiles"
 description: "Country-level profiles comparing social-ecological sustainability indicators across key producer nations, built to support the Solar Energy, Modern Slavery, and the Just Transition research programme."
 date: 2022-06-01
 date-modified: 2022-06-01
-categories: [Visualisation, Interactive, Tableau, Modern Slavery, Just Transition, Solar Energy]
-image: ../../assets/images/img-scatter.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Modern Slavery, Just Transition, Solar Energy]
+image: ../../assets/images/img-solarPV-profile.webp
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/SEMSJT_CountryProfile/Country_profile"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
@@ -38,7 +38,7 @@ British Academy report: [The Energy of Freedom? Solar Energy, Modern Slavery and
 ::: {.column-screen}
 
 ```{=html}
-<div class="tableauPlaceholder" id="viz2009" style="position: relative">
+<div class="tableauPlaceholder" id="viz2009" style="position: relative; --viz-w: 800px">
   <noscript>
     <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/SEMSJT_CountryProfile/Country_profile">
       <img alt="Country_profile" src="https://public.tableau.com/static/images/SE/SEMSJT_CountryProfile/Country_profile/1_rss.png" style="border: none">

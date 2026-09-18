@@ -57,7 +57,20 @@ Pulls GitHub's changes in underneath yours, keeps both, then pushes. Nothing is 
 
 ## If a page won't update
 
-Quarto caches pages that contain R or Python code, in a folder called `_freeze`. If you changed code but the page looks the same, the cache is stale — especially after editing anything in `R/`.
+Quarto caches pages that contain R or Python code, in a folder called `_freeze`. If you changed code but the page looks the same, the cache is stale.
+
+**This happens every time you edit a file in `R/`** (like `cv-helpers.R` or `site-stats.R`) instead of a `.qmd` file directly. Quarto only notices when a `.qmd` file changes — it has no idea the R file it reads from changed, so it just reuses the old cached result.
+
+Fastest fix — clear just the one page that uses that R file, then rebuild it:
+
+```
+rm -rf _freeze/conferences
+quarto render conferences.qmd
+```
+
+(Swap `conferences` for whichever page looks stale — e.g. `cv`, `cv-negative`, `publications`, `index`, `about`.)
+
+If you're not sure which pages are affected, or the quick fix didn't work:
 
 ```
 rm -rf _freeze

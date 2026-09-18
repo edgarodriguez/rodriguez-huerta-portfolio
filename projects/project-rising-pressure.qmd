@@ -1,14 +1,13 @@
 ---
 draft: true
-title: "Rising Pressure"
-description: "Quantifying forced labour embedded in American diets — from commodity supply chains to dietary pattern recommendations — using Social LCA and the medium risk hours equivalent metric."
+title: "Rising Pressure. what does a changing climate mean for the people who produce our food?"
+description: "Understanding the interconnections of Climate Change and Decent Work in the UK agriculture system. Lead Investigator: Dr. Bethany Jackson"
 date: 2026-06-09
 date-modified: 2026-06-09
 categories: [Climate Change, Decent Work, Food Systems, Geography, Social Sciences]
-image: ../assets/images/proj-us-food-supply.png
+image: ../assets/images/img-rising.webp
 status: active
-pub-journal: ""
-doi: ""
+repo: "https://supportedbyresearch.org/rising-pressure/"
 ---
 
 [← Back to Projects](../projects.html){.back-link}

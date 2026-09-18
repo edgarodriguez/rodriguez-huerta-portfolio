@@ -3,7 +3,14 @@ title: ""
 page-layout: full
 toc: false
 anchor-sections: false
+execute:
+  freeze: auto
 ---
+
+```{r setup}
+#| include: false
+source("R/home-helpers.R")
+```
 
 ::: {.split-2-fullh}
 <div class="scroll-hint"><span class="scroll-hint-label">Scroll</span><div class="scroll-hint-line"></div></div>
@@ -48,42 +55,11 @@ Based at the University of Nottingham's Rights Lab.
 
 :::
 
-::: {.split-3}
+<!-- The three outcome cards come from cv_inputs.xlsx: highlighted first,
+     newest first, drafts skipped. See R/home-helpers.R. -->
 
-::: {.split-3-item}
-::: {.section-num}
-[Latest Publication]{.label} [01]{.label}
-:::
-
-::: {.h3}
-[Current and recommended diets in the USA have embedded forced labour risk](publications.html)
-:::
-
-[Nature Food · 2025]{.body-sm}
-:::
-
-::: {.split-3-item}
-::: {.section-num}
-[Active Research]{.label} [02]{.label}
-:::
-
-::: {.h3}
-[Climate Change, Decent Work and Workers Health: Vulnerabilities and Response in Brazilian Agriculture](projects.html)
-:::
-
-[Report · 2026]{.body-sm}
-:::
-
-::: {.split-3-item}
-::: {.section-num}
-[Data Visualisation]{.label} [03]{.label}
-:::
-
-::: {.h3}
-[Climate–Decent Work Risk Assessment](portfolio.html)
-:::
-
-[Climate Risk Assessment · 2026 [Tableau]]{.body-sm}
-:::
-
-:::
+```{r}
+#| echo: false
+#| results: asis
+render_home_outcomes()
+```

@@ -3,8 +3,12 @@ draft: false
 title: "Forced labour risk in the US food supply"
 description: "Interactive Tableau visualisations expanding on Blackstone et al. (2023, Nature Food). Explore forced labour risk by commodity, country of origin, and supply chain stage."
 date: 2023-07-01
-categories: [Interactive, Visualisation, Tableau, Modern Slavery, Food Systems, USA]
-image: ../../assets/images/img-heatmap.svg
+date-modified: 2023-07-01
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Modern Slavery, Food Systems, USA]
+image: ../../assets/images/proj-us-food-supply.png
+repo: "https://sites.tufts.edu/lasting/data/"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}

@@ -1,0 +1,77 @@
+---
+draft: false
+title: "Human Rights Saliency Project"
+description: "Human rights research partnership with J. Sainsbury’s Plc. to work collaboratively on data driven solutions, insights, and guidance across a series of salient and evolving human rights risks, including forced labour, discrimination, sustainable livelihoods, safe and healthy working environments, rights and access to water, land rights, loss of livelihood and stranded communities, child labour, and precarious work"
+date: 2019-10-20
+date-modified: 2019-10-20
+categories: [Risk Assessment, Food Systems]
+image: ../assets/images/img-jt-uk-food.png
+status: published
+pub-journal: "Report"
+doi: "https://www.nottingham.ac.uk/research/beacons-of-excellence/rights-lab/resources/reports-and-briefings/2025/september/briefing-paper-just-transition-in-the-uk-food-retail-sector.pdf"
+repo: "https://www.nottingham.ac.uk/research/beacons-of-excellence/rights-lab/research-projects/sainsbury's-–-rights-lab-partnership.aspx"
+---
+
+[← Back to Projects](../projects.html){.back-link}
+
+::: {.label}
+Status · Funder · Year range
+:::
+
+<!-- ── OVERVIEW ────────────────────────────────────────────────────────────────
+  2–3 paragraphs explaining the research question, why it matters, and the
+  approach. Write for an informed non-specialist (funder, journalist, peer
+  in an adjacent field). Avoid jargon without explanation.
+────────────────────────────────────────────────────────────────────────────── -->
+
+## Overview
+
+Research question and context...
+
+---
+
+<!-- ── METHODS ────────────────────────────────────────────────────────────────
+  Describe the methods in enough detail that a researcher could replicate or
+  build on the work. Use ### sub-headings for multi-step workflows.
+────────────────────────────────────────────────────────────────────────────── -->
+
+## Methods
+
+### Data sources
+
+...
+
+### Analysis
+
+...
+
+---
+
+<!-- ── KEY FINDINGS ───────────────────────────────────────────────────────────
+  Use a short numbered list for quantitative results; prose for interpretive
+  findings. Avoid bullet points for anything that needs a sentence to explain.
+────────────────────────────────────────────────────────────────────────────── -->
+
+## Key findings
+
+1. Finding one...
+2. Finding two...
+
+---
+
+<!-- ── PUBLICATIONS ──────────────────────────────────────────────────────────
+  List all outputs: papers, reports, datasets, visualisations.
+  Use standard citation format with DOI links.
+────────────────────────────────────────────────────────────────────────────── -->
+
+## Publications
+
+- Author, A. & Author, B. (Year). *Title.* Journal, vol(issue), pp. [doi:...](https://doi.org/...)
+
+<!-- ── CALLOUT EXAMPLE ────────────────────────────────────────────────────────
+  Use callout-note for methodological caveats, callout-tip for replication notes.
+────────────────────────────────────────────────────────────────────────────── -->
+
+::: {.callout-note}
+Note, caveat, or replication information.
+:::

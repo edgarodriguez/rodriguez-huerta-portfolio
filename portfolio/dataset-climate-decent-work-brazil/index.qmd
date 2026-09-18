@@ -5,8 +5,11 @@ description: "Integrated risk scores across Brazil's 5,570 municipalities combin
 date: 2026-03-02
 date-modified: 2026-03-03
 highlight: true
+type: Data
+subtype: Dataset
 categories: [Dataset, Climate Hazard, Decent Work, Brazil, CLIDEWO]
-image: ../../assets/images/img-heatmap.svg
+image: ../../assets/images/lucide-database-6gon-160.svg
+repo: "https://doi.org/10.5281/zenodo.18828568"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}

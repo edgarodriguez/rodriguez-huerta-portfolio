@@ -4,10 +4,10 @@ title: "CLIDEWO: Climate Change, Decent Work and Workers' Health in Brazilian Ag
 description: "A worker-informed, multi-layer risk assessment integrating climate models, socio-economic data, and qualitative worker voice to assess how climate hazards intersect with labour exploitation in Brazil."
 date: 2026-02-28
 date-modified: 2026-03-03
-categories: [Climate change, Decent Work, Risk Assessment, Occupational Health, Agriculture, Brazil]
-image: ../assets/images/clidewo-logo.png
-status: active
 highlight: true
+categories: [Climate Change, Decent Work, Risk Assessment, Workers Health, Agriculture, Brazil]
+image: ../assets/images/clidewo-logo.png
+status: published
 repo: "https://www.clidewo.com"
 ---
 

@@ -4,11 +4,11 @@ title: "COVID-19 mortality effect — Mexico"
 description: "COVID-19 deaths and excess mortality across Mexican states, 2020. Draws on the national epidemiological death registry (SEED) to compare 2020 mortality rates against historical baselines and identify where reclassification may have understated the pandemic's toll."
 date: 2020-09-10
 date-modified: 2020-09-10
-categories: [Visualisation, Interactive, Tableau, COVID-19, Mortality, Mexico, Public Health]
-image: ../../assets/images/img-timeseries.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, COVID-19, Mortality, Mexico, Public Health]
+image: ../../assets/images/img-death-covid.png
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/DefuncionesCOVID19-Mexico/EfectoCOVID"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
@@ -34,7 +34,7 @@ SEED (Sistema Epidemiológico y Estadístico de las Defunciones), SINAIS / DGIS,
 ::: {.column-screen}
 
 ```{=html}
-<div class="tableauPlaceholder" id="viz2008" style="position: relative">
+<div class="tableauPlaceholder" id="viz2008" style="position: relative; --viz-w: 1366px">
   <noscript>
     <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/DefuncionesCOVID19-Mexico/EfectoCOVID">
       <img alt="EfectoCOVID" src="https://public.tableau.com/static/images/De/DefuncionesCOVID19-Mexico/EfectoCOVID/1_rss.png" style="border: none">

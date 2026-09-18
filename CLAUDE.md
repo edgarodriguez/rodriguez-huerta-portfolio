@@ -84,7 +84,7 @@ This project is a **static editorial portfolio website** built with Quarto and p
 - **Framework:** [Quarto](https://quarto.org) (≥ 1.4) — a publishing system that turns markdown (`.qmd`) into HTML.
 - **Authoring format:** Quarto markdown (`.qmd`) — plain markdown plus YAML front matter and HTML escape hatches when needed.
 - **Styling:** Hand-written `styles.css` on top of Quarto's `cosmo` base theme. Editorial design tokens live at the top of `styles.css` as CSS custom properties.
-- **Fonts:** Averia Serif Libre serif and DM Sans sans (Google Fonts, one request), Commit Mono (Fontsource via jsDelivr) — all loaded via `_includes/head.html`.
+- **Fonts:** Averia Serif Libre serif and DM Sans sans (Google Fonts, one request), Commit Mono (Fontsource via jsDelivr) — all loaded via `_includes/head.html`. The navbar name uses Movement Direct Thin, self-hosted from `assets/fonts/` via `@font-face` in `styles.css`.
 - **Optional computation:** R or Python in code cells inside `.qmd` files — only used when a page needs a live chart or table. Most pages have none.
 - **Hosting:** GitHub Pages (free, static).
 - **CI/CD:** GitHub Actions running `quarto-dev/quarto-actions/publish@v2`. Pushing to `main` triggers a build that publishes to the `gh-pages` branch automatically.

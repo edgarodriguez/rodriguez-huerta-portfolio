@@ -1,0 +1,29 @@
+---
+draft: true
+title: "COVID-19 mobility in Mexico — Google data by state"
+description: "Google's COVID-19 Community Mobility Reports filtered to Mexico: daily change in visits against the pre-pandemic baseline for six kinds of place, for the country and its 32 states, plus the per-state averages behind the mobility dashboard."
+date: 2020-09-30
+type: Data
+subtype: Dataset
+categories: [Mobility, Mexico, Covid-19]
+image: ../../assets/images/lucide-database-6gon-160.svg
+repo: "https://github.com/edgarodriguez/COVID-19mx_Mobility"
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Data · Mobility · Mexico · COVID-19 · Google · 2020
+:::
+
+The data behind the [mobility dashboard for Mexico](../viz-mobility-mexico/index.html). During the pandemic Google published COVID-19 Community Mobility Reports for every country. This is the Mexican slice, prepared for Tableau.
+
+An R script reads Google's global file, keeps the rows for Mexico and labels the country-level rows "National" alongside the 32 states. The reports measure the change in visits against a pre-pandemic baseline for six kinds of place: retail and recreation, grocery and pharmacy, parks, transit stations, workplaces, and residential areas.
+
+## What you get
+
+Two tables, each as CSV and as a Tableau extract (`.hyper`). The historical table keeps every daily value by state. The aggregated table averages each kind of place per state over the period and adds an overall column, which is the sum of the six averages. The dashboard workbook and the R script are in the repository too.
+
+## Repository
+
+[github.com/edgarodriguez/COVID-19mx_Mobility](https://github.com/edgarodriguez/COVID-19mx_Mobility). Source data: [Google COVID-19 Community Mobility Reports](https://www.google.com/covid19/mobility/). The repository has no licence file.

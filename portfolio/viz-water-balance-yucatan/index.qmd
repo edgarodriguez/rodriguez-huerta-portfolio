@@ -4,11 +4,11 @@ title: "Water use vs groundwater recharge — Yucatán Peninsula"
 description: "Water balance dashboard comparing total water demand against natural groundwater recharge across the Yucatán Peninsula, including projections to 2030 under different climate and development scenarios."
 date: 2020-01-01
 date-modified: 2020-01-01
-categories: [Visualisation, Interactive, Tableau, Water, Hydrology, Mexico]
-image: ../../assets/images/img-scatter.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Water, Hydrology, Mexico]
+image: ../../assets/images/img-water-balance-yp.png
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/WaterusevsrechargeofgroundwaterinYucatan/BLEWF"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
@@ -34,7 +34,7 @@ Full methodology in: Rodríguez-Huerta, E., Rosas-Casals, M. & Hernández-Terron
 ::: {.column-screen}
 
 ```{=html}
-<div class="tableauPlaceholder" id="viz2003" style="position: relative">
+<div class="tableauPlaceholder" id="viz2003" style="position: relative; --viz-w: 1100px">
   <noscript>
     <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/WaterusevsrechargeofgroundwaterinYucatan/BLEWF">
       <img alt="BLEWF" src="https://public.tableau.com/static/images/Wa/WaterusevsrechargeofgroundwaterinYucatan/BLEWF/1_rss.png" style="border: none">

@@ -1,0 +1,18 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+
+<!-- Serif — Averia Serif Libre, sans — DM Sans: both from Google Fonts in one request.
+     (Switzer came from Fontshare, whose CSS API stalled for 30 s+ in Sept 2026.) -->
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<!-- Mono — Commit Mono (Fontsource via jsDelivr). Taller x-height than Space Mono,
+     so the small mono labels read larger at the same px value. -->
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
+<script>
+  // Apply default editorial palette; persists user toggle in localStorage.
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('edgar-palette'); } catch (e) {}
+    document.documentElement.setAttribute('data-palette', saved || 'editorial-light');
+  })();
+</script>

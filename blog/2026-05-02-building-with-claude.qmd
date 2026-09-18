@@ -9,8 +9,6 @@ image: ../assets/images/img-code.png
 
 [← Back to Blog](../blog.html){.back-link}
 
-{{< adslot blog-post >}}
-
 I needed a research portfolio updated. That's not a inspiring opening line, but it's the honest reason I started this. I had papers to show, projects to link, and a CV that hasn't been updated in months. I'd tried GitHub Pages + Quarto in the past, and it's great!,you create a couple of templates and pages, and the structure is ready to be populated—it’s pretty simple. But it only gets the job done halfway; customizing it to my liking can take a long time, and aesthetic details like transitions or animations simply aren't straightforward to implement.
 This is where Claude (Claudio para los amigos) intervienes.
 
@@ -21,17 +19,17 @@ On the one hand, it designs an aesthetically appealing, generic model for you.
 ```{mermaid}
 %%| fig-cap: "From design concept to deployed site"
 flowchart TD
-    A([Claude design\] Chat) --> B([Claude generates\nHTML prototype])
-    B --> C([Extract design tokens\nto styles.css])
-    C --> D([Build Quarto structure\n_quarto.yml + layouts])
-    D --> E([Write content\nas .qmd files])
+    A([Claude design<br>Chat]) --> B([Claude generates<br>HTML prototype])
+    B --> C([Extract design tokens<br>to styles.css])
+    C --> D([Build Quarto structure<br>_quarto.yml + layouts])
+    D --> E([Write content<br>as .qmd files])
     E --> F([quarto render → _site/])
-    F --> G{Browser DevTools\ninspect}
-    G -->|Wrong selector\nor layout bug| H([Claude Code\nfix CSS])
-    G -->|New interaction\nor animation| I([Claude Code\nimplement JS/GSAP])
+    F --> G{Browser DevTools<br>inspect}
+    G -->|Wrong selector<br>or layout bug| H([Claude Code<br>fix CSS])
+    G -->|New interaction<br>or animation| I([Claude Code<br>implement JS/GSAP])
     H --> F
     I --> F
-    G -->|Looks right| J([git push\nGitHub Pages])
+    G -->|Looks right| J([git push<br>GitHub Pages])
 
     style A fill:#e0e7ff,stroke:#4f46e5
     style J fill:#ccfbf1,stroke:#0d9488

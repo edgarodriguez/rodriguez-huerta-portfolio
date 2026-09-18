@@ -12,6 +12,7 @@
 !/_freeze/about/
 !/_freeze/blog/
 !/_freeze/index/
+!/_freeze/projects/
 
 # Quarto cache for individual pages
 *_files/
@@ -53,3 +54,6 @@ notebook/
 # the filter_money column now hides, so it must not come back into the repo.
 Rodriguez_Huerta_CV*.pdf
 Rodriguez_Huerta_CV*.typ
+
+# Derived from the qmd entries by R/entries-sync.R extract — regenerate, do not commit.
+cv_input_test.xlsx

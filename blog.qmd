@@ -51,9 +51,5 @@ cat('</div>\n')
 
 :::
 
-::: {.page-band}
-{{< adslot blog-listing >}}
-:::
-
 ::: {#blog-listing}
 :::

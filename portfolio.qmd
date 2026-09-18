@@ -9,7 +9,8 @@ listing:
   type: grid
   grid-columns: 4
   sort: "date desc"
-  fields: [image, categories, title, description]
+  page-size: 500    # one page: the filter bar can only show/hide cards on the current page
+  fields: [image, categories, title, description, type, subtype]
   image-height: 150px
   filter-ui: false
   categories: false
@@ -21,11 +22,12 @@ listing:
 
 # Things I’ve built along the way  {.h1}
 :::
-::: {.filter-bar data-filter-group="true" data-filter-target="#listing-viz-listing"}
+::: {.filter-bar data-filter-group="true" data-filter-target="#listing-viz-listing" data-filter-field="type" data-filter-sub="subtype"}
 <button type="button" class="filter-btn is-active" data-filter="All">All</button>
 <button type="button" class="filter-btn" data-filter="Visualisation">Visualisation</button>
-<button type="button" class="filter-btn" data-filter="Dataset">Dataset</button>
 <button type="button" class="filter-btn" data-filter="Code">Code</button>
+<button type="button" class="filter-btn" data-filter="Data">Data</button>
+<button type="button" class="filter-btn" data-filter="Miscellaneous">Miscellaneous</button>
 :::
 :::
 

@@ -1,0 +1,15 @@
+{
+  "hash": "c35e2d3a6a2fa808185bbb970ffbc903",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"\"\npage-layout: full\ntoc: false\nanchor-sections: false\nexecute:\n  freeze: auto\n---\n\n\n\n::: {.split-2-fullh}\n<div class=\"scroll-hint\"><span class=\"scroll-hint-label\">Scroll</span><div class=\"scroll-hint-line\"></div></div>\n::: {}\n[Interdisciplinarity + Data Science]{.label}\n\n<!-- The hero has no visible headline, so the page's h1 is hidden but\n     present for screen-reader heading nav and SEO. Do not move it above\n     the label: a heading in first position makes Pandoc drop this\n     wrapper div and the hero grid collapses. -->\n# Edgar Rodríguez-Huerta — researcher in social sustainability, climate and supply chains {.visually-hidden}\n\nResearcher and data storyteller. \nI work at the intersection of social sustainability, climate and supply chains, and human rights — turning complex data into visuals that start the conversation.\nBased at the University of Nottingham's Rights Lab.\n\n::: {.tag-row}\n[Sustainability]{.tag}\n[Data Science]{.tag}\n[Interdisciplinary studies]{.tag}\n[Climate Change]{.tag}\n[Industrial Ecology]{.tag}\n[Complexity]{.tag}\n\n:::\n\n::: {.btn-row}\n[Projects →](projects.html){.btn-primary}\n[Portfolio](portfolio.html){.btn-outline}\n:::\n:::\n\n::: {.coming-soon-panel}\n\n\n::: {.h3}\n\n:::\n\n[Coming soon]{.tag}\n:::\n\n:::\n\n<!-- The three outcome cards come from cv_inputs.xlsx: highlighted first,\n     newest first, drafts skipped. See R/home-helpers.R. -->\n\n::: {.split-3}\n\n::: {.split-3-item}\n::: {.section-num}\n[Latest Publication]{.label} [01]{.label}\n:::\n\n::: {.h3}\n[Climate Change, Decent Work, and Workers’ Health: Vulnerabilities and Responses of Workers in Brazilian Agriculture](https://doi.org/10.5281/zenodo.18839271){target=\"_blank\" rel=\"noopener\"}\n:::\n\n[CLIDEWO project · 2026]{.body-sm}\n:::\n\n::: {.split-3-item}\n::: {.section-num}\n[Active Research]{.label} [02]{.label}\n:::\n\n::: {.h3}\n[CLIDEWO: Climate Change, Decent Work and Workers' Health in Brazilian Agriculture](projects/project-clidewo.html)\n:::\n\n[Published · 2026]{.body-sm}\n:::\n\n::: {.split-3-item}\n::: {.section-num}\n[Data Visualisation]{.label} [03]{.label}\n:::\n\n::: {.h3}\n[Climate Decent Work Risk Assessment Brazilian Agriculture](portfolio/viz-clidewo-tool/)\n:::\n\n[Interactive · 2026]{.body-sm}\n:::\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,14 +1,14 @@
 ---
 draft: false
-title: "Brick Kilns - Agriculture connecttion"
-description: "Applying societal metabolism and social sustainability frameworks to map bonded and forced labour conditions across South Asian brick kiln sectors."
+title: "Using Data Science to Transform India's Brick Kilns"
+description: "This project provides a data science approach, underpinned by satellite EO data, to reducing environmental impacts and improving worker welfare in the brick production industry of India. Project stakeholders, in India, will understand how information provided via a data and technology platform (GeoAI) to inform their varied work in the brick kiln industry."
 date: 2026-01-01
-categories: [Forced Labour, South Asia, Societal Metabolism, Field Research]
-image: ../assets/images/img-heatmap.svg
-status: active
-highlight: true
+categories: [Climate Change, Decent Work, Brick kilns]
+image: ../assets/images/img-brick-kiln.png
+status: published
 pub-journal: "Sustainable Development"
 doi: "10.1002/sd.3272"
+repo: "https://www.nottingham.ac.uk/research/beacons-of-excellence/rights-lab/research-projects/using-data-science-to-transform-indias-brick-kilns.aspx"
 ---
 
 [← Back to Projects](../projects.html){.back-link}

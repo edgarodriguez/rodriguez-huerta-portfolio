@@ -4,8 +4,11 @@ title: "Forced labour risk in the US food supply — replication data"
 description: "Supply shares, risk scores, and data quality assessment underlying Blackstone et al. (2023, Nature Food). Covers US land-based food commodities by ingredient origin country and supply chain stage."
 date: 2023-07-05
 date-modified: 2024-07-31
+type: Data
+subtype: Dataset
 categories: [Dataset, Modern Slavery, Food Systems, USA, LASTING]
-image: ../../assets/images/img-scatter.svg
+image: ../../assets/images/lucide-database-6gon-160.svg
+repo: "https://doi.org/10.1038/s43016-023-00794-x"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}

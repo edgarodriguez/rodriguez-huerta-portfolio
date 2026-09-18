@@ -8,8 +8,6 @@ description: "Brazil's ethanol is often framed as a clean fuel success story. Th
 image: ../assets/images/404.svg
 ---
 
-{{< adslot blog-post >}}
-
 Brazil's sugarcane ethanol is often presented as one of the more successful examples of large-scale renewable fuel production. It has been running for decades, it has displaced a meaningful share of petrol consumption, and it has attracted genuine interest from countries looking for models of bioenergy transition. That is one version of the story.
 
 The other version is documented in the "Enslaved in Ethanol" report by Repórter Brasil. Workers in the sugarcane sector face debt bondage created by employer-imposed deductions for housing, food, and transport. They work in conditions of extreme physical exhaustion — in some documented cases, sleeping around four hours a night. Pesticide exposure happens with inadequate protection, including during aerial spraying. Many workers lack formal contracts, which means no access to social security and no recourse when something goes wrong.

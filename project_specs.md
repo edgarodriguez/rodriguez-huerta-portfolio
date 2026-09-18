@@ -23,7 +23,7 @@ The site is editorial in style — typographic, restrained, monochrome by defaul
 | Optional computation | R or Python in code cells | Only when a page needs a live chart or table. Most pages have none. |
 | Hosting | **GitHub Pages** | Free, static, fits Quarto's render-to-HTML model. |
 | CI/CD | GitHub Actions (`quarto-dev/quarto-actions/publish@v2`) | Auto-builds and publishes to `gh-pages` on every push to `main`. |
-| Fonts | Averia Serif Libre + DM Sans (Google Fonts, one request), Commit Mono (Fontsource/jsDelivr) | Serif + sans + high-x-height technical mono. All free; Switzer was dropped because Fontshare stalled for 30 s+ in Sept 2026. |
+| Fonts | Averia Serif Libre + DM Sans (Google Fonts, one request), Commit Mono (Fontsource/jsDelivr); navbar name in Movement Direct Thin (self-hosted in `assets/fonts/`, CC BY-ND 4.0) | Serif + sans + high-x-height technical mono. All free; Switzer was dropped because Fontshare stalled for 30 s+ in Sept 2026. |
 | Animation | CSS + two vanilla-JS sections in `_includes/after-body.html`; no libraries | Ambient ASCII field (whole page on Home, first header elsewhere); honeycomb row offsets and expand-on-hover for hex listings. |
 
 **No** Next.js, **no** Supabase, **no** Vercel, **no** Stripe, **no** auth — this is a static, public, content-first site.
@@ -60,7 +60,7 @@ For Projects, Publications, Portfolio, Conferences, and Blog: each `.qmd` file i
   - At rest a tile is a faint greyscale thumbnail; in dark mode the tile is `--muted` grey.
   - Hovering or keyboard-focusing a tile makes it grow 15%, turns the figure full colour and shows the title and description on a frosted-glass band across the full tile width.
   - Clicking opens the entry. The filter bars, including the portfolio sub-filter row, work as before.
-- **Fonts**: Averia Serif Libre (serif; the navbar name uses its 300 weight) and DM Sans (sans) from Google Fonts replace EB Garamond and Switzer (Fontshare).
+- **Fonts**: Averia Serif Libre (serif) and DM Sans (sans) from Google Fonts replace EB Garamond and Switzer (Fontshare).
 
 **How it's built**
 - `_includes/after-body.html` gets two new sections:
@@ -88,6 +88,86 @@ For Projects, Publications, Portfolio, Conferences, and Blog: each `.qmd` file i
 - [x] Projects and Portfolio show the honeycomb at 400px, 900px and 1440px. Every filter button (and portfolio sub-filter) shows the right entries, and the honeycomb reflows with no holes.
 - [x] Hovering or keyboard-focusing a hexagon makes it grow and shows the title and description, and clicking it or pressing Enter opens the entry.
 - [ ] Reduced motion and dark mode have been checked (automated in Chrome; Safari and Firefox by hand).
+
+## Feature: Home-page "latest outcomes" from cv_inputs.xlsx (Sept 2026)
+
+**What it does**
+
+The three cards at the foot of the Home page (Latest Publication / Active
+Research / Data Visualisation) are no longer typed by hand into `index.qmd`.
+Each is picked from `cv_inputs.xlsx` — the same workbook that feeds the CV, the
+About-page counts and every Projects and Portfolio entry — so the Home page
+cannot drift from the rest of the site.
+
+**How each card is picked**
+
+| Card | Sheet | Rows considered | Winner |
+|---|---|---|---|
+| 01 Latest Publication | `publications` | every row | `highlight` TRUE, newest `date` |
+| 02 Active Research | `projects` | `draft` not TRUE | `highlight` TRUE, newest `date` |
+| 03 Data Visualisation | `portfolio` | `draft` not TRUE **and** `type` = `Visualisation` | `highlight` TRUE, newest `date` |
+
+One rule, three times: drop the rows that cannot be shown, sort highlighted
+first and newest first, take the top one.
+
+- Mark one row `highlight` TRUE and it is the card.
+- Mark several TRUE and the newest of them wins.
+- Mark none TRUE and the newest row wins anyway, so a card is never empty.
+
+Two practical details:
+
+- **Drafts are skipped.** `_quarto.yml` sets `draft-mode: gone`, so a draft
+  entry renders as an empty page and linking the Home page to one is a dead
+  end. Set `draft` FALSE in the sheet to make an entry eligible.
+- **Either spelling of the column works** (`highlight` or `highlighted`) and
+  either value style (TRUE / YES / 1), because the `publications` sheet has
+  used both.
+
+**Where each card links**
+
+- Publication → the paper itself (`url`, else `doi`, prefixed with
+  `https://doi.org/` when the cell is a bare DOI), opening in a new tab.
+  Falls back to `publications.html`; publications have no page of their own.
+- Project → `projects/<slug>.html`
+- Visualisation → `portfolio/<slug>/`
+
+**What each card shows**
+
+Title, then a one-line meta: `venue · year` for the publication,
+`pub-journal` (else title-cased `status`) `· year` for the project,
+`subtype · year` for the visualisation. Dates arrive from Excel as real dates,
+as 5-digit serial numbers, or as a bare year; all three are read.
+
+**How it's built**
+
+- `R/home-helpers.R` holds the rule and emits the existing `.split-3` markup
+  as Quarto fenced divs, the same shape `R/cv-helpers.R` uses. It replaced an
+  earlier dead version of the file that read `.qmd` frontmatter and emitted a
+  `.home-card` layout `index.qmd` never used.
+- `index.qmd` has `execute: freeze: auto`, a hidden setup chunk that sources
+  the helper, and one `results: asis` chunk. The hero above it is untouched.
+- `_freeze/index/` is committed (already un-ignored in `.gitignore`) so GitHub
+  Actions publishes without ever reading the private `cv_inputs.xlsx`.
+- No new CSS, no new classes, no new dependency: `readxl` was already in use.
+- `Rscript R/home-helpers.R` runs a self-check of the picking rule against
+  made-up rows — no workbook, no render needed.
+
+**Gotcha: the sheet is the source of truth, the `.qmd` files are the copy**
+
+Editing a cell does not change the entry on disk until `Rscript
+R/xlsx-to-entries.R` is run, but the Home cards read the workbook directly. So
+a Home card can name something the entry page still contradicts. As of Sept
+2026 the two have drifted: 14 portfolio `image` cells have lost their `.svg`
+extension, and running the sync would break those thumbnails. Fix the image
+cells before running it.
+
+**Done when**
+
+- [x] `quarto render index.qmd` succeeds with no errors.
+- [x] The three cards match the highlighted rows in the workbook.
+- [x] Every card's link opens a real page (no draft, no 404).
+- [x] `Rscript R/home-helpers.R` passes.
+- [ ] `_freeze/index/execute-results/html.json` is committed.
 
 ## Data models
 

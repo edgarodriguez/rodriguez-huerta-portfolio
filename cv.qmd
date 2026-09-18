@@ -5,6 +5,12 @@ toc: false
 anchor-sections: false
 execute:
   freeze: auto
+# Declaring two formats makes Quarto emit an "Other Formats" margin sidebar,
+# which pushes <main> into the narrower .column-page-left grid track — so this
+# page rendered narrower than cv-negative.qmd. The PDF is already offered by
+# the "Download PDF" button in the header, so the link block is redundant.
+# Turning it off removes the sidebar and restores the full-width .column-page.
+format-links: false
 format:
   html: default
   typst:

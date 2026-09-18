@@ -480,7 +480,7 @@ render_conferences_page <- function(df) {
   cat("::: {.listing-header}\n")
   cat("::: {}\n")
   cat("[06 — Conferences & Talks]{.label}\n\n")
-  cat("# Presenting work, building conversations {.h1}\n\n")
+  cat("# Collaborative activities and conversations {.h1}\n\n")
   cat(":::\n\n")
 
   # Filter bar

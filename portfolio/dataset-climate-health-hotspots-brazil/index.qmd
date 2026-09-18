@@ -4,8 +4,11 @@ title: "Climate-health hot spots in Brazilian agriculture"
 description: "Occupational health surveillance data (2003--2024) for agricultural workers in Brazil, covering work-related accidents, climate-linked hospital admissions, dengue, agrochemical poisoning, and violence. Supports the identification of climate-health risk hot spots at the municipality level."
 date: 2026-02-10
 date-modified: 2026-03-01
+type: Data
+subtype: Dataset
 categories: [Dataset, Climate Hazard, Occupational Health, Brazil, CLIDEWO]
-image: ../../assets/images/img-timeseries.svg
+image: ../../assets/images/lucide-database-6gon-160.svg
+repo: "https://doi.org/10.5281/zenodo.18632647"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}

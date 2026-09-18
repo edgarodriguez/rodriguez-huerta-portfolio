@@ -1,41 +1,43 @@
-# Site-wide content statistics for the Home and About pages.
-# Counts projects, portfolio items and publications, then renders the
-# icon stats strip. Reads project/portfolio .qmd front matter and the
-# publications sheet of cv_inputs.xlsx.
+# Site-wide content statistics for the About page.
+# Counts active projects, publications and each portfolio type from
+# cv_inputs.xlsx, then renders them as a miniature honeycomb: one hexagon
+# per output type, linking to that type on its listing page.
 
 suppressPackageStartupMessages({
   library(readxl)
 })
 
-# Front matter of a .qmd file as a list (empty list on failure).
-.fm <- function(file) {
-  fm <- tryCatch(rmarkdown::yaml_front_matter(file), error = function(e) NULL)
-  if (is.null(fm)) list() else fm
+# ---- counts -----------------------------------------------------------------
+# Every count reads cv_inputs.xlsx, not the .qmd files: the sheet is the source
+# of truth for what exists (R/xlsx-to-entries.R writes the entries from it), so
+# a count can never drift from the spreadsheet the site is built from.
+
+.sheet <- function(name, path = "cv_inputs.xlsx") {
+  tryCatch(as.data.frame(readxl::read_excel(path, sheet = name)),
+           error = function(e) NULL)
 }
 
-# Content .qmd files in a folder, recursing into sub-folders.
-# Anything underscore-prefixed (_template.qmd, _template/, _metadata) is
-# scaffolding: Quarto never renders it, so it must never be counted either.
-.content_files <- function(dir) {
-  f <- list.files(dir, pattern = "\\.qmd$", full.names = TRUE, recursive = TRUE)
-  f[!grepl("/_", f)]
+# Excel gives TRUE/FALSE as logicals, but a hand-typed cell arrives as text.
+.truthy <- function(x) tolower(trimws(as.character(x))) %in% c("true", "yes", "1")
+.equals <- function(x, value) tolower(trimws(as.character(x))) == tolower(value)
+
+.count_rows <- function(sheet, cols, keep) {
+  d <- .sheet(sheet)
+  if (is.null(d) || !all(cols %in% names(d))) return(0L)
+  sum(keep(d), na.rm = TRUE)
 }
 
-# Projects still in progress — any status other than "published".
-count_active_projects <- function(dir = "projects") {
-  st <- vapply(.content_files(dir), function(f) {
-    s <- .fm(f)$status
-    if (is.null(s)) "" else tolower(trimws(as.character(s)[1]))
-  }, character(1))
-  sum(nzchar(st) & st != "published")
+# Projects still running: status "active", not a draft.
+count_active_projects <- function() {
+  .count_rows("projects", c("draft", "status"),
+              function(d) !.truthy(d$draft) & .equals(d$status, "active"))
 }
 
-# Portfolio items carrying a given category tag.
-count_portfolio_category <- function(category, dir = "portfolio") {
-  hits <- vapply(.content_files(dir), function(f) {
-    category %in% as.character(.fm(f)$categories)
-  }, logical(1))
-  sum(hits)
+# Published portfolio entries of one type: Data, Code, Visualisation or
+# Miscellaneous. These are the same values the portfolio filter bar uses.
+count_portfolio_type <- function(type) {
+  .count_rows("portfolio", c("draft", "type"),
+              function(d) !.truthy(d$draft) & .equals(d$type, type))
 }
 
 # Count rows of a cv_inputs.xlsx sheet with a given status (respects filter).
@@ -49,47 +51,63 @@ count_sheet_status <- function(sheet, status, path = "cv_inputs.xlsx") {
   sum(df$status == status, na.rm = TRUE)
 }
 
-# Inline an icon SVG, tinted with the editorial accent.
-# The hexagon (#000000) becomes the accent; the glyph (#ffffff) becomes the
-# paper colour so it stays legible against the accent in both palettes.
-.accent_icon <- function(name, dir = "assets/icons") {
-  path <- file.path(dir, paste0(name, ".svg"))
-  svg <- tryCatch(paste(readLines(path, warn = FALSE), collapse = ""),
+# The icons are a hexagon plate with a glyph drawn on top of it. The gauge
+# needs the two apart: the plate is the tile, the glyph is drawn twice (once
+# for the unfilled zone, once for the filled one) so it reads either way.
+.icon_parts <- function(name, dir = "assets/icons") {
+  svg <- tryCatch(paste(readLines(file.path(dir, paste0(name, ".svg")), warn = FALSE), collapse = ""),
                   error = function(e) "")
-  svg <- gsub("#000000", "var(--accent)", svg, fixed = TRUE)
-  svg <- gsub("#ffffff", "var(--paper)",  svg, fixed = TRUE)
+  if (!nzchar(svg)) return(list(plate = "", glyph = ""))
+  cut <- regexpr("<g transform=", svg, fixed = TRUE)
+  list(plate = paste0(substr(svg, 1, cut - 1), "</svg>"),          # hexagon, no glyph
+       glyph = sub("<polygon[^>]*/>", "", svg))                    # glyph, no hexagon
+}
+
+.tint <- function(svg, hexagon = NULL, glyph = NULL) {
+  if (!is.null(hexagon)) svg <- gsub("#000000", hexagon, svg, fixed = TRUE)
+  if (!is.null(glyph))   svg <- gsub("#ffffff", glyph,   svg, fixed = TRUE)
   svg
 }
 
-# Render the six-item icon stats strip (HTML output, used with results: asis).
+# Render the counts as a row of hexagons (HTML output, used with results:
+# asis). Each tile is its own count: the numeral is the figure, the icon sits
+# enlarged and faint behind it so the tile still says what it counts. Nothing
+# is scaled against another type — a project and a publication are not the
+# same unit. Raw HTML rather than fenced divs because each tile is a link
+# wrapped around block content, which markdown cannot express. Each tile opens
+# its own type on the listing page: the filter bar reads the URL hash, so
+# #Code lands on Code already filtered.
 render_stats_strip <- function() {
   stats <- list(
-    list(icon = "folder-open-6gon-120",
-         n = count_active_projects(),
-         label = "Active projects"),
-    list(icon = "file-text-6gon-120",
-         n = count_sheet_status("publications", "published"),
-         label = "Publications"),
-    list(icon = "database-6gon-120",
-         n = count_portfolio_category("Dataset"),
-         label = "Datasets"),
-    list(icon = "code-6gon-120",
-         n = count_portfolio_category("Code"),
-         label = "Codes"),
-    list(icon = "chart-network-6gon-120",
-         n = count_portfolio_category("Visualisation"),
-         label = "DataVizs"),
-    list(icon = "ampersand-6gon-120",
-         n = count_sheet_status("others", "published"),
-         label = "Miscellaneous (gists,artifacts & outtakes)")
+    list(icon = "folder-open-6gon-120",   label = "Active projects",
+         n = count_active_projects(),                        href = "projects.html"),
+    list(icon = "file-text-6gon-120",     label = "Publications",
+         n = count_sheet_status("publications", "published"), href = "publications.html"),
+    list(icon = "database-6gon-120",      label = "Datasets",
+         n = count_portfolio_type("Data"),                   href = "portfolio.html#Data"),
+    list(icon = "code-6gon-120",          label = "Code",
+         n = count_portfolio_type("Code"),                   href = "portfolio.html#Code"),
+    list(icon = "chart-network-6gon-120", label = "Visualisations",
+         n = count_portfolio_type("Visualisation"),          href = "portfolio.html#Visualisation"),
+    list(icon = "ampersand-6gon-120",     label = "Miscellaneous",
+         n = count_portfolio_type("Miscellaneous"),          href = "portfolio.html#Miscellaneous")
   )
 
-  cat("::: {.stats-strip}\n")
+  cat('<div class="stat-hex-grid">\n')
   for (s in stats) {
-    cat("::: {.stat-item}\n")
-    cat(sprintf('<div class="stat-icon">%s</div>\n\n', .accent_icon(s$icon)))
-    cat(sprintf("[[%d]{.stat-count} %s]{.label}\n", s$n, s$label))
-    cat(":::\n")
+    parts <- .icon_parts(s$icon)
+    cat(sprintf(paste0(
+      '<a class="stat-hex" href="%s">',
+      '<span class="stat-hex-tile">',
+      '<span class="stat-layer">%s</span>',
+      '<span class="stat-layer stat-mark">%s</span>',
+      '<span class="stat-layer stat-num">%d</span>',
+      '<span class="stat-hex-body"><span class="stat-hex-label">%s</span></span>',
+      '</span></a>\n'),
+      s$href,
+      .tint(parts$plate, hexagon = "var(--accent)"),
+      .tint(parts$glyph, glyph = "var(--paper)"),
+      s$n, s$label))
   }
-  cat(":::\n")
+  cat("</div>\n")
 }

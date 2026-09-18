@@ -6,8 +6,6 @@ categories: [Data, Methods]
 image: ../assets/images/404.svg
 ---
 
-{{< adslot blog-post >}}
-
 Modern slavery is, by definition, hidden. The people perpetrating it have every incentive to keep it invisible. The people experiencing it are often unable to speak freely. And the data infrastructure we rely on — surveys, administrative records, trade statistics — was built to measure things that are meant to be counted.
 
 This creates a fundamental methodological problem: how do you measure something that actively evades measurement?

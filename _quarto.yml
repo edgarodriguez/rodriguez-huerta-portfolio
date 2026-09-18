@@ -32,7 +32,7 @@ website:
   # by design, so you can review them locally before flipping draft: false.
   draft-mode: gone
   announcement:
-    content: "**New:** I'm moving all the portfolio content to a new location. still work in progress"
+    content: "**New:** I'm moving all the portfolio to a new location. There are empty templates, millioñes de typos, duplicates entries, and a lot of 404 errors. Doing this in my spare time so please be patient."
   # Must match the CNAME domain the site is actually served from. Quarto builds
   # the 404 page's asset paths, canonical links and social-card URLs from this,
   # so pointing it at the old github.io sub-path breaks all of them.

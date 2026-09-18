@@ -4,7 +4,7 @@ title: "The Energy of Freedom? Solar Energy, Modern Slavery and the Just Transit
 description: "A Social Life Cycle Assessment estimating forced labour risk per kWh across the top 30 PV-producing countries — the first multi-country S-LCA in the renewable energy sector."
 date: 2022-07-01
 categories: [S-LCA, Supply Chains, Forced Labour, Energy]
-image: ../assets/images/img-network.svg
+image: ../assets/images/img-solarPV-2022.png
 status: published
 pub-journal: "British Academy"
 doi: "10.5871/just-transitions-s-i/J-C"
@@ -13,7 +13,7 @@ doi: "10.5871/just-transitions-s-i/J-C"
 [← Back to Projects](../projects.html){.back-link}
 
 ::: {.label}
-Supply Chains · Published 2022 · British Academy Just Transitions Programme
+Industrial Ecology  · Just Transitions · Modern Slavery
 :::
 
 ## Overview
@@ -115,6 +115,6 @@ Interactive country risk profiles for all 30 countries are available via Tableau
 ## Outputs
 
 - [Full research report — *The Energy of Freedom?*](https://doi.org/10.5871/just-transitions-s-i/J-C)
-- Policy brief (condensed version)
-- Interactive country profiles (Tableau Public)
+- [Policy brief (condensed version)](https://www.nottingham.ac.uk/research/beacons-of-excellence/rights-lab/resources/reports-and-briefings/2022/march/briefing-energy-of-freedom.pdf)
+- [Interactive country profiles (Tableau Public)](https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/SEMSJT_CountryProfile/Country_profile)
 - Press release and stakeholder consultation materials

@@ -1,0 +1,34 @@
+---
+draft: false
+title: "GlyphForge. Set a mark. Prove it at 16px."
+description: "Glyph Forge builds personalised mark from any icon or a few letters — set inside a polygon you control  (used in the website). Export it as an SVG that scales to any size, or a PNG at 64 to 1024 pixels. No account, and nothing you make is stored on a server — though choosing Letters does ask Google Fonts for the characters you typed, so it can send back just those letterforms."
+date: 2026-08-01
+date-modified: 2026-09-09
+type: Miscellaneous
+subtype: Artefact
+categories: [Design]
+image: ../../assets/images/img-gf.svg
+repo: "https://glyph.rodriguez-huerta.com/"
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Artefact · Web tool · Design · 2026
+:::
+
+A small tool for making a mark: a favicon, an app tile, an avatar. You pick one of 371,000 icons, or type a few letters, and set it inside a polygon whose sides, rotation, corner radius and colours you control. It exports an SVG that scales to any size, or a PNG from 64 to 1024 pixels. The marks on this site were made with it.
+
+The tagline is the brief: set a mark, prove it at 16px. The preview shows the mark in a browser tab at 16 pixels, as an app tile and as an avatar, because that is where it has to work. When the icon and its fill drop below 3:1 contrast, the page says so. It is a warning rather than a block, but at 16 pixels a faint mark disappears.
+
+## Privacy
+
+There is no account, and nothing you make is stored on a server. Choosing letters does ask Google Fonts for the characters you typed, so it can send back just those letterforms.
+
+## Licences
+
+The icons come from 238 open icon sets through Iconify, and each set has its own licence. Most are free to use, some need attribution, and a few restrict commercial use. Brand logos are trademarks. Check a set's terms before you ship a mark built from it.
+
+## Visit
+
+[glyph.rodriguez-huerta.com](https://glyph.rodriguez-huerta.com/)

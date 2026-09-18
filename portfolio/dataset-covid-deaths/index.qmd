@@ -1,0 +1,34 @@
+---
+draft: true
+title: "COVID-19 and deaths in Mexico — data and cleaning pipeline"
+description: "The inputs, Tableau Prep flow and extracts behind the COVID-19 mortality dashboard for Mexico: SEED death records, official COVID-19 data (August 2020) and CONAPO population projections, by state and municipality."
+date: 2020-09-30
+type: Data
+subtype: Database
+image: ../../assets/images/lucide-database-6gon-160.svg
+repo: "https://github.com/edgarodriguez/COVID-19mx_Deaths"
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Data · COVID-19 · Mortality · Mexico · 2020
+:::
+
+The data and cleaning steps behind the [COVID-19 mortality dashboard](../viz-covid-deaths-mexico/index.html). The question was how many more people died in Mexico in 2020 than in an ordinary year, and how much of that the records attribute to COVID-19. Answering it meant putting three official sources on the same footing, and then looking at other causes of death that might be related.
+
+## Sources
+
+Death records come from SEED, Mexico's epidemiological death registry, which is published as OLAP cubes. The official COVID-19 data were downloaded from coronavirus.gob.mx on 8 August 2020. Population comes from CONAPO's projections for 1990–2030 and turns counts into rates.
+
+## How it was put together
+
+Tableau's Microsoft Analysis Services connector reads the SEED cubes, and each view is flattened into its own sheet of an Excel file. A Tableau Prep flow then merges the three sources, harmonises their categories and writes the extracts the dashboard reads. The repository keeps every step: raw inputs, the connector workbook, the Prep flow and the outputs.
+
+## What you get
+
+Tableau extracts (`.hyper`) of deaths by state from 1998 to 2020 and by municipality from 2010 to 2020; municipal deaths for 2019 and 2020 with their ICD cause-of-death codes; the official COVID-19 records for 2020; and population by state and municipality for the same periods. The dashboard workbook, `DefuncionesCOVID19-Mexico.twb`, is included.
+
+## Repository
+
+[github.com/edgarodriguez/COVID-19mx_Deaths](https://github.com/edgarodriguez/COVID-19mx_Deaths). The repository has no licence file.

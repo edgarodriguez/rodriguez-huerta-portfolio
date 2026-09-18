@@ -4,11 +4,11 @@ title: "Land use and vegetation change — Yucatán Peninsula"
 description: "Six decades of land use and vegetation change in the Yucatán Peninsula using INEGI's official mapping series (Series I to VI). Shows the pace and geography of deforestation, agricultural expansion, and urban growth."
 date: 2020-03-01
 date-modified: 2020-03-01
-categories: [Visualisation, Interactive, Tableau, Land Use, Mexico, Water]
-image: ../../assets/images/img-timeseries.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Land Use, Mexico, Water]
+image: ../../assets/images/img-usv.png
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/CambiodeusodesueloyvegetacinINEGISerieIaVIPeninusuladeYucatn/USV"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
@@ -32,7 +32,7 @@ INEGI, Land Use and Vegetation Series I through VI. Published by Mexico's Nation
 ::: {.column-screen}
 
 ```{=html}
-<div class="tableauPlaceholder" id="viz2001" style="position: relative">
+<div class="tableauPlaceholder" id="viz2001" style="position: relative; --viz-w: 800px">
   <noscript>
     <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/CambiodeusodesueloyvegetacinINEGISerieIaVIPeninusuladeYucatn/USV">
       <img alt="USV" src="https://public.tableau.com/static/images/Ca/CambiodeusodesueloyvegetacinINEGISerieIaVIPeninusuladeYucatn/USV/1_rss.png" style="border: none">

@@ -4,11 +4,11 @@ title: "Mobility analysis — Mexico (COVID-19 period)"
 description: "Mobility patterns across Mexican states during the COVID-19 pandemic, showing changes in movement relative to pre-pandemic baselines. Draws on aggregated mobility data to track the effect of public health measures on travel behaviour."
 date: 2020-04-01
 date-modified: 2020-09-01
-categories: [Visualisation, Interactive, Tableau, Mobility, Mexico, COVID-19]
-image: ../../assets/images/img-timeseries.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Mobility, Mexico, COVID-19]
+image: ../../assets/images/img-mobilidad-covid.png
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/AnlisisdemovilidadMxico/MovilidadMxico"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
@@ -32,7 +32,7 @@ Aggregated mobility data from publicly available sources (2020). State-level ana
 ::: {.column-screen}
 
 ```{=html}
-<div class="tableauPlaceholder" id="viz2006" style="position: relative">
+<div class="tableauPlaceholder" id="viz2006" style="position: relative; --viz-w: 1196px">
   <noscript>
     <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/AnlisisdemovilidadMxico/MovilidadMxico">
       <img alt="MovilidadMxico" src="https://public.tableau.com/static/images/An/AnlisisdemovilidadMxico/MovilidadMxico/1_rss.png" style="border: none">

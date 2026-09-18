@@ -1,6 +1,6 @@
-page-layout: article
+page-layout: full
 toc: false
 anchor-sections: false
 format:
   html:
-    body-classes: detail-page
+    body-classes: "detail-page entry-page"

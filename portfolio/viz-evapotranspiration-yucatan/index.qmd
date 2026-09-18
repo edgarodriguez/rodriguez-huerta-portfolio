@@ -4,11 +4,11 @@ title: "Actual evapotranspiration — Yucatán Peninsula"
 description: "Estimated actual evapotranspiration (ETa) across the Yucatán Peninsula derived from the monthly water balance model. Shows how much water the land surface returns to the atmosphere by month and zone, a critical term in the regional water budget."
 date: 2019-07-01
 date-modified: 2019-07-01
-categories: [Visualisation, Interactive, Tableau, Hydrology, Water, Mexico]
-image: ../../assets/images/img-timeseries.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Hydrology, Water, Mexico]
+image: ../../assets/images/img-et-yp.png
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/EstimationActualEvapotranspirationYucatan/ETa_final"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}

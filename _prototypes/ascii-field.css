@@ -1,0 +1,39 @@
+/* ============================================================
+   ASCII FIELD — ambient plasma behind the first page header
+   initAsciiField() in after-body.html adds .has-ascii to the header
+   (on Home: to the whole page, #quarto-content)
+   and writes one frame of characters into its data-ascii attribute;
+   the ::before below prints it. A pseudo-element, not a child node,
+   so the headers' `> *` / :first-child layout rules never see it.
+   Glyphs are --rule with a touch of --ink: texture, never content.
+   ============================================================ */
+.has-ascii {
+  position: relative;
+  isolation: isolate;   /* the z-index:-1 field paints above the header's own background */
+  overflow: clip;       /* clip, not hidden: no scroll container, no new formatting context */
+}
+.has-ascii::before {
+  content: attr(data-ascii) / "";   /* `/ ""` = decorative; screen readers skip it */
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  white-space: pre;
+  font: 8px/8px var(--font-mono);   /* keep in sync with ASCII_CELL_* in after-body.html */
+  /* Plain glyphs only: kerning, ligatures and contextual alternates make
+     every frame's text layout far more expensive for no visible gain. */
+  font-kerning: none;
+  font-variant-ligatures: none;
+  font-feature-settings: "calt" 0, "liga" 0;
+  text-rendering: optimizeSpeed;
+  color: color-mix(in oklch, var(--rule), var(--ink) 12%);
+  pointer-events: none;
+  /* The field lives on the right; the text column stays on clean paper. */
+  mask-image: linear-gradient(to right, transparent 20%, #000 80%);
+}
+/* Home: the field covers the whole page, margins included, so it is lighter
+   (only a hint of --ink) and only thins out towards the left. */
+#quarto-content.has-ascii::before {
+  color: color-mix(in oklch, var(--rule), var(--ink) 5%);
+  mask-image: linear-gradient(to right, rgb(0 0 0 / 0.35), #000 70%);
+}
+

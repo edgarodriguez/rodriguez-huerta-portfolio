@@ -4,11 +4,11 @@ title: "What-a-Crop — edible crop explorer"
 description: "Interactive explorer for edible crop data, built for the EDIBLE project. Browse crops by type, region, nutritional characteristics, and production scale to understand the diversity of food systems and where different crops fit within them."
 date: 2019-05-09
 date-modified: 2019-05-09
-categories: [Visualisation, Interactive, Tableau, Food Systems, Crops]
-image: ../../assets/images/img-network.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Food Systems]
+image: ../../assets/images/img-what-crop.png
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/WhatCrop_EDIBLE_v01_190509/What-a-Crop"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
@@ -32,7 +32,7 @@ FAO crop production statistics and nutritional composition data. Built for the E
 ::: {.column-screen}
 
 ```{=html}
-<div class="tableauPlaceholder" id="viz2007" style="position: relative">
+<div class="tableauPlaceholder" id="viz2007" style="position: relative; --viz-w: 800px">
   <noscript>
     <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/WhatCrop_EDIBLE_v01_190509/What-a-Crop">
       <img alt="What-a-Crop" src="https://public.tableau.com/static/images/Wh/WhatCrop_EDIBLE_v01_190509/What-a-Crop/1_rss.png" style="border: none">

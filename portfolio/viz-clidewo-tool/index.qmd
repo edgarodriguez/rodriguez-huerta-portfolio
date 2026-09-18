@@ -1,0 +1,39 @@
+---
+draft: false
+title: "Climate Decent Work Risk Assessment Brazilian Agriculture"
+description: "A web map of climate-labour risk in Brazilian agriculture. Each hexagon combines a climate hazard score with a decent work score; filter by state, municipality or crop, and read the crop mix and indicator averages under an adjustable lens."
+date: 2026-08-01
+date-modified: 2026-08-09
+highlight: true
+type: Visualisation
+subtype: Interactive
+categories: [Climate change, Spatial analysis]
+image: ../../assets/images/img-tool-clidewo.png
+repo: "https://tool.clidewo.com"
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Interactive · Web map · CLIDEWO · Brazil · 2026
+:::
+
+The CLIDEWO risk assessment as a map you can question. Each hexagon on it carries two scores for Brazilian agriculture: how exposed the land and its workers are to climate-related occupational hazards, and how decent the work there is. The map combines them into a climate-labour risk index. The strongest colour marks places where high hazard and poor working conditions coincide.
+
+The scoring follows the IPCC approach, where risk comes from hazard, exposure and vulnerability, adjusted here for agricultural work and decent work conditions.
+
+## How to read it
+
+By default the map shows the combined risk. Hexagon opacity shows how much sits in each cell, as crop area or as workers counted in Annual Work Units (AWU): the more solid the hexagon, the denser it is. The legend is a grid with climate hazard on one axis and decent work, from high to low, on the other. Click a square in it to keep only those hexagons.
+
+A lens with an adjustable radius summarises whatever falls inside it: the risk index, the hazard and decent work scores, the main state and municipality, crop area, workers and the dominant crop mix. You can also narrow the map to a state, a municipality or a single crop.
+
+## Indicators
+
+The climate hazard score covers excess heat, UV radiation, droughts, floods, wildfires, air pollution, vector-borne diseases, agrochemicals and water. The decent work score covers employment, earnings, working time, work-life balance, forced labour, stability, equality, a safe working environment, social security and social dialogue.
+
+The risk score is z-score normalised and rescaled to 0–100. Fifty is the national mean, and a higher score means more at risk. The indicators are documented with the [municipal dataset](../dataset-climate-decent-work-brazil/index.html).
+
+## Visit
+
+[tool.clidewo.com](https://tool.clidewo.com), part of the [CLIDEWO project](../mis-clidewo-website/index.html).

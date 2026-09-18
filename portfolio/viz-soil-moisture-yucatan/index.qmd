@@ -4,11 +4,11 @@ title: "Soil moisture storage capacity — Yucatán Peninsula"
 description: "Spatial distribution of soil moisture storage capacity across the Yucatán Peninsula, derived from soil texture data and land use/land cover classification. A key biophysical input to the regional water balance model."
 date: 2019-08-01
 date-modified: 2019-08-01
-categories: [Visualisation, Interactive, Tableau, Hydrology, Mexico]
-image: ../../assets/images/img-heatmap.svg
-format:
-  html:
-    page-layout: full
+type: Visualisation
+subtype: Interactive
+categories: [Tableau, Hydrology, Mexico]
+image: ../../assets/images/img-soil-lulc-stc.png
+repo: "https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/Soil-moisturestoragecapacityYucatanPeninsula/Soil-LULC-STC"
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
@@ -32,7 +32,7 @@ Soil texture: INEGI / FAO classification. Land use/vegetation: INEGI Series V. C
 ::: {.column-screen}
 
 ```{=html}
-<div class="tableauPlaceholder" id="viz2004" style="position: relative">
+<div class="tableauPlaceholder" id="viz2004" style="position: relative; --viz-w: 1200px">
   <noscript>
     <a href="https://public.tableau.com/app/profile/edgar.rodriguez.huerta/viz/Soil-moisturestoragecapacityYucatanPeninsula/Soil-LULC-STC">
       <img alt="Soil-LULC-STC" src="https://public.tableau.com/static/images/So/Soil-moisturestoragecapacityYucatanPeninsula/Soil-LULC-STC/1_rss.png" style="border: none">

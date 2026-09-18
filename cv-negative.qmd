@@ -8,7 +8,7 @@ execute:
 ---
 
 ::: {.page-band .page-band-subtle}
-[09 — CV of Failures]{.label}
+[08 — CV of Failures]{.label}
 
 # Everything I applied for and didn't get {.h1}
 

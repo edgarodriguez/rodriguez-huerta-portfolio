@@ -7,8 +7,6 @@ description: "A short tutorial on creating interactive time series charts in R M
 image: ../assets/images/404.svg
 ---
 
-{{< adslot blog-post >}}
-
 This post walks through the steps for building an interactive time series chart in R using the Plotly package. The data is agricultural water concession records from CONAGUA's REPDA registry for the Yucatán Peninsula.
 
 ## Setup

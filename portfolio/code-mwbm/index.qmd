@@ -1,0 +1,31 @@
+---
+draft: true
+title: "Monthly Water Balance Model for Yucatan Peninsula"
+description: "Monthly Water Balance Model in R. Applying raster layers into several Evapotranspiration methods"
+date: 2017-01-02
+type: Code
+image: ../../assets/images/lucide-code-6gon-160.svg
+repo: "https://github.com/edgarodriguez/WaterBalanceModel"
+---
+
+[← Back to Portfolio](../../portfolio.html){.back-link}
+
+::: {.label}
+Code · R · Monthly water balance · Yucatán Peninsula
+:::
+
+The monthly water balance model behind the recharge estimates in the doctoral research on [water societal metabolism in the Yucatán Peninsula](../../projects/project-water-metabolism.html). It works on raster layers. Month by month it follows rainfall through the soil: what evapotranspires, what the soil stores, and what is left to recharge the karst aquifer. Evapotranspiration can be estimated with several methods.
+
+## What is in the repository
+
+At the moment, the input layers rather than the model code. `RWC.zip` holds two rasters of soil water retention capacity for the peninsula: one derived from field capacity and permanent wilting point, one from USDA soil data. `Latitud_YP_SHP.zip` holds a latitude raster and shapefile, plus monthly latitude values from SAGA, which the evapotranspiration methods need to work out day length and solar radiation.
+
+## Outputs
+
+Two of the model's outputs are on this site: [actual evapotranspiration](../viz-evapotranspiration-yucatan/index.html), month by month, and [water use against groundwater recharge](../viz-water-balance-yucatan/index.html), where the recharge it estimates is set against demand.
+
+Full methodology in: Rodríguez-Huerta, E., Rosas-Casals, M. & Hernández-Terrones, L.M. (2019). *Journal of Cleaner Production*, 235, 272–287. [doi:10.1016/j.jclepro.2019.06.310](https://doi.org/10.1016/j.jclepro.2019.06.310)
+
+## Repository
+
+[github.com/edgarodriguez/WaterBalanceModel](https://github.com/edgarodriguez/WaterBalanceModel)

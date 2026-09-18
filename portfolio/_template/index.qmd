@@ -12,9 +12,14 @@ date-modified: 2026-01-01
 highlight: false
 
 # ── TAXONOMY ───────────────────────────────────────────────────────────────────
-# First category drives the listing filter bar in portfolio.qmd.
-# Active filter buttons: Visualisation, Dataset, Code, Artefact, Interactive
+# type drives the main filter bar in portfolio.qmd:
+#   Visualisation · Code · Data · Miscellaneous
+# subtype fills the second row that appears once a type is picked (free text,
+# e.g. Interactive, Infographic, Artefact). Categories are display tags only.
+type: Visualisation
+subtype: Interactive
 categories: [Visualisation, Interactive, Tableau]
+repo: ""                             # URL where the piece is hosted (Tableau, GitHub, Zenodo…)
 
 # ── IMAGE ──────────────────────────────────────────────────────────────────────
 # Used as the card thumbnail in the listing grid.
@@ -25,9 +30,6 @@ image: ../../assets/images/img-network.svg
 # ── PAGE FORMAT ────────────────────────────────────────────────────────────────
 # Use full for Tableau embeds (removes page max-width constraint).
 # Use article for text-heavy portfolio items (dataset, code, artefact).
-format:
-  html:
-    page-layout: full               # full | article
 ---
 
 [← Back to Portfolio](../../portfolio.html){.back-link}
