@@ -97,12 +97,12 @@ If you build in a framework with its own theme variables (Bootstrap, Tailwind, s
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
 ```
 
 ```css
---font-serif: 'Averia Serif Libre', Georgia, serif; /* headlines, titles, body emphasis */
+--font-serif: 'EB Garamond', Georgia, serif; /* headlines, titles, body emphasis */
 --font-sans:  'DM Sans', system-ui, -apple-system, sans-serif; /* UI, nav, running text */
 --font-mono:  'Commit Mono', ui-monospace, SFMono-Regular, monospace; /* labels, metadata, tags, dates */
 ```

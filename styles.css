@@ -20,7 +20,7 @@
   --bs-link-color:       var(--accent);
   --bs-link-hover-color: var(--ink);
 
-  --font-serif: 'EB Garamond', 'Averia Serif Libre', Georgia, serif;
+  --font-serif: 'EB Garamond', Georgia, serif;
   --font-sans:  'DM Sans', system-ui, -apple-system, sans-serif;
   --font-mono:  'Commit Mono', ui-monospace, SFMono-Regular, monospace;
 

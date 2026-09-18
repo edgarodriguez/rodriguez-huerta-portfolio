@@ -23,7 +23,7 @@ The site is editorial in style — typographic, restrained, monochrome by defaul
 | Optional computation | R or Python in code cells | Only when a page needs a live chart or table. Most pages have none. |
 | Hosting | **GitHub Pages** | Free, static, fits Quarto's render-to-HTML model. |
 | CI/CD | GitHub Actions (`quarto-dev/quarto-actions/publish@v2`) | Auto-builds and publishes to `gh-pages` on every push to `main`. |
-| Fonts | Averia Serif Libre + DM Sans (Google Fonts, one request), Commit Mono (Fontsource/jsDelivr); navbar name in Movement Direct Thin (self-hosted in `assets/fonts/`, CC BY-ND 4.0) | Serif + sans + high-x-height technical mono. All free; Switzer was dropped because Fontshare stalled for 30 s+ in Sept 2026. |
+| Fonts | EB Garamond + DM Sans (Google Fonts, one request), Commit Mono (Fontsource/jsDelivr); navbar name in Movement Direct Thin (self-hosted in `assets/fonts/`, CC BY-ND 4.0) | Serif + sans + high-x-height technical mono. All free; Switzer was dropped because Fontshare stalled for 30 s+ in Sept 2026. |
 | Animation | CSS + two vanilla-JS sections in `_includes/after-body.html`; no libraries | Ambient ASCII field (whole page on Home, first header elsewhere); honeycomb row offsets and expand-on-hover for hex listings. |
 
 **No** Next.js, **no** Supabase, **no** Vercel, **no** Stripe, **no** auth — this is a static, public, content-first site.
@@ -60,7 +60,7 @@ For Projects, Publications, Portfolio, Conferences, and Blog: each `.qmd` file i
   - At rest a tile is a faint greyscale thumbnail; in dark mode the tile is `--muted` grey.
   - Hovering or keyboard-focusing a tile makes it grow 15%, turns the figure full colour and shows the title and description on a frosted-glass band across the full tile width.
   - Clicking opens the entry. The filter bars, including the portfolio sub-filter row, work as before.
-- **Fonts**: Averia Serif Libre (serif) and DM Sans (sans) from Google Fonts replace EB Garamond and Switzer (Fontshare).
+- **Fonts**: EB Garamond (serif) and DM Sans (sans) from Google Fonts. Averia Serif Libre was the serif for one release in Sept 2026; EB Garamond was restored on 18 Sept 2026. Switzer (Fontshare) is gone for good.
 
 **How it's built**
 - `_includes/after-body.html` gets two new sections:
