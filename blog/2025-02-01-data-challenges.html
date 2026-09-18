@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-98bbccb3a6d0d808144c63a1d555ae4d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-da3b0872ee328d52bb152cfdfaa4d1b4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -87,14 +87,11 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 <style>html{ scroll-behavior: smooth; }</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="preconnect" href="https://api.fontshare.com">
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin="">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="">
 
-<!-- Serif — EB Garamond (Google Fonts) -->
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet">
-<!-- Sans — Switzer (Fontshare). Weights 400/500 match the old Space Grotesk load. -->
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500&amp;display=swap" rel="stylesheet">
+<!-- Serif — Averia Serif Libre, sans — DM Sans: both from Google Fonts in one request.
+     (Switzer came from Fontshare, whose CSS API stalled for 30 s+ in Sept 2026.) -->
+<link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,400&amp;family=DM+Sans:wght@400;500&amp;display=swap" rel="stylesheet">
 <!-- Mono — Commit Mono (Fontsource via jsDelivr). Taller x-height than Space Mono,
      so the small mono labels read larger at the same px value. -->
 <link href="https://cdn.jsdelivr.net/npm/@fontsource/commit-mono@5.3.0/index.css" rel="stylesheet">
@@ -123,8 +120,8 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <div id="quarto-announcement" data-announcement-id="5a59c1928b3df6129a777cbbdf40e979" class="alert alert-primary hidden"><div class="quarto-announcement-content">
-<p><strong>New:</strong> I’m moving all the portfolio content to a new location. still work in progress</p>
+    <div id="quarto-announcement" data-announcement-id="7c7893eec40f50abf222994c29abf51b" class="alert alert-primary hidden"><div class="quarto-announcement-content">
+<p><strong>New:</strong> I’m moving all the portfolio to a new location. There are empty templates, millioñes de typos, duplicates entries, and a lot of 404 errors. Doing this in my spare time so please be patient.</p>
 </div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
@@ -241,7 +238,6 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 </header>
 
 
-<div class="ad-slot" id="ad-slot-blog-post" data-ad-slot="blog-post"><span class="ad-slot-label">Ad space</span></div>
 <p>Modern slavery is, by definition, hidden. The people perpetrating it have every incentive to keep it invisible. The people experiencing it are often unable to speak freely. And the data infrastructure we rely on — surveys, administrative records, trade statistics — was built to measure things that are meant to be counted.</p>
 <p>This creates a fundamental methodological problem: how do you measure something that actively evades measurement?</p>
 <h2 id="what-data-exists" class="anchored">What data exists</h2>
@@ -337,6 +333,25 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
   document.querySelectorAll('[data-filter-group]').forEach(function (group) {
     var buttons   = group.querySelectorAll('[data-filter]');
     var targetSel = group.getAttribute('data-filter-target');
+    // Optional (portfolio): data-filter-field matches a listing field instead
+    // of categories; data-filter-sub builds a second row of buttons from
+    // another field, shown once a first-row value is picked. Both fields are
+    // read from Quarto's hidden .card-other-values table.
+    var field    = group.getAttribute('data-filter-field');
+    var subField = group.getAttribute('data-filter-sub');
+    var subBar   = null;
+    if (subField) {
+      subBar = document.createElement('div');
+      subBar.className = 'filter-bar filter-sub';
+      subBar.hidden = true;
+      group.insertAdjacentElement('afterend', subBar);
+    }
+
+    function fieldOf(it, name) {
+      var td = it.querySelector('.card-other-values td.' + name);
+      return td ? td.textContent.trim() : '';
+    }
+    function valuesOf(it) { return field ? [fieldOf(it, field)] : decodeCats(it); }
 
     function getQuartoItems() {
       return document.querySelectorAll(
@@ -346,20 +361,42 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
     }
     function getHandItems()   { return document.querySelectorAll(targetSel + ' [data-filter-key]'); }
 
-    function apply(active) {
+    function apply(active, sub) {
+      sub = sub || 'All';
       buttons.forEach(function (b) {
         b.classList.toggle('is-active', b.getAttribute('data-filter') === active);
       });
 
       getQuartoItems().forEach(function (it) {
-        if (active === 'All') { it.style.display = ''; return; }
-        var cats = decodeCats(it);
-        it.style.display = (cats.indexOf(active) !== -1) ? '' : 'none';
+        var ok = active === 'All' || valuesOf(it).indexOf(active) !== -1;
+        if (ok && sub !== 'All') ok = fieldOf(it, subField) === sub;
+        it.style.display = ok ? '' : 'none';
       });
 
       getHandItems().forEach(function (it) {
         var keys = (it.getAttribute('data-filter-key') || '').split('|');
         it.style.display = (active === 'All' || keys.indexOf(active) !== -1) ? '' : 'none';
+      });
+
+      if (subBar) renderSub(active, sub);
+    }
+
+    // Second row: "All" + every subtype present under the active type.
+    function renderSub(active, sub) {
+      var seen = [];
+      if (active !== 'All') getQuartoItems().forEach(function (it) {
+        var v = fieldOf(it, subField);
+        if (v && valuesOf(it).indexOf(active) !== -1 && seen.indexOf(v) === -1) seen.push(v);
+      });
+      subBar.hidden = !seen.length;
+      subBar.innerHTML = '';
+      ['All'].concat(seen.sort()).forEach(function (v) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'filter-btn' + (v === sub ? ' is-active' : '');
+        b.textContent = v;
+        b.addEventListener('click', function () { apply(active, v); });
+        subBar.appendChild(b);
       });
     }
 
@@ -438,26 +475,39 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
     });
   }
 
-  // ── SCROLL-TO-ADVANCE ────────────────────────────────────────────
-  // Overscroll-intent navigation. At the very bottom of the page, further
-  // scrolling accumulates against a threshold and fills a visible meter;
-  // completing it fades out and moves to the next page. Stopping drains it.
+  // ── SCROLL-TO-ADVANCE / SCROLL-TO-GO-BACK ─────────────────────────
+  // Overscroll-intent navigation, both ways. At the very bottom of the
+  // page, further scrolling accumulates against a threshold and fills a
+  // visible meter; completing it fades out and moves to the next page.
+  // At the very top, scrolling further up does the same in reverse, back
+  // to the previous page. Stopping drains the meter either way.
   //
   // Deliberately NOT a scroll-jack: normal scrolling is untouched, and this
-  // only listens once you are already at the end of the document.
+  // only listens once you are already at an edge of the document.
   //
-  // The reading order. Labels are the destination's canonical section
-  // number, not its position in this list — CV (06/07) is intentionally
+  // The reading order, one source of truth for both directions. Labels are
+  // each page's own canonical section number — CV (06/07) is intentionally
   // not part of the scroll path, so 05 is followed by 08.
-  var ADVANCE_SEQ = {
-    'index.html':        ['about.html',        '02 — About'],
-    'about.html':        ['projects.html',     '03 — Projects'],
-    'projects.html':     ['publications.html', '04 — Publications'],
-    'publications.html': ['portfolio.html',    '05 — Portfolio'],
-    'portfolio.html':    ['conferences.html',  '06 — Conferences'],
-    'conferences.html':  ['blog.html',         '07 — Blog']
-    // blog.html is the end of the path — no band.
-  };
+  var SEQ_ORDER = [
+    ['index.html',        '01 — Home'],
+    ['about.html',        '02 — About'],
+    ['projects.html',     '03 — Projects'],
+    ['publications.html', '04 — Publications'],
+    ['portfolio.html',    '05 — Portfolio'],
+    ['conferences.html',  '06 — Conferences'],
+    ['blog.html',         '07 — Blog']
+  ];
+  function seqMap(offset) {
+    var map = {};
+    for (var i = 0; i < SEQ_ORDER.length; i++) {
+      var j = i + offset;
+      if (j < 0 || j >= SEQ_ORDER.length) continue;
+      map[SEQ_ORDER[i][0]] = [SEQ_ORDER[j][0], SEQ_ORDER[j][1]];
+    }
+    return map;
+  }
+  var ADVANCE_SEQ = seqMap(1);   // blog.html is the end of the path — no band.
+  var BACK_SEQ    = seqMap(-1);  // index.html is the start of the path — no band.
 
   // Only top-level pages advance. Detail pages live one or more folders
   // deep (/blog/post.html, /portfolio/slug/index.html) and must not match —
@@ -470,21 +520,24 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
     return parts.length === 1 ? parts[0] : null;
   }
 
-  function buildAdvanceBand(dest, label) {
+  // dir: 1 = forward band appended after content (bottom of page),
+  // -1 = back band prepended before content (top of page).
+  function buildAdvanceBand(dest, label, dir) {
+    var isBack = dir === -1;
     var band = document.createElement('div');
-    band.className = 'advance';
+    band.className = 'advance' + (isBack ? ' advance-prev' : '');
     band.setAttribute('data-advance-to', dest);
 
     var row = document.createElement('div');
     row.className = 'advance-row';
-    var next = document.createElement('span');
-    next.className = 'label';
-    next.textContent = 'Next';
+    var tag = document.createElement('span');
+    tag.className = 'label';
+    tag.textContent = isBack ? 'Previous' : 'Next';
     var link = document.createElement('a');
     link.className = 'advance-link';
     link.href = dest;
     link.textContent = label;
-    row.appendChild(next); row.appendChild(link);
+    row.appendChild(tag); row.appendChild(link);
 
     var meter = document.createElement('div');
     meter.className = 'advance-meter';
@@ -495,22 +548,26 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
 
     var hint = document.createElement('span');
     hint.className = 'advance-hint';
-    hint.textContent = 'Keep scrolling to continue';
+    hint.textContent = isBack ? 'Keep scrolling to go back' : 'Keep scrolling to continue';
 
     band.appendChild(row); band.appendChild(meter); band.appendChild(hint);
-    (document.querySelector('main') || document.body).appendChild(band);
+    var main = document.querySelector('main') || document.body;
+    if (isBack) main.prepend(band); else main.appendChild(band);
     return band;
   }
 
-  function initScrollAdvance() {
+  // dir: 1 = watch the bottom edge and advance forward, -1 = watch the top
+  // edge and go back. Both share one threshold/meter/guard implementation;
+  // only the edge test and the sign of "deliberate" scroll differ.
+  function initScrollNav(dir) {
     var page = currentTopLevelPage();
-    var entry = page && ADVANCE_SEQ[page];
+    var entry = page && (dir === 1 ? ADVANCE_SEQ : BACK_SEQ)[page];
     if (!entry) return;
 
     var dest = entry[0];
-    // Build the band even under reduced motion — it is a useful "next" link
-    // on its own. CSS hides the meter and hint in that case.
-    var band = buildAdvanceBand(dest, entry[1]);
+    // Build the band even under reduced motion — it is a useful link on its
+    // own. CSS hides the meter and hint in that case.
+    var band = buildAdvanceBand(dest, entry[1], dir);
     if (reducedMotion()) return;
 
     var KEY = 'advance-from';
@@ -533,16 +590,19 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
     var NEED = 420;          // px of deliberate overscroll required
     var acc = 0, fired = false, decay = null;
 
-    function atBottom() {
-      var doc = document.documentElement;
-      return (doc.scrollHeight - window.innerHeight - window.scrollY) <= 2;
+    function atEdge() {
+      if (dir === 1) {
+        var doc = document.documentElement;
+        return (doc.scrollHeight - window.innerHeight - window.scrollY) <= 2;
+      }
+      return window.scrollY <= 2;
     }
     function setProgress(p) {
       band.style.setProperty('--advance-progress', p);
       band.classList.toggle('is-arming', p > 0.02);
     }
     function bump(delta) {
-      if (fired || delta <= 0 || !atBottom()) return;
+      if (fired || delta <= 0 || !atEdge()) return;
       acc = Math.min(NEED, acc + delta);
       setProgress(acc / NEED);
       if (acc >= NEED) {
@@ -555,7 +615,9 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
       decay = setTimeout(function () { acc = 0; setProgress(0); }, 500);
     }
 
-    window.addEventListener('wheel', function (e) { bump(e.deltaY); }, { passive: true });
+    // Multiplying by dir turns "scrolling toward this edge" into a positive
+    // delta for bump(), whichever edge this instance is watching.
+    window.addEventListener('wheel', function (e) { bump(dir * e.deltaY); }, { passive: true });
 
     var lastY = null;
     window.addEventListener('touchstart', function (e) {
@@ -564,23 +626,157 @@ gtag('config', 'G-WJGNN5V5GM', { 'anonymize_ip': true});
     window.addEventListener('touchmove', function (e) {
       if (lastY === null) return;
       var y = e.touches[0].clientY;
-      bump(lastY - y);
+      bump(dir * (lastY - y));
       lastY = y;
     }, { passive: true });
     window.addEventListener('scroll', function () {
-      if (!atBottom() && acc !== 0) { acc = 0; setProgress(0); }
+      if (!atEdge() && acc !== 0) { acc = 0; setProgress(0); }
     }, { passive: true });
   }
 
-  // Order matters: the advance band is created by initScrollAdvance, and
+  // Order matters: the advance bands are created by initScrollNav, and
   // initPageExit binds its fade handler to the links that exist when it
-  // runs. Build the band first or its link navigates without the fade.
-  function initMotion() { initScrollAdvance(); initPageExit(); }
+  // runs. Build the bands first or their links navigate without the fade.
+  function initMotion() { initScrollNav(1); initScrollNav(-1); initPageExit(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initMotion);
   } else {
     initMotion();
+  }
+
+  // ── ASCII FIELD ──────────────────────────────────────────────────
+  // Ambient plasma behind the whole Home page, and behind the first header
+  // everywhere else (listing headers, page bands, CV header, entry titles). Our own version of
+  // the classic demoscene sine plasma, with a domain warp so it flows
+  // like liquid: the asciiart.eu demo it is modelled on is not licensed
+  // for reuse. Each frame is one string written to the header's
+  // data-ascii attribute and printed by `.has-ascii::before` in
+  // styles.css, so no DOM nodes are added. ~15 fps, idle off-screen, a
+  // single still frame under reduced motion.
+  var ASCII_RAMP   = ' .:-=+*\\/–·';   // low values → high values
+  var ASCII_CELL_H = 8;               // px, must match the ::before font-size / line-height
+  // Monospace advance is 0.6em (Commit Mono measured 4.8px at 8px; the
+  // ui-monospace fallbacks match). Math.ceil below adds the partial last column.
+  var ASCII_CELL_W = 8 * 0.6;
+
+  // Rows outside first…last stay empty, so a tall field costs what the screen shows.
+  function asciiFrame(cols, rows, t, first, last) {
+    var out = '', top = ASCII_RAMP.length - 1, bendY = [], x;
+    // Domain warp: bend the coordinates before sampling so the bands flow like
+    // liquid. Each bend depends on one axis only, so it is worked out once per
+    // column (here) or once per row (below), not for every character.
+    for (x = 0; x < cols; x++) bendY[x] = Math.cos(x * ASCII_CELL_W / 24 * 0.6 - t * 0.7) * 1.2;
+    for (var y = 0; y < rows; y++) {
+      if (y < first || y > last) { out += '\n'; continue; }
+      var py = y * ASCII_CELL_H / 24;   // 24px units: wave size stays put whatever the cell size
+      var bendX = Math.sin(py * 0.7 + t * 0.9) * 1.2;
+      for (x = 0; x < cols; x++) {
+        var wx = x * ASCII_CELL_W / 24 + bendX, wy = py + bendY[x];
+        var v = Math.sin(wx * 0.9 + t)
+              + Math.sin(wy * 1.1 - t * 0.8)
+              + Math.sin((wx + wy) * 0.6 + t * 0.5)
+              + Math.sin(Math.sqrt(wx * wx + wy * wy) * 0.8 - t * 1.2);   // -4 … 4
+        out += ASCII_RAMP.charAt(Math.round((v + 4) / 8 * top));
+      }
+      out += '\n';
+    }
+    return out;
+  }
+
+  function initAsciiField() {
+    // Home (the page with the hero) gets the whole page, margins included.
+    var el = document.querySelector('.split-2-fullh')
+      ? document.getElementById('quarto-content')
+      : document.querySelector('.listing-header, .page-band, .cv-page-header, .entry-page .quarto-title-block');
+    if (!el || !window.ResizeObserver) return;
+    el.classList.add('has-ascii');
+
+    var cols = 0, rows = 0, t = 0, last = 0, visible = true;
+    // all = every row (first paint, resizes, reduced motion); otherwise only the
+    // rows on screen, plus a margin so fast scrolling doesn't reveal blank rows.
+    function draw(all) {
+      var above = all ? 0 : -el.getBoundingClientRect().top;
+      var first = all ? 0 : Math.floor(above / ASCII_CELL_H) - 4;
+      var lastRow = all ? rows : Math.ceil((above + window.innerHeight) / ASCII_CELL_H) + 4;
+      el.setAttribute('data-ascii', asciiFrame(cols, rows, t, first, lastRow));
+    }
+
+    // Fires once on observe, so it also paints the first (or only) frame.
+    new ResizeObserver(function () {
+      cols = Math.ceil(el.clientWidth / ASCII_CELL_W);
+      rows = Math.ceil(el.clientHeight / ASCII_CELL_H);
+      draw(true);
+    }).observe(el);
+    if (reducedMotion()) return;
+
+    new IntersectionObserver(function (entries) {
+      visible = entries[entries.length - 1].isIntersecting;
+    }).observe(el);
+
+    requestAnimationFrame(function tick(now) {
+      requestAnimationFrame(tick);
+      if (!visible || now - last < 66) return;   // ~15 fps; rAF already sleeps in hidden tabs
+      last = now;
+      t = now * 0.0006;
+      draw(false);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAsciiField);
+  } else {
+    initAsciiField();
+  }
+
+  // ── HEX ROWS ─────────────────────────────────────────────────────
+  // Grid listings (projects, portfolio) are a honeycomb: every second row
+  // of hexagon tiles starts half a tile in (.hex-shift in styles.css).
+  // CSS can't know where rows wrap once the filter bar hides tiles, so
+  // this walks the visible tiles top to bottom and marks the first tile
+  // of each odd row. Reading offsetTop after each mark lets later rows
+  // re-wrap. Re-runs when tiles are shown/hidden or the width changes.
+  function hexRows(list, sel) {
+    var row = -1, top = null;
+    sel = sel || '.g-col-1';
+    list.querySelectorAll(sel).forEach(function (t) { t.classList.remove('hex-shift'); });
+    list.querySelectorAll(sel).forEach(function (t) {
+      if (t.style.display === 'none' || t.offsetTop === top) return;
+      row++;
+      if (row % 2) t.classList.add('hex-shift');
+      top = t.offsetTop;
+    });
+  }
+
+  function initHexRows() {
+    // The About page's stat hexagons are the same honeycomb, three across.
+    document.querySelectorAll('.stat-hex-grid').forEach(function (grid) {
+      var w = 0;
+      new ResizeObserver(function () {
+        if (grid.clientWidth === w) return;
+        w = grid.clientWidth;
+        hexRows(grid, '.stat-hex');
+      }).observe(grid);
+    });
+
+    document.querySelectorAll('.quarto-listing-container-grid .list').forEach(function (list) {
+      var width = 0;
+      // Fires once on observe, so it also lays out the first time.
+      new ResizeObserver(function () {
+        if (list.clientWidth === width) return;
+        width = list.clientWidth;
+        hexRows(list);
+      }).observe(list);
+      // The filter bar hides tiles by setting style.display.
+      new MutationObserver(function () { hexRows(list); })
+        .observe(list, { subtree: true, attributes: true, attributeFilter: ['style'] });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHexRows);
+  } else {
+    initHexRows();
   }
 
   // ── STAGGER DELAYS ───────────────────────────────────────────
